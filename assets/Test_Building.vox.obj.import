@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dgnahp5vp5vex"
+path="res://.godot/imported/Test_Building.vox.obj-eb8f403c9f40f5639d241c3fbdb1f433.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Test_Building.vox.obj-eb8f403c9f40f5639d241c3fbdb1f433.mesh"]
+
+source_file="res://assets/Test_Building.vox.obj"
+dest_files=["res://.godot/imported/Test_Building.vox.obj-eb8f403c9f40f5639d241c3fbdb1f433.mesh", "res://.godot/imported/Test_Building.vox.obj-eb8f403c9f40f5639d241c3fbdb1f433.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
