@@ -7,7 +7,6 @@
 [node name="door" type="Node3D"]
 
 [node name="npc_spawner" parent="." instance=ExtResource("1_cfvce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.16657)
 
 [node name="npc_target" parent="." instance=ExtResource("2_bbayw")]
 script = ExtResource("1_luixs")

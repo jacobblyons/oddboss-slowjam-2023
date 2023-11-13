@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://b7c41d1s6qff7"]
 
-[ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="1_7hnbu"]
-[ext_resource type="PackedScene" uid="uid://gyspku1sfuxp" path="res://scenes/player.tscn" id="1_lnsld"]
-[ext_resource type="ArrayMesh" uid="uid://dgnahp5vp5vex" path="res://assets/Test_Building.vox.obj" id="3_xbyv4"]
+[ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="1_p574b"]
+[ext_resource type="ArrayMesh" uid="uid://dgnahp5vp5vex" path="res://assets/Test_Building.vox.obj" id="2_vmvoe"]
+[ext_resource type="PackedScene" uid="uid://gyspku1sfuxp" path="res://scenes/player.tscn" id="3_80sm8"]
 
 [sub_resource type="Gradient" id="Gradient_nc63m"]
 offsets = PackedFloat32Array(0, 0.217033, 0.626374, 0.997253, 1)
@@ -28,7 +28,7 @@ vertices = PackedVector3Array(9.09105, 22.5902, -0.986937, 9.09105, 22.5902, 9.5
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 8), PackedInt32Array(5, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(11, 10, 9)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wodxv"]
-albedo_texture = ExtResource("1_7hnbu")
+albedo_texture = ExtResource("1_p574b")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ws4xl"]
 size = Vector3(13.6914, 44.4403, 21.9412)
@@ -59,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9639, 24.2741, 0)
 [node name="TestBuilding_vox" type="MeshInstance3D" parent="NavigationRegion3D/Building"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.594925, -24.1839, -0.986937)
 material_override = SubResource("StandardMaterial3D_wodxv")
-mesh = ExtResource("3_xbyv4")
+mesh = ExtResource("2_vmvoe")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Building"]
@@ -72,5 +72,5 @@ radius = 20.0
 height = 17.67
 vertices = PackedVector3Array(4.88048, 0, -14.2116, 5.34814, 0, 9.50713, -16.3984, 0, 13.4472, -15.2007, 0, -17.0594)
 
-[node name="Player" parent="NavigationRegion3D" instance=ExtResource("1_lnsld")]
+[node name="Player" parent="NavigationRegion3D" instance=ExtResource("3_80sm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14105, 7.60632, 50.7701)

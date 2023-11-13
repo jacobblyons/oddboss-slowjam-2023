@@ -24,7 +24,7 @@ mesh = ExtResource("2_62nmc")
 skeleton = NodePath("")
 
 [node name="door" parent="." instance=ExtResource("3_2whov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.993, 1.67901, 11.4931)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.993, 0, 11.4931)
 
 [node name="door2" parent="." instance=ExtResource("3_2whov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.12374, 1.67901, 11.7283)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.12374, 0, 11.7283)
