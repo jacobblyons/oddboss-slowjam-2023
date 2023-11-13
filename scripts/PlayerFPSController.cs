@@ -35,7 +35,6 @@ public partial class PlayerFPSController : CharacterBody3D
         // Calculate direction player is trying to move based on direction they
         // are facing and the direction of their movement input (if any).
         Basis aim = fpCamera.GlobalTransform.Basis;
-        Vector3 aimDir = aim.X;
         Vector3 moveDir = new Vector3(moveInput.X, 0f, moveInput.Y).Rotated(Vector3.Up, aim.GetEuler().Y).Normalized();
 
         // Update horizontal velocity
@@ -72,6 +71,11 @@ public partial class PlayerFPSController : CharacterBody3D
             RotateY(-mouseInput.X * mouseSensitivity / 180f);
             float change = -mouseInput.Y * mouseSensitivity;
             fpCamera.RotateX(change / 180f);
+            fpCamera.Rotation = new Vector3(
+                Mathf.Clamp(fpCamera.Rotation.X, -0.99f, 0.99f),
+                fpCamera.Rotation.Y,
+                fpCamera.Rotation.Z
+            );
         }
     }
 
