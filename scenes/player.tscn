@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://gyspku1sfuxp"]
+
+[ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="1_2xogd"]
+[ext_resource type="Script" path="res://scripts/PlayerFPSController.cs" id="1_31nss"]
+[ext_resource type="ArrayMesh" uid="uid://byw1hwwm842qe" path="res://assets/Character_1.vox.obj" id="2_b7xq6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s45o"]
+albedo_texture = ExtResource("1_2xogd")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0qo7"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_31nss")
+moveSpeed = 10.0
+accelFactor = 60.0
+decelFactor = 120.0
+mouseSensitivity = 0.7
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character1_vox" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.25, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_6s45o")
+mesh = ExtResource("2_b7xq6")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.633222, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_q0qo7")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 2.0
+target_desired_distance = 2.0
+path_height_offset = -2.0
+path_max_distance = 30.81
+avoidance_enabled = true
+radius = 7.17
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.788235, 0, 0.788235, 1)
+debug_path_custom_point_size = 5.0
