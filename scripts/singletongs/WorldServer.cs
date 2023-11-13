@@ -6,7 +6,7 @@ using System.Linq;
 public partial class WorldServer : Node
 {
     [Export]
-    public int doorCount {get => doors.Count; set { } }
+    public int doorCount {get => targets.Count; set { } }
 
     [Export]
     public int spawnerCount {get => spawners.Count; set { } }
@@ -14,7 +14,7 @@ public partial class WorldServer : Node
     [Export]
     public ulong npcSpawnPeriodInSeconds = 1;
 
-    private Dictionary<Vector3, DoorNode> doors = new Dictionary<Vector3, DoorNode>();
+    private Dictionary<Vector3, TargetNode> targets = new Dictionary<Vector3, TargetNode>();
     private Dictionary<Vector3, SpawnerNode> spawners = new Dictionary<Vector3, SpawnerNode>();
     private ulong lastSpawnTime = 0;
 
@@ -35,7 +35,7 @@ public partial class WorldServer : Node
 
             // set a random target door
             var doorIndex = Random.Shared.Next(0,doorCount-1);
-            var door = doors.Values.ToList()[doorIndex];
+            var door = targets.Values.ToList()[doorIndex];
 
             // spawn at a random spawner
             var spawnIndex = Random.Shared.Next(0,spawnerCount-1);
@@ -53,11 +53,11 @@ public partial class WorldServer : Node
         spawners.Add(spawner.GlobalPosition, spawner);
     }
 
-    public void RegisterDoor(DoorNode door)
+    public void RegisterTarget(TargetNode target)
     {
-        if(doors.ContainsKey(door.GlobalPosition))
+        if(targets.ContainsKey(target.GlobalPosition))
             return;
 
-        doors.Add(door.GlobalPosition, door);
+        targets.Add(target.GlobalPosition, target);
     }
 }

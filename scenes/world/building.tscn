@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cboew4tnsvyhn"]
+[gd_scene load_steps=6 format=3 uid="uid://cboew4tnsvyhn"]
 
 [ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="1_k3862"]
 [ext_resource type="ArrayMesh" uid="uid://dgnahp5vp5vex" path="res://assets/Test_Building.vox.obj" id="2_62nmc"]
+[ext_resource type="PackedScene" uid="uid://4lmpndbvo63j" path="res://scenes/world/door.tscn" id="3_2whov"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2i2e7"]
 size = Vector3(13.8002, 22.5633, 22.2204)
@@ -21,3 +22,9 @@ shape = SubResource("BoxShape3D_2i2e7")
 material_override = SubResource("StandardMaterial3D_wodxv")
 mesh = ExtResource("2_62nmc")
 skeleton = NodePath("")
+
+[node name="door" parent="." instance=ExtResource("3_2whov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.993, 1.67901, 11.4931)
+
+[node name="door2" parent="." instance=ExtResource("3_2whov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.12374, 1.67901, 11.7283)

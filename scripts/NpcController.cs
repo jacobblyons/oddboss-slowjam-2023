@@ -9,7 +9,7 @@ public partial class NpcController : CharacterBody3D
     public float _movementSpeed =2.0f;
 
     [Export]
-    public DoorNode targetDoor;
+    public TargetNode target;
 
     [Export]
     private Godot.Vector3 _movementTargetPosition = new Godot.Vector3(3.0f, 0.0f, 2.0f);
@@ -44,18 +44,13 @@ public partial class NpcController : CharacterBody3D
             QueueFree();
         }
 
-        _navigationAgent.TargetPosition = targetDoor.GlobalPosition;
+        _navigationAgent.TargetPosition = target.GlobalPosition;
 
         Godot.Vector3 currentAgentPosition = GlobalTransform.Origin;
         Godot.Vector3 nextPathPosition = _navigationAgent.GetNextPathPosition();
-        GD.Print($"Current: {currentAgentPosition}, Next: {nextPathPosition}");
-       // GD.Print(nextPathPosition);
         Godot.Vector3 newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
-      
-        newVelocity *= _movementSpeed;
-        GD.Print($"New velocity: {newVelocity}, velocity magnitude {newVelocity.Length()}");
         
-        Velocity = newVelocity;
+        Velocity = newVelocity * _movementSpeed;
         MoveAndSlide();
     }
 

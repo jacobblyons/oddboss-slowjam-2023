@@ -25,11 +25,7 @@ mesh = ExtResource("3_2gd0c")
 skeleton = NodePath("../..")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 2.0
-target_desired_distance = 2.0
-path_height_offset = -2.0
-path_max_distance = 35.01
-radius = 7.17
+radius = 2.17
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.788235, 1)

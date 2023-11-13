@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dewt2msafwsgb"]
+
+[ext_resource type="PackedScene" uid="uid://cboew4tnsvyhn" path="res://scenes/world/building.tscn" id="1_cbe7n"]
+
+[node name="Buildings" type="Node3D"]
+
+[node name="Building" parent="." instance=ExtResource("1_cbe7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9098, 0, 16.9753)
+
+[node name="Building5" parent="." instance=ExtResource("1_cbe7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9098, 0, -26.8592)
+
+[node name="Building6" parent="." instance=ExtResource("1_cbe7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7604, 0, -26.8592)
+
+[node name="Building2" parent="." instance=ExtResource("1_cbe7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.1428, 0, -32.7283)
+
+[node name="Building3" parent="." instance=ExtResource("1_cbe7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2704, 0, 16.4155)
+
+[node name="Building4" parent="." instance=ExtResource("1_cbe7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9302, 0, 17.1859)

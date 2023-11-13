@@ -1,17 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://br27nn1tuix0q"]
+[gd_scene load_steps=4 format=3 uid="uid://4lmpndbvo63j"]
 
-[ext_resource type="Script" path="res://scripts/world/DoorNode.cs" id="1_yw41w"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_refrj"]
-transparency = 1
-albedo_color = Color(1, 0.345098, 0.266667, 0.203922)
-
-[sub_resource type="BoxMesh" id="BoxMesh_hmgvt"]
+[ext_resource type="PackedScene" uid="uid://l5puv0nmlsvh" path="res://scenes/npc/npc_spawner.tscn" id="1_cfvce"]
+[ext_resource type="Script" path="res://scripts/world/TargetNode.cs" id="1_luixs"]
+[ext_resource type="PackedScene" uid="uid://uih5ywguve22" path="res://scenes/npc/npc_target.tscn" id="2_bbayw"]
 
 [node name="door" type="Node3D"]
-script = ExtResource("1_yw41w")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-material_override = SubResource("StandardMaterial3D_refrj")
-mesh = SubResource("BoxMesh_hmgvt")
+[node name="npc_spawner" parent="." instance=ExtResource("1_cfvce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.16657)
+
+[node name="npc_target" parent="." instance=ExtResource("2_bbayw")]
+script = ExtResource("1_luixs")

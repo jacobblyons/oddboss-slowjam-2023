@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://uih5ywguve22"]
+[gd_scene load_steps=4 format=3 uid="uid://uih5ywguve22"]
+
+[ext_resource type="Script" path="res://scripts/world/SpawnerNode.cs" id="1_47ldg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if87j"]
+transparency = 1
+albedo_color = Color(1, 0.345098, 0.266667, 0.203922)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jxdql"]
 
 [node name="npc_target" type="Node3D"]
+script = ExtResource("1_47ldg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_if87j")
+mesh = SubResource("BoxMesh_jxdql")

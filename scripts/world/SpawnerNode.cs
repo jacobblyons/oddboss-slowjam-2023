@@ -14,11 +14,11 @@ public partial class SpawnerNode : Node3D
         worldServer.RegisterSpawner(this);
     }
 
-    public void Spawn(DoorNode targetDoor)
+    public void Spawn(TargetNode target)
     {
         var sceneInstance = SceneToSpawn.Instantiate<NpcController>();
         GetParent().AddChild(sceneInstance);
         sceneInstance.GlobalTransform = GlobalTransform;
-        sceneInstance.targetDoor = targetDoor;
+        sceneInstance.target = target;
     }
 }
