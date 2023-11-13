@@ -10,6 +10,8 @@ public partial class PlayerFPSController : CharacterBody3D
     [Export]
     public float decelFactor;
     [Export]
+    public float jumpForce;
+    [Export]
     public float mouseSensitivity;
 
     private Node3D fpCamera;
@@ -50,9 +52,13 @@ public partial class PlayerFPSController : CharacterBody3D
         }
 
         // Update vertical velocity.
+        // Is player touching the ground?
         float vertVelocity = Velocity.Y;
         if (!IsOnFloor()) {
             vertVelocity += gravity * fdelta;
+        }
+        else if (Input.IsActionPressed("jump")) {
+            vertVelocity += jumpForce;
         }
 
         Velocity = new Vector3(horizVelocity.X, vertVelocity, horizVelocity.Y);
