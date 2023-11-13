@@ -9,6 +9,9 @@ public partial class NpcController : CharacterBody3D
     public float _movementSpeed =2.0f;
 
     [Export]
+    public DoorNode targetDoor;
+
+    [Export]
     private Godot.Vector3 _movementTargetPosition = new Godot.Vector3(3.0f, 0.0f, 2.0f);
 
     public Godot.Vector3 MovementTarget
@@ -27,7 +30,7 @@ public partial class NpcController : CharacterBody3D
         // and the navigation layout.
         _navigationAgent.PathDesiredDistance = 0.5f;
         _navigationAgent.TargetDesiredDistance = 0.5f;
-
+    
         // Make sure to not await during _Ready.
         Callable.From(ActorSetup).CallDeferred();
     }
@@ -38,14 +41,10 @@ public partial class NpcController : CharacterBody3D
 
         if (_navigationAgent.IsNavigationFinished())
         {
-            return;
+            QueueFree();
         }
 
-        if (Input.IsActionJustReleased("action"))
-		{
-			_navigationAgent.TargetPosition = new Godot.Vector3(Random.Shared.Next(-50, 50), GlobalTransform.Origin.Y, Random.Shared.Next(-50, 50));
-            GD.Print($"New target: {MovementTarget}");
-		}
+        _navigationAgent.TargetPosition = targetDoor.GlobalPosition;
 
         Godot.Vector3 currentAgentPosition = GlobalTransform.Origin;
         Godot.Vector3 nextPathPosition = _navigationAgent.GetNextPathPosition();

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://br27nn1tuix0q"]
+
+[ext_resource type="Script" path="res://scripts/world/DoorNode.cs" id="1_yw41w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_refrj"]
+transparency = 1
+albedo_color = Color(1, 0.345098, 0.266667, 0.203922)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hmgvt"]
+
+[node name="door" type="Node3D"]
+script = ExtResource("1_yw41w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_refrj")
+mesh = SubResource("BoxMesh_hmgvt")

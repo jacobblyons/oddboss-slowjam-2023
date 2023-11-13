@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmkqvxi5m8rhs"]
+[gd_scene load_steps=12 format=3 uid="uid://b7c41d1s6qff7"]
 
 [ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="1_7hnbu"]
 [ext_resource type="PackedScene" uid="uid://gyspku1sfuxp" path="res://scenes/player.tscn" id="1_lnsld"]
@@ -74,4 +74,3 @@ vertices = PackedVector3Array(4.88048, 0, -14.2116, 5.34814, 0, 9.50713, -16.398
 
 [node name="Player" parent="NavigationRegion3D" instance=ExtResource("1_lnsld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14105, 7.60632, 50.7701)
-jumpForce = 12.0
