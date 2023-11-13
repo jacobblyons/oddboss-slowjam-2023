@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cboew4tnsvyhn"]
+
+[ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="1_k3862"]
+[ext_resource type="ArrayMesh" uid="uid://dgnahp5vp5vex" path="res://assets/Test_Building.vox.obj" id="2_62nmc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2i2e7"]
+size = Vector3(13.8002, 22.5633, 22.2204)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wodxv"]
+albedo_texture = ExtResource("1_k3862")
+
+[node name="Building" type="Node3D"]
+
+[node name="StaticBody" type="StaticBody3D" parent="."]
+
+[node name="CollisionBox" type="CollisionShape3D" parent="StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0637493, 10.9913, 0)
+shape = SubResource("BoxShape3D_2i2e7")
+
+[node name="TestBuilding_vox" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_wodxv")
+mesh = ExtResource("2_62nmc")
+skeleton = NodePath("")

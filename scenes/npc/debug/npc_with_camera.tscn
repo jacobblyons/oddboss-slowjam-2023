@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce0wd476dyvx7"]
+
+[ext_resource type="PackedScene" uid="uid://8y7w2mq2su3p" path="res://scenes/npc/base_npc.tscn" id="1_b0buo"]
+
+[node name="npc_with_camera" type="Node3D"]
+
+[node name="base_npc" parent="." instance=ExtResource("1_b0buo")]
+
+[node name="Camera3D" type="Camera3D" parent="base_npc"]
+transform = Transform3D(1, 0, 0, 0, 0.122285, 0.992495, 0, -0.992495, 0.122285, 0, 58.9863, 7.14832)
+projection = 1
+fov = 115.313
+size = 35.4922

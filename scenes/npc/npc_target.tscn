@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://uih5ywguve22"]
+
+[node name="npc_target" type="Node3D"]
