@@ -27,7 +27,7 @@ public partial class PlayerFPSController : CharacterBody3D
         moveState = PlayerMoveState.DEFAULT;
         moveInput = Vector2.Zero;
 
-        //Input.MouseMode = Input.MouseModeEnum.Captured;
+        Input.MouseMode = Input.MouseModeEnum.Captured;
         fpCamera = GetNode<Node3D>("Camera3D");
         friendGun = fpCamera.GetNode<FriendGunController>("Gun");
     }

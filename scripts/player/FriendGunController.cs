@@ -12,12 +12,13 @@ public partial class FriendGunController : Node
     private float charge;
 
     private Node3D tempChargeEffect;
+    private PackedScene projectilePrefab;
 
     public override void _Ready() {
         fireState = FireState.DEFAULT;
         charge = 0f;
-
-        tempChargeEffect = GetNode<Node3D>("TempChargeEffect");
+        tempChargeEffect = GetNode<Node3D>("ChargeEffect");
+        projectilePrefab = GD.Load<PackedScene>("res://scenes/player/projectile.tscn");
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -28,9 +29,7 @@ public partial class FriendGunController : Node
         else if (fireState == FireState.DECHARGING) {
             DecrementCharge(fdelta);
         }
-
         UpdateTempChargeEffect();
-        GD.Print(charge);
     }
 
     public void PullTrigger() {
@@ -44,8 +43,7 @@ public partial class FriendGunController : Node
             EndCharge();
         }
         else if (fireState == FireState.MAXCHARGE) {
-            //TODO: SHOOOOOT!
-            ResetCharge();
+            Fire();
         }
     }
 
@@ -83,13 +81,34 @@ public partial class FriendGunController : Node
         }
     }
 
+    private void Fire() {
+        // Spawn new fire effect.
+        Node3D newProj = projectilePrefab.Instantiate<Node3D>();
+        //GetNode("//root").AddChild(newProj);
+        //newProj.Transform = tempChargeEffect.GlobalTransform;
+        ResetCharge();
+    }
+
     private void UpdateTempChargeEffect() {
-        float minScale = 0.1f;
-        float maxScale = 1.0f;
-
+        // Update scale.
+        float minScale = 0.01f;
+        float maxScale = 0.5f;
         float newScale = minScale + (maxScale - minScale) * (charge / chargeTime);
-
         tempChargeEffect.Scale = new Vector3(1f,1f,1f) * newScale;
+
+        //TODO :
+        // - offset of proj should not be offset.
+        // - move projectile forward along its forward axis...?
+
+        // Update rotation.
+        float rotSpeedCharge = 3f;
+        float rotSpeedDecharge = 10f;
+        if (fireState == FireState.CHARGING) {
+            tempChargeEffect.RotateZ(-1 * rotSpeedCharge);
+        }
+        else {
+            tempChargeEffect.RotateZ(rotSpeedDecharge);
+        }
     }
 }
 
