@@ -19,6 +19,6 @@ public partial class SpawnerNode : Node3D
         var sceneInstance = SceneToSpawn.Instantiate<NpcController>();
         GetParent().AddChild(sceneInstance);
         sceneInstance.GlobalTransform = GlobalTransform;
-        sceneInstance.target = target;
+        sceneInstance.originalTarget = target;
     }
 }

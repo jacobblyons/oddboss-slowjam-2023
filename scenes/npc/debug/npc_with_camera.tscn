@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ce0wd476dyvx7"]
 
-[ext_resource type="PackedScene" uid="uid://8y7w2mq2su3p" path="res://scenes/npc/base_npc.tscn" id="1_b0buo"]
+[ext_resource type="PackedScene" uid="uid://8y7w2mq2su3p" path="res://scenes/npc/types/base_npc.tscn" id="1_b0buo"]
 
 [node name="npc_with_camera" type="Node3D"]
 

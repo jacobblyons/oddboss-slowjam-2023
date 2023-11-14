@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://l5puv0nmlsvh"]
 
 [ext_resource type="Script" path="res://scripts/world/SpawnerNode.cs" id="1_cojyk"]
-[ext_resource type="PackedScene" uid="uid://8y7w2mq2su3p" path="res://scenes/npc/base_npc.tscn" id="2_uctd4"]
+[ext_resource type="PackedScene" uid="uid://8y7w2mq2su3p" path="res://scenes/npc/types/base_npc.tscn" id="2_uctd4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spmuq"]
 transparency = 1

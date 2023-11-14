@@ -1,6 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://dewt2msafwsgb"]
+[gd_scene load_steps=10 format=3 uid="uid://dewt2msafwsgb"]
 
 [ext_resource type="PackedScene" uid="uid://cboew4tnsvyhn" path="res://scenes/world/building.tscn" id="1_cbe7n"]
+[ext_resource type="PackedScene" uid="uid://b23485yjb7y2k" path="res://scenes/npc/types/car_npc.tscn" id="2_hdn8d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gjxoe"]
+sky_top_color = Color(0, 0.262745, 0.321569, 1)
+sky_horizon_color = Color(0.603922, 0.47451, 0.462745, 1)
+ground_bottom_color = Color(0.133333, 0.482353, 0.470588, 1)
+ground_horizon_color = Color(0.317647, 0.482353, 0.439216, 1)
+ground_curve = 0.016245
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="Sky_00qdk"]
+sky_material = SubResource("ProceduralSkyMaterial_gjxoe")
+
+[sub_resource type="Environment" id="Environment_j7vgp"]
+background_mode = 2
+sky = SubResource("Sky_00qdk")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.823529, 0.333333, 0.266667, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lbpx"]
 albedo_color = Color(0.87451, 0.756863, 0.65098, 1)
@@ -8,7 +27,24 @@ albedo_color = Color(0.87451, 0.756863, 0.65098, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7ch7"]
 size = Vector3(100, 1, 100)
 
-[node name="Buildings" type="Node3D"]
+[sub_resource type="Curve3D" id="Curve3D_6efrx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -29.3173, -0.654663, 1.50947, 0, 0, 0, 0, 0, 0, -13.3186, -0.654663, 1.75164, 0, 0, 0, 0, 0, 0, 13.2375, -0.654663, 1.5974, -3.16524, 0, 4.39615, 3.16524, 0, -4.39615, 23.5245, -0.654663, -1.39199, 0, 0, 0, 0, 0, 0, 25.195, -0.654663, -27.8568, 5.01162, 0, 3.86862, -5.01162, 0, -3.86862, 21.1506, -0.654663, -44.5622, 0, 0, 0, 0, 0, 0, 1.19202, -0.875977, -46.8482, 0, 0, 0, 0, 0, 0, -23.8512, -0.654663, -46.8936, 2.19482, 0, -4.50568, -2.19482, 0, 4.50568, -45.8469, -0.654663, -43.683, -3.78396, 0, -3.45061, 3.78396, 0, 3.45061, -44.7039, -0.654663, 0.102707, 0, 0, 0, 0, 0, 0, -34.2443, -0.654663, 2.36711, 0, 0, 0, 0, 0, 0, -29.3173, -0.654663, 1.50947),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[sub_resource type="Curve3D" id="Curve3D_1htsb"]
+_data = {
+"points": PackedVector3Array(3.22173, 0, 3.42416, -3.22173, 0, -3.42416, 40.9606, -0.654663, -13.288, 0, 0, 0, 0, 0, 0, 14.7704, -0.605835, -15.8217, 1.41739, 0, -1.32708, -1.41739, 0, 1.32708, 5.70345, -0.654663, -14.1672, 0.425161, 0, -2.07561, -0.425161, 0, 2.07561, 2.09861, -0.654663, -5.46279, 0, 0, 0, 0, 0, 0, 3.15369, -0.654663, 25.5741, 1.55499, 0, -1.9504, -1.55499, 0, 1.9504, 1.57107, -0.654663, 31.1132, 0, 0, 0, 0, 0, 0, -8.87557, -0.654663, 33.0494, 0, 0, 0, 0, 0, 0, -29.9854, -0.654663, 33.7697, 2.31295, 0, 1.52671, -2.31295, 0, -1.52671, -36.6755, -0.654663, 32.52, 0, 0, 0, 0, 0, 0, -38.6415, -0.654663, 24.4126, 0, 0, 0, 0, 0, 0, -38.5013, -0.654663, -34.4172, -1.22129, 0, 1.99571, 1.22129, 0, -1.99571, -37.0053, -0.654663, -39.4038, 0, 0, 0, 0, 0, 0, -29.8579, -0.654663, -41.1214, 0, 0, 0, 0, 0, 0, -7.80608, -0.654663, -41.2322, -1.47584, 0, -1.42758, 1.47584, 0, 1.42758, -0.215389, -0.654663, -40.124, 0, 0, 0, 0, 0, 0, 1.16977, -0.654663, -31.5914, 0, 0, 0, 0, 0, 0, 1.50868, -0.56665, -10.9422, -1.39953, 0, -2.08993, 1.39953, 0, 2.08993, 4.56045, -0.654663, -2.03379, -3.26192, -0.108398, -0.745438, 3.26192, 0.108398, 0.745438, 11.358, -0.584961, 2.59207, -3.73364, 0, 1.44618, 3.73364, 0, -1.44618, 38.8505, -0.654663, 1.83483, 2.52603, 0, 6.21877, -2.52603, 0, -6.21877, 40.9606, -0.654663, -13.288),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 21
+
+[node name="Map" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j7vgp")
 
 [node name="Building" parent="." instance=ExtResource("1_cbe7n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9098, 0, 16.9753)
@@ -29,6 +65,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2704, 0, 16.4155)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9302, 0, 17.1859)
 
 [node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00140381, 0.0441437, -0.00341797)
 collision_layer = 1048577
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
@@ -39,3 +76,38 @@ material = SubResource("StandardMaterial3D_8lbpx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_d7ch7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.839032, -0.431187, 0.331819, 0, 0.609869, 0.792502, -0.544083, -0.664935, 0.511699, 4.52397, 15.3271, 17.2132)
+light_color = Color(0.92549, 0.741176, 0.627451, 1)
+
+[node name="Routes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654663, 0)
+
+[node name="route-1" type="Path3D" parent="Routes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+curve = SubResource("Curve3D_6efrx")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Routes/route-1"]
+transform = Transform3D(0.100007, 0, -0.994957, 0, 0.999998, 0, 0.994971, 0, 0.100006, 17.3254, -0.654663, 1.73869)
+progress = 46.6595
+rotation_mode = 1
+tilt_enabled = false
+
+[node name="car_npc" parent="Routes/route-1/PathFollow3D" node_paths=PackedStringArray("Path") instance=ExtResource("2_hdn8d")]
+transform = Transform3D(0.999886, 4.65661e-10, 0.0151348, 4.65661e-10, 1, 2.91038e-11, -0.0151349, -3.92902e-10, 0.999886, 0.485676, -0.130157, -0.324697)
+Path = NodePath("..")
+
+[node name="route-2" type="Path3D" parent="Routes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133633, 0)
+curve = SubResource("Curve3D_1htsb")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Routes/route-2"]
+transform = Transform3D(-0.99972, 0, -0.0222648, 0, 0.999989, 0, 0.0222645, 0, -0.999733, 1.15974, -0.654663, -32.7763)
+progress = 238.841
+rotation_mode = 1
+tilt_enabled = false
+
+[node name="car_npc" parent="Routes/route-2/PathFollow3D" node_paths=PackedStringArray("Path") instance=ExtResource("2_hdn8d")]
+transform = Transform3D(0.999536, -5.45697e-10, 0.030445, 0, 1, -9.31323e-10, -0.030445, 0, 0.999536, -0.630962, -0.0127649, 1.36773)
+Path = NodePath("..")

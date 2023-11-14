@@ -1,12 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://4lmpndbvo63j"]
+[gd_scene load_steps=5 format=3 uid="uid://4lmpndbvo63j"]
 
-[ext_resource type="PackedScene" uid="uid://l5puv0nmlsvh" path="res://scenes/npc/npc_spawner.tscn" id="1_cfvce"]
+[ext_resource type="PackedScene" uid="uid://l5puv0nmlsvh" path="res://scenes/npc/spawners/npc_spawner.tscn" id="1_cfvce"]
 [ext_resource type="Script" path="res://scripts/world/TargetNode.cs" id="1_luixs"]
 [ext_resource type="PackedScene" uid="uid://uih5ywguve22" path="res://scenes/npc/npc_target.tscn" id="2_bbayw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c6u50"]
+size = Vector3(1, 2.13163, 1)
 
 [node name="door" type="Node3D"]
 
 [node name="npc_spawner" parent="." instance=ExtResource("1_cfvce")]
+visible = false
 
 [node name="npc_target" parent="." instance=ExtResource("2_bbayw")]
+visible = false
 script = ExtResource("1_luixs")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00605404, 1.04609, 0.0021615)
+shape = SubResource("BoxShape3D_c6u50")
