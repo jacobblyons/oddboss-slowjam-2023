@@ -14,17 +14,22 @@ public partial class PlayerFPSController : CharacterBody3D
     [Export]
     public float mouseSensitivity;
 
+    public PlayerMoveState moveState;
+
     private Node3D fpCamera;
+    private FriendGunController friendGun;
 
     private Vector2 moveInput;
     private Vector2 mouseInput;
-    private static float gravity = -9.8f;
+    private static float gravity = -9.8f;       //TODO: read from proj settings.
 
     public override void _Ready() {
+        moveState = PlayerMoveState.DEFAULT;
         moveInput = Vector2.Zero;
 
-        Input.MouseMode = Input.MouseModeEnum.Captured;
+        //Input.MouseMode = Input.MouseModeEnum.Captured;
         fpCamera = GetNode<Node3D>("Camera3D");
+        friendGun = fpCamera.GetNode<FriendGunController>("Gun");
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -32,10 +37,24 @@ public partial class PlayerFPSController : CharacterBody3D
         UpdateInput();
         UpdateAim();
 
+        // Update weapon interaction.
+        if (Input.IsActionPressed("shoot")) {
+            friendGun.PullTrigger();
+        }
+        else {
+            friendGun.ReleaseTrigger();
+        }
+
         // Calculate direction player is trying to move based on direction they
         // are facing and the direction of their movement input (if any).
         Basis aim = fpCamera.GlobalTransform.Basis;
         Vector3 moveDir = new Vector3(moveInput.X, 0f, moveInput.Y).Rotated(Vector3.Up, aim.GetEuler().Y).Normalized();
+
+        // Completely ignore effects of user movement input if player is in 
+        // NONINFLUENCING state.
+        if (moveState == PlayerMoveState.NONINFLUENCING) {
+            moveDir = Vector3.Zero;
+        }
 
         // Update horizontal velocity
         Vector2 horizVelocity = new Vector2(Velocity.X, Velocity.Z);
@@ -60,10 +79,14 @@ public partial class PlayerFPSController : CharacterBody3D
             vertVelocity += jumpForce;
         }
 
-        Velocity = new Vector3(horizVelocity.X, vertVelocity, horizVelocity.Y);
+        // Skip updating final velocity values if player is frozen...
+        if (moveState != PlayerMoveState.FROZEN) {
+            Velocity = new Vector3(horizVelocity.X, vertVelocity, horizVelocity.Y);
+            MoveAndSlide();
+        }
 
+        // Reset values for next update.
         mouseInput = Vector2.Zero;
-        MoveAndSlide();
     }
 
     public void UpdateAim() {
@@ -96,4 +119,15 @@ public partial class PlayerFPSController : CharacterBody3D
             mouseInput = motion.Relative;
         }
     }
+
+    public void Debug_SetMoveState(PlayerMoveState state) {
+        moveState = state;
+    }
+}
+
+public enum PlayerMoveState {
+    DEFAULT,        // Normal control over character.
+    FROZEN,         // Freeze player in place (rotation ok).
+    INFLUENCING,    // Player movement dictatated by external forces & player has influence
+    NONINFLUENCING  // Player movement dictatated by external forces & player has no influence
 }

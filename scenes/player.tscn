@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://gyspku1sfuxp"]
+[gd_scene load_steps=7 format=3 uid="uid://gyspku1sfuxp"]
 
 [ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="1_2xogd"]
-[ext_resource type="Script" path="res://scripts/PlayerFPSController.cs" id="1_31nss"]
+[ext_resource type="Script" path="res://scripts/player/PlayerFPSController.cs" id="1_ff2sa"]
 [ext_resource type="ArrayMesh" uid="uid://byw1hwwm842qe" path="res://assets/Character_1.vox.obj" id="2_b7xq6"]
+[ext_resource type="Script" path="res://scripts/player/FriendGunController.cs" id="4_rscvv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s45o"]
 albedo_texture = ExtResource("1_2xogd")
@@ -10,7 +11,7 @@ albedo_texture = ExtResource("1_2xogd")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0qo7"]
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_31nss")
+script = ExtResource("1_ff2sa")
 moveSpeed = 10.0
 accelFactor = 60.0
 decelFactor = 120.0
@@ -27,10 +28,30 @@ mesh = ExtResource("2_b7xq6")
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.633222, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00584269, 0.633222, 0.00131035)
 
 [node name="Node3D" type="Node3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0190614, -0.0332226, 0.00484419)
+
+[node name="Gun" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.372929, -0.160291, -0.886592)
+script = ExtResource("4_rscvv")
+chargeTime = 2.0
+dechargeFactor = 2.0
+recoilTime = 1.0
+
+[node name="TempChargeEffect" type="CSGSphere3D" parent="Camera3D/Gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.765576)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Camera3D/Gun"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+radius = 0.045
+height = 0.693363
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Camera3D/Gun"]
+transform = Transform3D(1, 0, 0, 0, -0.922888, -0.385068, 0, 0.385068, -0.922888, 0, -0.0813198, 0.235881)
+radius = 0.03
+height = 0.203123
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_q0qo7")
