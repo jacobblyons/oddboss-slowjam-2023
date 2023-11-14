@@ -93,8 +93,8 @@ public partial class NpcController : CharacterBody3D
         // Apply rotation
         GlobalRotation = newRotation.GetEuler();
 
-        //MoveAndSlide();
-        MoveAndCollide(Velocity * (float)delta);
+        MoveAndSlide();
+        //MoveAndCollide(Velocity * (float)delta);
     }
 
     private Vector3 GetTargetPosition()

@@ -8,7 +8,7 @@
 albedo_texture = ExtResource("2_cgp7c")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cyhvl"]
-radius = 0.607262
+radius = 0.476055
 height = 4.02353
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8hirw"]
@@ -20,9 +20,11 @@ size = Vector3(31, 4.78448, 25.4287)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q8u5e"]
 height = 5.03079
-radius = 1.29258
+radius = 2.03134
 
 [node name="base_npc" type="CharacterBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 script = ExtResource("1_x1n2k")
 runSpeed = 10.0
 rotateSpeed = 3.0
