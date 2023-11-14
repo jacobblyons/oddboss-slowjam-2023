@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cek8fjosimqbv"]
+
+[ext_resource type="PackedScene" uid="uid://dewt2msafwsgb" path="res://scenes/world/maps/npc_test_map.tscn" id="2_spxv3"]
+
+[node name="car_test_scene" type="Node3D"]
+
+[node name="Map" parent="." instance=ExtResource("2_spxv3")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00171041, 0.999999, 0, -0.999999, -0.00171041, 0, 90, 0)

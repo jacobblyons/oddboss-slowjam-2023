@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ly6t6ge4vm0m"]
+
+[ext_resource type="PackedScene" uid="uid://cssfn1jchre8h" path="res://scenes/npc/spawners/car_spawner.tscn" id="1_3tj85"]
+
+[node name="garage" type="Node3D"]
+
+[node name="npc_spawner" parent="." instance=ExtResource("1_3tj85")]

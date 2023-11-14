@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://8y7w2mq2su3p"]
+[gd_scene load_steps=9 format=3 uid="uid://8y7w2mq2su3p"]
 
 [ext_resource type="Script" path="res://scripts/NpcController.cs" id="1_x1n2k"]
 [ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="2_cgp7c"]
@@ -11,10 +11,21 @@ albedo_texture = ExtResource("2_cgp7c")
 radius = 0.607262
 height = 4.02353
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8hirw"]
+height = 10.0
+radius = 10.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_relja"]
+size = Vector3(31, 4.78448, 25.4287)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q8u5e"]
+height = 5.03079
+radius = 1.29258
+
 [node name="base_npc" type="CharacterBody3D"]
 script = ExtResource("1_x1n2k")
-_movementSpeed = 5.0
-_movementTargetPosition = Vector3(5, -14, 20)
+runSpeed = 10.0
+rotateSpeed = 3.0
 
 [node name="Pivot" type="Node3D" parent="."]
 
@@ -25,8 +36,9 @@ mesh = ExtResource("3_2gd0c")
 skeleton = NodePath("../..")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
 radius = 2.17
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.788235, 1)
 debug_path_custom_point_size = 5.0
@@ -37,3 +49,30 @@ shape = SubResource("CapsuleShape3D_cyhvl")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 aabb = AABB(-1, 0.00588608, -1, 2, 4.66206, 2)
+
+[node name="PlayerDetectionBoundary" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionBoundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+shape = SubResource("CylinderShape3D_8hirw")
+
+[node name="EscapeDetectionBoundary" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EscapeDetectionBoundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13942, 9.91912)
+shape = SubResource("BoxShape3D_relja")
+
+[node name="EscapeInReachBoundary" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EscapeInReachBoundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03152, 0)
+shape = SubResource("CylinderShape3D_q8u5e")
