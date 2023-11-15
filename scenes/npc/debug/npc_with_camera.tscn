@@ -5,6 +5,8 @@
 [node name="npc_with_camera" type="Node3D"]
 
 [node name="base_npc" parent="." instance=ExtResource("1_b0buo")]
+runSpeed = 5.0
+rotateSpeed = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="base_npc"]
 transform = Transform3D(1, 0, 0, 0, 0.122285, 0.992495, 0, -0.992495, 0.122285, 0, 58.9863, 7.14832)

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://rbopl0dvpeo6"]
+
+[ext_resource type="PackedScene" uid="uid://csi3ueo0rbdmo" path="res://NPC_limbs.glb" id="1_k5knp"]
+
+[node name="NPC_limbs" instance=ExtResource("1_k5knp")]

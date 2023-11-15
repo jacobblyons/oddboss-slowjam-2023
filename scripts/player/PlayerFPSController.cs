@@ -3,16 +3,11 @@ using System;
 
 public partial class PlayerFPSController : CharacterBody3D
 {
-    [Export]
-    public float moveSpeed;
-    [Export]
-    public float accelFactor;
-    [Export]
-    public float decelFactor;
-    [Export]
-    public float jumpForce;
-    [Export]
-    public float mouseSensitivity;
+    [Export] public float moveSpeed;
+    [Export] public float accelFactor;
+    [Export] public float decelFactor;
+    [Export] public float jumpForce;
+    [Export] public float mouseSensitivity;
 
     public PlayerMoveState moveState;
 
