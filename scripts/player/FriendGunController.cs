@@ -84,8 +84,8 @@ public partial class FriendGunController : Node
     private void Fire() {
         // Spawn new fire effect.
         Node3D newProj = projectilePrefab.Instantiate<Node3D>();
-        //GetNode("//root").AddChild(newProj);
-        //newProj.Transform = tempChargeEffect.GlobalTransform;
+        GetNode("//root").AddChild(newProj);
+        newProj.Transform = tempChargeEffect.GlobalTransform;
         ResetCharge();
     }
 

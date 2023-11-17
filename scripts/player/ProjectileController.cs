@@ -18,8 +18,8 @@ public partial class ProjectileController : Node3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		RotateZ(-1 * spinSpeed * (float)delta);
-		Position += GlobalTransform.Basis.Z * velocity * (float)delta;
+		RotateObjectLocal(Vector3.Up, spinSpeed * (float)delta);
+		TranslateObjectLocal(new Vector3(0f, -1f * velocity * (float)delta, 0f));
 
 		// Check if projectile has been alive for too long and needs to be
 		// destroyed...
