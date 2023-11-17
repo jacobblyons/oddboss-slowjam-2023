@@ -29,6 +29,8 @@ script = ExtResource("4_rscvv")
 chargeTime = 2.0
 dechargeFactor = 10.0
 recoilTime = 1.0
+chargeEffectRotationSpeed = -10.0
+dechargeEffectRotationSpeed = 3.0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Camera3D/Gun"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

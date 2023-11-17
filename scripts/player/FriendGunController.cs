@@ -8,8 +8,11 @@ public partial class FriendGunController : Node
     [Export] public float chargeTime;
     [Export] public float dechargeFactor;
     [Export] public float recoilTime;
+    [Export] public float chargeEffectRotationSpeed;
+    [Export] public float dechargeEffectRotationSpeed;
 
     private float charge;
+    private float timeHeldAtMaxCharge;
 
     private Node3D tempChargeEffect;
     private PackedScene projectilePrefab;
@@ -17,6 +20,7 @@ public partial class FriendGunController : Node
     public override void _Ready() {
         fireState = FireState.DEFAULT;
         charge = 0f;
+        timeHeldAtMaxCharge = 0f;
         tempChargeEffect = GetNode<Node3D>("ChargeEffect");
         projectilePrefab = GD.Load<PackedScene>("res://scenes/player/projectile.tscn");
     }
@@ -29,7 +33,11 @@ public partial class FriendGunController : Node
         else if (fireState == FireState.DECHARGING) {
             DecrementCharge(fdelta);
         }
-        UpdateTempChargeEffect();
+        else if (fireState == FireState.MAXCHARGE) {
+            timeHeldAtMaxCharge += (float)delta;
+        }
+
+        UpdateTempChargeEffect(fdelta);
     }
 
     public void PullTrigger() {
@@ -67,7 +75,7 @@ public partial class FriendGunController : Node
     private void IncrementCharge(float fdelta) {
         charge += fdelta;
         if (charge > chargeTime) {
-            charge = chargeTime;
+            //charge = chargeTime;
             fireState = FireState.MAXCHARGE;
         }
     }
@@ -84,30 +92,24 @@ public partial class FriendGunController : Node
     private void Fire() {
         // Spawn new fire effect.
         Node3D newProj = projectilePrefab.Instantiate<Node3D>();
-        //GetNode("//root").AddChild(newProj);
-        //newProj.Transform = tempChargeEffect.GlobalTransform;
+        GetNode("//root").AddChild(newProj);
+        newProj.Transform = tempChargeEffect.GlobalTransform;
         ResetCharge();
     }
 
-    private void UpdateTempChargeEffect() {
+    private void UpdateTempChargeEffect(float fdelta) {
         // Update scale.
         float minScale = 0.01f;
         float maxScale = 0.5f;
         float newScale = minScale + (maxScale - minScale) * (charge / chargeTime);
         tempChargeEffect.Scale = new Vector3(1f,1f,1f) * newScale;
 
-        //TODO :
-        // - offset of proj should not be offset.
-        // - move projectile forward along its forward axis...?
-
         // Update rotation.
-        float rotSpeedCharge = 3f;
-        float rotSpeedDecharge = 10f;
         if (fireState == FireState.CHARGING) {
-            tempChargeEffect.RotateZ(-1 * rotSpeedCharge);
+            tempChargeEffect.RotateZ(chargeEffectRotationSpeed * fdelta);
         }
-        else {
-            tempChargeEffect.RotateZ(rotSpeedDecharge);
+        else if (fireState == FireState.MAXCHARGE) {
+            tempChargeEffect.RotateZ(dechargeEffectRotationSpeed * fdelta);
         }
     }
 }
