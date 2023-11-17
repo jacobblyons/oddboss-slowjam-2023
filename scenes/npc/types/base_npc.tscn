@@ -1,15 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://8y7w2mq2su3p"]
+[gd_scene load_steps=12 format=3 uid="uid://8y7w2mq2su3p"]
 
 [ext_resource type="Script" path="res://scripts/NpcController.cs" id="1_x1n2k"]
 [ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="2_cgp7c"]
 [ext_resource type="ArrayMesh" uid="uid://byw1hwwm842qe" path="res://assets/Character_1.vox.obj" id="3_2gd0c"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ogney"]
+friction = 0.25
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s45o"]
 albedo_texture = ExtResource("2_cgp7c")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ykx4d"]
+size = Vector3(1, 3.96208, 1)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cyhvl"]
 radius = 0.476055
-height = 4.02353
+height = 3.86323
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8hirw"]
 height = 10.0
@@ -20,14 +26,20 @@ size = Vector3(31, 4.78448, 25.4287)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q8u5e"]
 height = 5.03079
-radius = 2.03134
+radius = 1.59333
 
-[node name="base_npc" type="CharacterBody3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qpw68"]
+height = 4.22252
+radius = 0.975903
+
+[node name="base_npc" type="RigidBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_ogney")
 script = ExtResource("1_x1n2k")
+walkSpeed = 5.0
 runSpeed = 10.0
-rotateSpeed = 3.0
+rotateSpeed = 4.0
 
 [node name="Pivot" type="Node3D" parent="."]
 
@@ -35,22 +47,26 @@ rotateSpeed = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0)
 material_override = SubResource("StandardMaterial3D_6s45o")
 mesh = ExtResource("3_2gd0c")
-skeleton = NodePath("../..")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_ykx4d")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-1, 0.00588608, -1, 2, 4.66206, 2)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.5
 target_desired_distance = 0.5
-radius = 2.17
+avoidance_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.788235, 1)
 debug_path_custom_point_size = 5.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CapsuleShape3D_cyhvl")
-
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
-aabb = AABB(-1, 0.00588608, -1, 2, 4.66206, 2)
 
 [node name="PlayerDetectionBoundary" type="Area3D" parent="."]
 collision_layer = 2
@@ -78,3 +94,12 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EscapeInReachBoundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03152, 0)
 shape = SubResource("CylinderShape3D_q8u5e")
+
+[node name="OuchieBoundary" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OuchieBoundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39931, 0)
+shape = SubResource("CylinderShape3D_qpw68")

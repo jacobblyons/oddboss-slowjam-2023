@@ -70,6 +70,7 @@ shoot={
 3d_physics/layer_1="world"
 3d_physics/layer_2="player_detections"
 3d_physics/layer_3="escapes"
+3d_physics/layer_4="cars"
 
 [navigation]
 

@@ -12,7 +12,7 @@ public partial class WorldServer : Node
     public int spawnerCount {get => spawners.Count; set { } }
 
     [Export]
-    public ulong npcSpawnPeriodInSeconds = 1;
+    public float npcSpawnPeriodInSeconds = .5f;
 
     private Dictionary<Vector3, TargetNode> targets = new Dictionary<Vector3, TargetNode>();
     private Dictionary<Vector3, SpawnerNode> spawners = new Dictionary<Vector3, SpawnerNode>();

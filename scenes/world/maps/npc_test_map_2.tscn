@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://duxva4oud45x4"]
+
+[ext_resource type="PackedScene" uid="uid://cboew4tnsvyhn" path="res://scenes/world/building.tscn" id="1_nbef5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gjxoe"]
+sky_top_color = Color(0, 0.262745, 0.321569, 1)
+sky_horizon_color = Color(0.603922, 0.47451, 0.462745, 1)
+ground_bottom_color = Color(0.133333, 0.482353, 0.470588, 1)
+ground_horizon_color = Color(0.317647, 0.482353, 0.439216, 1)
+ground_curve = 0.016245
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="Sky_00qdk"]
+sky_material = SubResource("ProceduralSkyMaterial_gjxoe")
+
+[sub_resource type="Environment" id="Environment_j7vgp"]
+background_mode = 2
+sky = SubResource("Sky_00qdk")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.823529, 0.333333, 0.266667, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lbpx"]
+albedo_color = Color(0.87451, 0.756863, 0.65098, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7ch7"]
+size = Vector3(100, 1, 100)
+
+[node name="Map" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j7vgp")
+
+[node name="Building" parent="." instance=ExtResource("1_nbef5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9098, 0, 16.9753)
+
+[node name="Building5" parent="." instance=ExtResource("1_nbef5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9098, 0, -26.8592)
+
+[node name="Building6" parent="." instance=ExtResource("1_nbef5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7604, 0, -26.8592)
+
+[node name="Building2" parent="." instance=ExtResource("1_nbef5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.1428, 0, -32.7283)
+
+[node name="Building3" parent="." instance=ExtResource("1_nbef5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2704, 0, 16.4155)
+
+[node name="Building4" parent="." instance=ExtResource("1_nbef5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9302, 0, 17.1859)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00140381, 0.0441437, -0.00341797)
+collision_layer = 1048577
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_8lbpx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_d7ch7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.839032, -0.431187, 0.331819, 0, 0.609869, 0.792502, -0.544083, -0.664935, 0.511699, 4.52397, 15.3271, 17.2132)
+light_color = Color(0.92549, 0.741176, 0.627451, 1)

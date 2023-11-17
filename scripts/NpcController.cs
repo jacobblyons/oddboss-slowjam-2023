@@ -3,7 +3,7 @@ using System.Linq;
 using Godot;
 
 
-public partial class NpcController : CharacterBody3D
+public partial class NpcController : RigidBody3D
 {
     [Export]
     public float walkSpeed = 2.0f;
@@ -11,6 +11,11 @@ public partial class NpcController : CharacterBody3D
     public float runSpeed = 5.0f;
     [Export]
     public float rotateSpeed = 2.0f;
+    [Export]
+    public float gotHitImpulse = 50f;
+    [Export]
+    public float lifePostSplatter = 1f;
+
     [Export]
     public float stamina = 2.0f;
     [Export]
@@ -24,10 +29,12 @@ public partial class NpcController : CharacterBody3D
     private Area3D playerDetectionBoundary;
     private Area3D escapeDetectionBoundary;
     private Area3D escapeReachedBoundary;
+    private Area3D ouchieBoundary;
     private TargetNode currentTarget;
     private Node3D alienBeingFledFrom;
     private NpcState state = NpcState.Traveling;
     private float timeSinceBecameFearful = 0.0f;
+    private float timeSinceSplatted = 0.0f;
 
 
     public override void _Ready()
@@ -38,9 +45,12 @@ public partial class NpcController : CharacterBody3D
         escapeDetectionBoundary = GetNode<Area3D>("EscapeDetectionBoundary");
         escapeReachedBoundary = GetNode<Area3D>("EscapeInReachBoundary");
         playerDetectionBoundary = GetNode<Area3D>("PlayerDetectionBoundary");
+        ouchieBoundary = GetNode<Area3D>("OuchieBoundary");
+        ouchieBoundary.BodyEntered += OnOuchieHad;
         playerDetectionBoundary.BodyEntered += OnPlayerDetectedInBounds;
         playerDetectionBoundary.BodyExited += OnPlayerLeftBounds;
 
+        //GlobalRotationDegrees = new Vector3(0, GlobalRotationDegrees.Y, 0);
         // Make sure to not await during _Ready.
         Callable.From(ActorSetup).CallDeferred();
     }
@@ -61,29 +71,38 @@ public partial class NpcController : CharacterBody3D
             QueueFree();
         }
 
+        if (state == NpcState.Splattered)
+        {
+            if (Time.GetTicksMsec() - timeSinceSplatted > lifePostSplatter * 1000)
+            {
+                QueueFree();
+            }
+
+            return;
+        }
+
         navigationAgent.TargetPosition = GetTargetPosition();
 
         Vector3 currentAgentPosition = GlobalTransform.Origin;
         Vector3 nextPathPosition = navigationAgent.GetNextPathPosition();
-        Vector3 newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
-
+        Vector3 dir = (nextPathPosition - currentAgentPosition).Normalized();
+        Vector3 velocity;
         // set speed based on state
         switch (state)
         {
             case NpcState.Fearful:
             case NpcState.FleeingFromAlien:
-                Velocity = newVelocity * runSpeed;
+                velocity = dir * runSpeed;
                 break;
-
             case NpcState.Traveling:
             case NpcState.Loitering:
             default:
-                Velocity = newVelocity * runSpeed;
+                velocity = dir * runSpeed;
                 break;
         }
         // move npc
         // Calculate target rotation
-        var newTransform = GlobalTransform.LookingAt(GlobalPosition - newVelocity, Vector3.Up);
+        var newTransform = GlobalTransform.LookingAt(GlobalPosition - dir, Vector3.Up);
         Quaternion targetRotation = new Quaternion(newTransform.Basis);
 
         // Interpolate rotation
@@ -91,10 +110,9 @@ public partial class NpcController : CharacterBody3D
         Quaternion newRotation = currentRotation.Slerp(targetRotation, (float)(rotateSpeed * delta));
 
         // Apply rotation
-        GlobalRotation = newRotation.GetEuler();
+        GlobalRotation  = newRotation.GetEuler();
 
-        MoveAndSlide();
-        //MoveAndCollide(Velocity * (float)delta);
+        MoveAndCollide(velocity * (float)delta);
     }
 
     private Vector3 GetTargetPosition()
@@ -105,7 +123,7 @@ public partial class NpcController : CharacterBody3D
                 return GetEscapeTarget() ?? originalTarget.GlobalPosition;
             case NpcState.FleeingFromAlien:
                 return GetDistanceFromAlien() > distanceBeforeAbandoningEscape // if alien is far enough away, go to escape
-                            ? GetEscapeTarget() ?? GetTargetAwayFromAlien() 
+                            ? GetEscapeTarget() ?? GetTargetAwayFromAlien()
                             : GetTargetAwayFromAlien();
             case NpcState.Traveling:
             default:
@@ -135,9 +153,12 @@ public partial class NpcController : CharacterBody3D
         return (GlobalPosition - alienBeingFledFrom.GlobalPosition).Length();
     }
 
-#region Events
+    #region Events
     private void OnPlayerDetectedInBounds(Node3D body)
     {
+        if(state == NpcState.Splattered)
+            return;
+
         if (body is not PlayerFPSController)
         {
             GD.PrintErr("NpcController.OnPlayerDetected: body is not PlayerFPSController. Only players should be detected on layer 2.");
@@ -150,6 +171,9 @@ public partial class NpcController : CharacterBody3D
 
     private void OnPlayerLeftBounds(Node3D body)
     {
+        if(state == NpcState.Splattered)
+            return;
+            
         if (body is not PlayerFPSController)
         {
             GD.PrintErr("NpcController.OnPlayerDetected: body is not PlayerFPSController. Only players should be detected on layer 2.");
@@ -163,11 +187,34 @@ public partial class NpcController : CharacterBody3D
 
     private void OnEscapeReached(Node body)
     {
-        if(state != NpcState.Fearful && state != NpcState.FleeingFromAlien)
+        if(state == NpcState.Splattered)
+            return;
+            
+        if (state != NpcState.Fearful && state != NpcState.FleeingFromAlien)
             return;
 
         QueueFree();
     }
-#endregion
+
+    private void OnOuchieHad(Node3D body)
+    {
+        GD.Print("Ouchie!");
+        var direction = (GlobalPosition - body.GlobalPosition).Normalized();
+
+        // remove axis lock
+        this.AxisLockAngularX = false;
+        this.AxisLockAngularY = false;
+        this.AxisLockAngularZ = false;
+
+        // send the dude
+        this.ApplyCentralImpulse(direction * gotHitImpulse);
+
+        if (state != NpcState.Splattered)
+        {
+            state = NpcState.Splattered;
+            timeSinceSplatted = Time.GetTicksMsec();
+        }
+    }
+    #endregion
 
 }

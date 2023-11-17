@@ -20,8 +20,5 @@ public partial class CarNpcController : AnimatableBody3D
 
         // move npc
         Path.Progress += (float)(Speed * delta);
-        
     }
-
-
 }

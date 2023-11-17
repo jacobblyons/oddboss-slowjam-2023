@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b23485yjb7y2k"]
+[gd_scene load_steps=6 format=3 uid="uid://b23485yjb7y2k"]
 
 [ext_resource type="Script" path="res://scripts/CarNpcController.cs" id="1_ux8p4"]
 
@@ -11,7 +11,11 @@ size = Vector3(4, 4, 8)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdx0h"]
 albedo_color = Color(0.439216, 0.439216, 0.439216, 1)
 
-[node name="AnimatableBody3D" type="AnimatableBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_17vnc"]
+size = Vector3(4.13207, 4.24312, 1)
+
+[node name="Car" type="AnimatableBody3D"]
+collision_layer = 9
 physics_material_override = SubResource("PhysicsMaterial_iohd0")
 sync_to_physics = false
 script = ExtResource("1_ux8p4")
@@ -24,3 +28,12 @@ shape = SubResource("BoxShape3D_radfg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 size = Vector3(4, 4, 8)
 material = SubResource("StandardMaterial3D_mdx0h")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53883, -4.24635)
+shape = SubResource("BoxShape3D_17vnc")
