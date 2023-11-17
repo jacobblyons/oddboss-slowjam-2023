@@ -1,0 +1,34 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdrhf3wfls4w7"]
+
+[ext_resource type="Texture2D" uid="uid://bve28u4g7cww4" path="res://assets/buildings/Building 2.3.png" id="1_kcmem"]
+[ext_resource type="ArrayMesh" uid="uid://2pksq3qjoy0y" path="res://assets/buildings/Building 2.3.obj" id="2_emg4l"]
+[ext_resource type="Texture2D" uid="uid://7bajivp1oc4r" path="res://assets/buildings/Building 2.1.png" id="3_m3xbq"]
+[ext_resource type="ArrayMesh" uid="uid://bylqnq7anei8v" path="res://assets/buildings/Building 2.1.obj" id="4_gdvpq"]
+[ext_resource type="Texture2D" uid="uid://rx7h2g5ebfg2" path="res://assets/buildings/Building 2.2.png" id="5_rheel"]
+[ext_resource type="ArrayMesh" uid="uid://b4lpfs7p8u1hr" path="res://assets/buildings/Building 2.2.obj" id="6_3a4lg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nc6ka"]
+albedo_texture = ExtResource("1_kcmem")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ldi3"]
+albedo_texture = ExtResource("3_m3xbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0dmx"]
+albedo_texture = ExtResource("5_rheel")
+
+[node name="Corner" type="Node3D"]
+
+[node name="Building2_3" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_nc6ka")
+mesh = ExtResource("2_emg4l")
+skeleton = NodePath("../../..")
+
+[node name="Building2_1" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_5ldi3")
+mesh = ExtResource("4_gdvpq")
+skeleton = NodePath("../../..")
+
+[node name="Building2_2" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_g0dmx")
+mesh = ExtResource("6_3a4lg")
+skeleton = NodePath("../../..")

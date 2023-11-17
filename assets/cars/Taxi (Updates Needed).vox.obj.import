@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bu66g442gsc8g"
+path="res://.godot/imported/Taxi (Updates Needed).vox.obj-9ed76fed0892d5127227b71cbf89a247.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Taxi (Updates Needed).vox.obj-9ed76fed0892d5127227b71cbf89a247.mesh"]
+
+source_file="res://assets/cars/Taxi (Updates Needed).vox.obj"
+dest_files=["res://.godot/imported/Taxi (Updates Needed).vox.obj-9ed76fed0892d5127227b71cbf89a247.mesh", "res://.godot/imported/Taxi (Updates Needed).vox.obj-9ed76fed0892d5127227b71cbf89a247.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

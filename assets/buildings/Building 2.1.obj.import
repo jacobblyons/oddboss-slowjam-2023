@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bylqnq7anei8v"
+path="res://.godot/imported/Building 2.1.obj-22144e4ba72e5c7d80c8a78d1662d3dd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Building 2.1.obj-22144e4ba72e5c7d80c8a78d1662d3dd.mesh"]
+
+source_file="res://assets/buildings/Building 2.1.obj"
+dest_files=["res://.godot/imported/Building 2.1.obj-22144e4ba72e5c7d80c8a78d1662d3dd.mesh", "res://.godot/imported/Building 2.1.obj-22144e4ba72e5c7d80c8a78d1662d3dd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

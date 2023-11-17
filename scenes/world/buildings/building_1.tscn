@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://wd6cabf4tt1d"]
+
+[ext_resource type="Texture2D" uid="uid://blgfi6dt2a1xp" path="res://assets/buildings/Building 1.png" id="1_caiwb"]
+[ext_resource type="ArrayMesh" uid="uid://ji61h37qmcw7" path="res://assets/buildings/Building 1.obj" id="2_xak27"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgpwa"]
+albedo_texture = ExtResource("1_caiwb")
+
+[node name="building1" type="Node3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.03879, 0, -12.2495)
+
+[node name="Building1" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_tgpwa")
+mesh = ExtResource("2_xak27")
+skeleton = NodePath("../..")

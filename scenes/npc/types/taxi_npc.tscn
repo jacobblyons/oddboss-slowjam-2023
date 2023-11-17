@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://fbkfocwr20vt"]
+
+[ext_resource type="Texture2D" uid="uid://ccvggl4x3iwc7" path="res://assets/cars/Taxi (Updates Needed).vox.png" id="1_e60hf"]
+[ext_resource type="Script" path="res://scripts/CarNpcController.cs" id="1_ochqb"]
+[ext_resource type="ArrayMesh" uid="uid://bu66g442gsc8g" path="res://assets/cars/Taxi (Updates Needed).vox.obj" id="2_3r3mh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ddvyn"]
+bounce = 5.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5e5ph"]
+size = Vector3(5.48307, 4, 13.7699)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dlheo"]
+albedo_texture = ExtResource("1_e60hf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68ky2"]
+size = Vector3(6.23312, 4.24312, 3.34585)
+
+[node name="Taxi" type="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80647, 0)
+collision_layer = 9
+physics_material_override = SubResource("PhysicsMaterial_ddvyn")
+sync_to_physics = false
+script = ExtResource("1_ochqb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09913, 0.0886946)
+shape = SubResource("BoxShape3D_5e5ph")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Taxi(updatesNeeded)_vox" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_dlheo")
+mesh = ExtResource("2_3r3mh")
+skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10783, -5.65591)
+shape = SubResource("BoxShape3D_68ky2")

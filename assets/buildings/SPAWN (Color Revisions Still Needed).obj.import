@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ctc2vyeenke8p"
+path="res://.godot/imported/SPAWN (Color Revisions Still Needed).obj-be7ceafa2488cee6ac40b58fbce57328.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SPAWN (Color Revisions Still Needed).obj-be7ceafa2488cee6ac40b58fbce57328.mesh"]
+
+source_file="res://assets/buildings/SPAWN (Color Revisions Still Needed).obj"
+dest_files=["res://.godot/imported/SPAWN (Color Revisions Still Needed).obj-be7ceafa2488cee6ac40b58fbce57328.mesh", "res://.godot/imported/SPAWN (Color Revisions Still Needed).obj-be7ceafa2488cee6ac40b58fbce57328.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

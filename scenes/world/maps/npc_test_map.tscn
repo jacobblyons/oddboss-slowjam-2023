@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dewt2msafwsgb"]
 
-[ext_resource type="PackedScene" uid="uid://cboew4tnsvyhn" path="res://scenes/world/building.tscn" id="1_cbe7n"]
-[ext_resource type="PackedScene" uid="uid://b23485yjb7y2k" path="res://scenes/npc/types/car_npc.tscn" id="2_hdn8d"]
+[ext_resource type="PackedScene" uid="uid://cboew4tnsvyhn" path="res://scenes/world/buildings/building_0.tscn" id="1_cbe7n"]
+[ext_resource type="PackedScene" uid="uid://fbkfocwr20vt" path="res://scenes/npc/types/taxi_npc.tscn" id="2_nevbj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gjxoe"]
 sky_top_color = Color(0, 0.262745, 0.321569, 1)
@@ -82,20 +82,19 @@ transform = Transform3D(0.839032, -0.431187, 0.331819, 0, 0.609869, 0.792502, -0
 light_color = Color(0.92549, 0.741176, 0.627451, 1)
 
 [node name="Routes" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654663, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="route-1" type="Path3D" parent="Routes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 curve = SubResource("Curve3D_6efrx")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Routes/route-1"]
-transform = Transform3D(-0.0309196, 0, -0.999492, 0, 0.999998, 0, 0.999505, 0, -0.0309192, 21.2905, -0.839967, 3.84966)
+transform = Transform3D(-0.0309196, 0, -0.999491, 0, 0.999998, 0, 0.999504, 0, -0.0309192, 21.2905, -0.839967, 3.84966)
 progress = 46.6595
 rotation_mode = 1
 tilt_enabled = false
 
-[node name="car_npc" parent="Routes/route-1/PathFollow3D" node_paths=PackedStringArray("Path") instance=ExtResource("2_hdn8d")]
-transform = Transform3D(0.999886, 4.65661e-10, 0.0151348, 4.65661e-10, 1, 2.91038e-11, -0.0151349, -3.92902e-10, 0.999886, 0.485676, -0.130157, -0.324697)
+[node name="Taxi" parent="Routes/route-1/PathFollow3D" node_paths=PackedStringArray("Path") instance=ExtResource("2_nevbj")]
 Path = NodePath("..")
 
 [node name="route-2" type="Path3D" parent="Routes"]
@@ -108,6 +107,5 @@ progress = 238.841
 rotation_mode = 1
 tilt_enabled = false
 
-[node name="car_npc" parent="Routes/route-2/PathFollow3D" node_paths=PackedStringArray("Path") instance=ExtResource("2_hdn8d")]
-transform = Transform3D(0.999536, -5.45697e-10, 0.030445, 0, 1, -9.31323e-10, -0.030445, 0, 0.999536, -0.630962, -0.0127649, 1.36773)
+[node name="Taxi" parent="Routes/route-2/PathFollow3D" node_paths=PackedStringArray("Path") instance=ExtResource("2_nevbj")]
 Path = NodePath("..")

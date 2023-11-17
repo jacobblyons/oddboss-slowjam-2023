@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://67mx3ffq8687"]
+
+[ext_resource type="Texture2D" uid="uid://cxbbfsrpg6waj" path="res://assets/buildings/Building 9.1.png" id="1_6wf2i"]
+[ext_resource type="ArrayMesh" uid="uid://dhqbah4xbggre" path="res://assets/buildings/Building 9.1.obj" id="2_vpoq5"]
+[ext_resource type="Texture2D" uid="uid://bfb0m32xuh4mg" path="res://assets/buildings/Building 9.2.png" id="3_y1uvx"]
+[ext_resource type="ArrayMesh" uid="uid://bfn1h03q3kbu5" path="res://assets/buildings/Building 9.2.obj" id="4_tkt20"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0pbl"]
+albedo_texture = ExtResource("1_6wf2i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwki8"]
+albedo_texture = ExtResource("3_y1uvx")
+
+[node name="building_9" type="Node3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1755, 0, -12.4768)
+
+[node name="Building9_1" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_f0pbl")
+mesh = ExtResource("2_vpoq5")
+skeleton = NodePath("../..")
+
+[node name="Building9_2" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_lwki8")
+mesh = ExtResource("4_tkt20")
+skeleton = NodePath("../..")
