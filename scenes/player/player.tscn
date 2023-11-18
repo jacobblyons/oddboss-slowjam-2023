@@ -17,6 +17,8 @@ accelFactor = 60.0
 decelFactor = 120.0
 jumpForce = 12.0
 mouseSensitivity = 0.7
+hitstunTime = 0.5
+hitstunKnockbackForce = 20.0
 
 [node name="Pivot" type="Node3D" parent="."]
 

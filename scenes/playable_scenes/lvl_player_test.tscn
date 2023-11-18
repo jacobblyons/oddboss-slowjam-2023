@@ -78,6 +78,7 @@ vertices = PackedVector3Array(4.88048, 0, -14.2116, 5.34814, 0, 9.50713, -16.398
 
 [node name="Player" parent="NavigationRegion3D" instance=ExtResource("3_54yab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14105, 7.60632, 50.7701)
+hitstunTime = 1.0
 
 [node name="DebugMenu" type="VBoxContainer" parent="." node_paths=PackedStringArray("playerRef")]
 offset_right = 40.0

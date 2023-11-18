@@ -59,15 +59,12 @@ public partial class PlayerFPSController : CharacterBody3D
         Basis aim = fpCamera.GlobalTransform.Basis;
         Vector3 moveDir = new Vector3(moveInput.X, 0f, moveInput.Y).Rotated(Vector3.Up, aim.GetEuler().Y).Normalized();
 
-        // Completely ignore effects of user movement input if player is in 
-        // NONINFLUENCING state.
-        if (moveState == PlayerMoveState.NONINFLUENCING) {
-            moveDir = Vector3.Zero;
-        }
-
         // Update horizontal velocity
         Vector2 horizVelocity = new Vector2(Velocity.X, Velocity.Z);
-        if (moveInput != Vector2.Zero) {
+        if (moveState == PlayerMoveState.NONINFLUENCING) {
+            horizVelocity = horizVelocity.MoveToward(Vector2.Zero, fdelta);
+        }
+        else if (moveInput != Vector2.Zero) {
             horizVelocity = horizVelocity.MoveToward(
                 new Vector2(moveDir.X, moveDir.Z) * moveSpeed, 
                 fdelta * accelFactor
@@ -139,7 +136,9 @@ public partial class PlayerFPSController : CharacterBody3D
         }
         moveState = PlayerMoveState.NONINFLUENCING;
         hitState = PlayerHitState.HITSTUN;
-        Velocity = (Position - body.Position).Normalized() * hitstunKnockbackForce;
+        Vector3 newVel = (Position - body.Position).Normalized() * hitstunKnockbackForce;
+        newVel = new Vector3(newVel.X, 10f, newVel.Z);
+        Velocity = newVel;
         friendGun.ReleaseTrigger();
         worldServer.EmitSignal("BrainWashReleased");
         await ToSignal(GetTree().CreateTimer(hitstunTime), "timeout");
