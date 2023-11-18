@@ -21,7 +21,7 @@ rotation_mode = 1
 
 [node name="TaxiBody" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("Path")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80647, 0)
-collision_layer = 9
+collision_layer = 25
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_ddvyn")

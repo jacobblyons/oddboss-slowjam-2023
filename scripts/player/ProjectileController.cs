@@ -8,11 +8,15 @@ public partial class ProjectileController : Node3D
 	 
 	private static float maxLifeTime = 10f;
 	private float timeAlive;
+	private Area3D hitBoundary;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		timeAlive = 0f;	
+		hitBoundary = GetNode<Area3D>("HitBoundary");
+		hitBoundary.AreaEntered += OnHit;
+		hitBoundary.BodyEntered += OnHit;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,5 +31,10 @@ public partial class ProjectileController : Node3D
 		if (timeAlive > maxLifeTime) {
 			Free();
 		}
+	}
+
+	public void OnHit(Node body)
+	{
+		QueueFree();
 	}
 }

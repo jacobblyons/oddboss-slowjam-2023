@@ -95,11 +95,19 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03152, 0)
 shape = SubResource("CylinderShape3D_q8u5e")
 
-[node name="OuchieBoundary" type="Area3D" parent="."]
+[node name="CarBoundary" type="Area3D" parent="."]
 collision_layer = 8
 collision_mask = 8
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OuchieBoundary"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CarBoundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39931, 0)
+shape = SubResource("CylinderShape3D_qpw68")
+
+[node name="BulletBoundary" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BulletBoundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39931, 0)
 shape = SubResource("CylinderShape3D_qpw68")

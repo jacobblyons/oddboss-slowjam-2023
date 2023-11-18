@@ -13,6 +13,7 @@ albedo_texture = ExtResource("1_hbbnw")
 [node name="Building" type="Node3D"]
 
 [node name="StaticBody" type="StaticBody3D" parent="."]
+collision_layer = 17
 
 [node name="CollisionBox" type="CollisionShape3D" parent="StaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0637493, 10.9913, 0)

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3dib4a0jk4mn"]
+[gd_scene load_steps=4 format=3 uid="uid://b3dib4a0jk4mn"]
 
 [ext_resource type="Material" uid="uid://hscltjq8stg6" path="res://scripts/player/shaders/projectile_mat.tres" id="1_pmwcr"]
 [ext_resource type="Script" path="res://scripts/player/ProjectileController.cs" id="2_08nof"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g5pwh"]
+radius = 0.958801
 
 [node name="Projectile" type="CSGTorus3D"]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0)
@@ -10,3 +13,10 @@ material = ExtResource("1_pmwcr")
 script = ExtResource("2_08nof")
 velocity = 50.0
 spinSpeed = 10.0
+
+[node name="HitBoundary" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 31
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoundary"]
+shape = SubResource("SphereShape3D_g5pwh")

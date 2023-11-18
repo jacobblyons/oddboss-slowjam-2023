@@ -29,7 +29,8 @@ public partial class NpcController : RigidBody3D
     private Area3D playerDetectionBoundary;
     private Area3D escapeDetectionBoundary;
     private Area3D escapeReachedBoundary;
-    private Area3D ouchieBoundary;
+    private Area3D carHitBoundary;
+    private Area3D bulletHitBoundary;
     private TargetNode currentTarget;
     private Node3D alienBeingFledFrom;
     private NpcState state = NpcState.Traveling;
@@ -45,8 +46,10 @@ public partial class NpcController : RigidBody3D
         escapeDetectionBoundary = GetNode<Area3D>("EscapeDetectionBoundary");
         escapeReachedBoundary = GetNode<Area3D>("EscapeInReachBoundary");
         playerDetectionBoundary = GetNode<Area3D>("PlayerDetectionBoundary");
-        ouchieBoundary = GetNode<Area3D>("OuchieBoundary");
-        ouchieBoundary.BodyEntered += OnOuchieHad;
+        carHitBoundary = GetNode<Area3D>("CarBoundary");
+        carHitBoundary.BodyEntered += OnCarHit;
+        bulletHitBoundary = GetNode<Area3D>("BulletBoundary");
+        bulletHitBoundary.AreaEntered += OnBulletHit;
         playerDetectionBoundary.BodyEntered += OnPlayerDetectedInBounds;
         playerDetectionBoundary.BodyExited += OnPlayerLeftBounds;
 
@@ -196,7 +199,27 @@ public partial class NpcController : RigidBody3D
         QueueFree();
     }
 
-    private void OnOuchieHad(Node3D body)
+    private void OnCarHit(Node3D body)
+    {
+        GD.Print("Ouchie!");
+        var direction = (GlobalPosition - body.GlobalPosition).Normalized();
+
+        // remove axis lock
+        this.AxisLockAngularX = false;
+        this.AxisLockAngularY = false;
+        this.AxisLockAngularZ = false;
+
+        // send the dude
+        this.ApplyCentralImpulse(direction * gotHitImpulse);
+
+        if (state != NpcState.Splattered)
+        {
+            state = NpcState.Splattered;
+            timeSinceSplatted = Time.GetTicksMsec();
+        }
+    }
+
+    private void OnBulletHit(Node3D body)
     {
         GD.Print("Ouchie!");
         var direction = (GlobalPosition - body.GlobalPosition).Normalized();
