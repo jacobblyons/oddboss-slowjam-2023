@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://8y7w2mq2su3p"]
 
 [ext_resource type="Script" path="res://scripts/NpcController.cs" id="1_x1n2k"]
-[ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="2_cgp7c"]
+[ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/buildings/Test_Building.vox.png" id="2_cgp7c"]
 [ext_resource type="ArrayMesh" uid="uid://byw1hwwm842qe" path="res://assets/Character_1.vox.obj" id="3_2gd0c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ogney"]

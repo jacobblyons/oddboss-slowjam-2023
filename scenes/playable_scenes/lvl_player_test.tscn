@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://87pw33vlytup"]
 
-[ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="1_ycg54"]
-[ext_resource type="ArrayMesh" uid="uid://dgnahp5vp5vex" path="res://assets/Test_Building.vox.obj" id="2_yrgg0"]
+[ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/buildings/Test_Building.vox.png" id="1_ycg54"]
+[ext_resource type="ArrayMesh" uid="uid://dgnahp5vp5vex" path="res://assets/buildings/Test_Building.vox.obj" id="2_yrgg0"]
 [ext_resource type="PackedScene" uid="uid://gyspku1sfuxp" path="res://scenes/player/player.tscn" id="3_54yab"]
 [ext_resource type="Script" path="res://scripts/player/PlayerDebugMenu.cs" id="4_s6dpv"]
 [ext_resource type="PackedScene" uid="uid://rbopl0dvpeo6" path="res://assets/npc_limbs.tscn" id="5_l1475"]

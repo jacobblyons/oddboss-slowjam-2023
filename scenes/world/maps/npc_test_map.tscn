@@ -29,7 +29,7 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="Curve3D" id="Curve3D_6efrx"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -25, -0.904663, 2, 0, 0, 0, 0, 0, 0, -13, -0.904663, 2, 0, 0, 0, 0, 0, 0, 13.2375, -0.654663, 1.5974, -3.16524, 0, 4.39615, 3.16524, 0, -4.39615, 26, -0.904663, 2, 0, 0, 0, 0, 0, 0, 41, -0.904663, -18, 5.01162, 0, 3.86862, -5.01162, 0, -3.86862, 17, -0.904663, -19, 0, 0, 0, 0, 0, 0, -3, -0.904663, -13, 0, 0, 0, 0, 0, 0, -24, -0.904663, -12, 2.19482, 0, -4.50568, -2.19482, 0, 4.50568, -40, -0.904663, -14, -3.78396, 0, -3.45061, 3.78396, 0, 3.45061, -44, -0.904663, 0, 0, 0, 0, 0, 0, 0, -34, -0.904663, 4, 0, 0, 0, 0, 0, 0, -25, -0.904663, 2),
+"points": PackedVector3Array(-5, 0, 0, 5, 0, 0, -25, -0.904663, 2, 0, 0, 0, 0, 0, 0, -13, -0.904663, 2, 0, 0, 0, 0, 0, 0, 13.2375, -0.654663, 1.5974, -3.16524, 0, 4.39615, 3.16524, 0, -4.39615, 26, -0.904663, 2, 0, 0, 0, 0, 0, 0, 41, -0.904663, -18, 5.01162, 0, 3.86862, -5.01162, 0, -3.86862, 17, -0.904663, -19, 6, 0, -3, -6, 0, 3, -1, -0.75, -13, 0, 0, 0, 0, 0, 0, -24, -0.904663, -12, 5, 0, -1, -5, 0, 1, -41, -0.75, -12, -3, 0, -3, 3, 0, 3, -45, -0.75, 2, 0, 0, 0, 0, 0, 0, -34, -0.904663, 4, -3, 0, 0, 3, 0, 0, -25, -0.904663, 2),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 12
@@ -88,24 +88,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 curve = SubResource("Curve3D_6efrx")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Routes/route-1"]
-transform = Transform3D(-0.0309196, 0, -0.999491, 0, 0.999998, 0, 0.999504, 0, -0.0309192, 21.2905, -0.839967, 3.84966)
-progress = 46.6595
-rotation_mode = 1
-tilt_enabled = false
-
-[node name="Taxi" parent="Routes/route-1/PathFollow3D" node_paths=PackedStringArray("Path") instance=ExtResource("2_nevbj")]
-Path = NodePath("..")
+[node name="PathFollow3D" parent="Routes/route-1" instance=ExtResource("2_nevbj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, -0.904663, 2)
 
 [node name="route-2" type="Path3D" parent="Routes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.614, 0)
 curve = SubResource("Curve3D_1htsb")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="Routes/route-2"]
-transform = Transform3D(-0.999833, 0, -0.0164102, 0, 0.999989, 0, 0.01641, 0, -0.999846, 1.23511, -0.637695, -27.6104)
-progress = 238.841
-rotation_mode = 1
-tilt_enabled = false
-
-[node name="Taxi" parent="Routes/route-2/PathFollow3D" node_paths=PackedStringArray("Path") instance=ExtResource("2_nevbj")]
-Path = NodePath("..")
