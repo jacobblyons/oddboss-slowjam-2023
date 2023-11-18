@@ -60,6 +60,7 @@ public partial class NpcController : RigidBody3D
         playerDetectionBoundary.BodyEntered += OnPlayerDetectedInBounds;
         playerDetectionBoundary.BodyExited += OnPlayerLeftBounds;
         worldServer = GetNode<WorldServer>("/root/WorldServer");
+        worldServer.BrainWashReleased += OnBrainwashReleased;
         
         // Make sure to not await during _Ready.
         Callable.From(ActorSetup).CallDeferred();
