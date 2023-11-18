@@ -60,7 +60,7 @@ public partial class NpcController : RigidBody3D
         playerDetectionBoundary.BodyEntered += OnPlayerDetectedInBounds;
         playerDetectionBoundary.BodyExited += OnPlayerLeftBounds;
         worldServer = GetNode<WorldServer>("/root/WorldServer");
-        //GlobalRotationDegrees = new Vector3(0, GlobalRotationDegrees.Y, 0);
+        
         // Make sure to not await during _Ready.
         Callable.From(ActorSetup).CallDeferred();
     }
@@ -95,10 +95,11 @@ public partial class NpcController : RigidBody3D
         {
             if (Time.GetTicksMsec() - timeSinceShot > stunTimeInSec * 1000)
             {
-                QueueFree();
+                state = NpcState.Brainwashed;
+                // remove axis lock
+                this.AxisLockAngularX = true;
+                this.AxisLockAngularZ = true;
             }
-
-            state = NpcState.Brainwashed;
         }
 
         navigationAgent.TargetPosition = GetTargetPosition();
