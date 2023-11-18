@@ -22,6 +22,7 @@ public partial class PlayerFPSController : CharacterBody3D
     private static float gravity = -9.8f;       //TODO: read from proj settings.
 
     // Node references.
+    private WorldServer worldServer;
     private Node3D fpCamera;
     private FriendGunController friendGun;
     private Area3D hurtBox;
@@ -34,7 +35,7 @@ public partial class PlayerFPSController : CharacterBody3D
         Input.MouseMode = Input.MouseModeEnum.Captured;
         fpCamera = GetNode<Node3D>("Camera3D");
         friendGun = fpCamera.GetNode<FriendGunController>("Gun");
-        var worldServer = GetNode<WorldServer>("/root/WorldServer");
+        worldServer = GetNode<WorldServer>("/root/WorldServer");
         worldServer.RegisterPlayer(this);
         hurtBox = GetNode<Area3D>("HurtBox");
         hurtBox.AreaEntered += PlayHurtAnimation;
@@ -139,6 +140,7 @@ public partial class PlayerFPSController : CharacterBody3D
         moveState = PlayerMoveState.NONINFLUENCING;
         hitState = PlayerHitState.HITSTUN;
         Velocity = (Position - body.Position).Normalized() * hitstunKnockbackForce;
+        worldServer.EmitSignal(worldServer.BrainWashReleasedEventHandler);
         await ToSignal(GetTree().CreateTimer(hitstunTime), "timeout");
         moveState = PlayerMoveState.DEFAULT;
         hitState = PlayerHitState.DEFAULT;
