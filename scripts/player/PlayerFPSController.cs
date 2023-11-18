@@ -1,5 +1,8 @@
 using Godot;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 public partial class PlayerFPSController : CharacterBody3D
 {
@@ -8,18 +11,23 @@ public partial class PlayerFPSController : CharacterBody3D
     [Export] public float decelFactor;
     [Export] public float jumpForce;
     [Export] public float mouseSensitivity;
+    [Export] public float hitstunTime;
 
     public PlayerMoveState moveState;
-
-    private Node3D fpCamera;
-    private FriendGunController friendGun;
+    public PlayerHitState hitState;
 
     private Vector2 moveInput;
     private Vector2 mouseInput;
     private static float gravity = -9.8f;       //TODO: read from proj settings.
 
+    // Node references.
+    private Node3D fpCamera;
+    private FriendGunController friendGun;
+    private Area3D hurtBox;
+
     public override void _Ready() {
         moveState = PlayerMoveState.DEFAULT;
+        hitState = PlayerHitState.DEFAULT;
         moveInput = Vector2.Zero;
 
         Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -27,6 +35,8 @@ public partial class PlayerFPSController : CharacterBody3D
         friendGun = fpCamera.GetNode<FriendGunController>("Gun");
         var worldServer = GetNode<WorldServer>("/root/WorldServer");
         worldServer.RegisterPlayer(this);
+        hurtBox = GetNode<Area3D>("HurtBox");
+        hurtBox.AreaEntered += PlayHurtAnimation;
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -72,7 +82,7 @@ public partial class PlayerFPSController : CharacterBody3D
         if (!IsOnFloor()) {
             vertVelocity += gravity * fdelta;
         }
-        else if (Input.IsActionPressed("jump")) {
+        else if (Input.IsActionPressed("jump") && moveState == PlayerMoveState.DEFAULT) {
             vertVelocity += jumpForce;
         }
 
@@ -120,6 +130,26 @@ public partial class PlayerFPSController : CharacterBody3D
     public void Debug_SetMoveState(PlayerMoveState state) {
         moveState = state;
     }
+
+    // Invoked when player hurt box collides w/ something that hurts the player.
+    public void HurtMe(Node3D body) {
+        if (hitState != PlayerHitState.HITSTUN) {
+
+        }
+    }
+
+    public async void PlayHurtAnimation(Node3D body) {
+        if (hitState == PlayerHitState.HITSTUN) {
+            return;
+        }
+        GD.Print("Hitstun Start.");
+        moveState = PlayerMoveState.NONINFLUENCING;
+        hitState = PlayerHitState.HITSTUN;
+        await ToSignal(GetTree().CreateTimer(hitstunTime), "timeout");
+        moveState = PlayerMoveState.DEFAULT;
+        hitState = PlayerHitState.DEFAULT;
+        GD.Print("Hitstun End.");
+    }
 }
 
 public enum PlayerMoveState {
@@ -127,4 +157,9 @@ public enum PlayerMoveState {
     FROZEN,         // Freeze player in place (rotation ok).
     INFLUENCING,    // Player movement dictatated by external forces & player has influence
     NONINFLUENCING  // Player movement dictatated by external forces & player has no influence
+}
+
+public enum PlayerHitState {
+    DEFAULT,        // Not being hurt
+    HITSTUN         // In hitstun from being hurt.
 }

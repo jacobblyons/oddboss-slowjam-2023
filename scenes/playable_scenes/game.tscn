@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://b7c41d1s6qff7"]
 
-[ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/Test_Building.vox.png" id="1_p574b"]
-[ext_resource type="ArrayMesh" uid="uid://dgnahp5vp5vex" path="res://assets/Test_Building.vox.obj" id="2_vmvoe"]
+[ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/buildings/Test_Building.vox.png" id="1_p574b"]
+[ext_resource type="ArrayMesh" uid="uid://dgnahp5vp5vex" path="res://assets/buildings/Test_Building.vox.obj" id="2_vmvoe"]
 [ext_resource type="PackedScene" uid="uid://gyspku1sfuxp" path="res://scenes/player/player.tscn" id="3_80sm8"]
 
 [sub_resource type="Gradient" id="Gradient_nc63m"]

@@ -14,8 +14,13 @@ accelFactor = 60.0
 decelFactor = 120.0
 jumpForce = 12.0
 mouseSensitivity = 0.7
+hitstunTime = 1.0
 
 [node name="Pivot" type="Node3D" parent="."]
+
+[node name="BodyCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_q0qo7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00584269, 1.58031, 0.00131035)
@@ -29,7 +34,7 @@ script = ExtResource("4_rscvv")
 chargeTime = 2.0
 dechargeFactor = 10.0
 recoilTime = 1.0
-chargeEffectRotationSpeed = -10.0
+chargeEffectRotationSpeed = -6.0
 dechargeEffectRotationSpeed = 3.0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Camera3D/Gun"]
@@ -47,9 +52,14 @@ transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 
 sides = 12
 material = ExtResource("3_oxli7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_q0qo7")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.988235, 0.968627, 0.835294, 1)
+
+[node name="HurtBox" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_q0qo7")
