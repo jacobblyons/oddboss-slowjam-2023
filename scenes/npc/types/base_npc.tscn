@@ -26,7 +26,7 @@ size = Vector3(31, 4.78448, 25.4287)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q8u5e"]
 height = 5.03079
-radius = 1.59333
+radius = 2.3538
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qpw68"]
 height = 4.22252
@@ -38,8 +38,11 @@ axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_ogney")
 script = ExtResource("1_x1n2k")
 walkSpeed = 5.0
+brainwashedSpeed = 8.0
 runSpeed = 10.0
 rotateSpeed = 4.0
+lifePostSplatterInSec = 2.0
+stunTimeInSec = 1.0
 
 [node name="Pivot" type="Node3D" parent="."]
 
@@ -58,7 +61,6 @@ aabb = AABB(-1, 0.00588608, -1, 2, 4.66206, 2)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.5
-target_desired_distance = 0.5
 avoidance_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.788235, 1)
@@ -111,3 +113,11 @@ collision_mask = 32
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BulletBoundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39931, 0)
 shape = SubResource("CylinderShape3D_qpw68")
+
+[node name="PartyBoundary" type="Area3D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PartyBoundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03152, 0)
+shape = SubResource("CylinderShape3D_q8u5e")

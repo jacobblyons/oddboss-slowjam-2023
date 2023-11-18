@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://gyspku1sfuxp"]
+[gd_scene load_steps=6 format=3 uid="uid://gyspku1sfuxp"]
 
 [ext_resource type="Script" path="res://scripts/player/PlayerFPSController.cs" id="1_ff2sa"]
 [ext_resource type="Material" uid="uid://hscltjq8stg6" path="res://scripts/player/shaders/projectile_mat.tres" id="3_oxli7"]
 [ext_resource type="Script" path="res://scripts/player/FriendGunController.cs" id="4_rscvv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0qo7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bp2sd"]
+size = Vector3(1.63081, 1.46376, 1.52256)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 3
@@ -14,14 +17,8 @@ accelFactor = 60.0
 decelFactor = 120.0
 jumpForce = 12.0
 mouseSensitivity = 0.7
-hitstunTime = 0.5
-hitstunKnockbackForce = 20.0
 
 [node name="Pivot" type="Node3D" parent="."]
-
-[node name="BodyCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_q0qo7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00584269, 1.58031, 0.00131035)
@@ -32,10 +29,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0190614, -0.0332226, 0.004
 [node name="Gun" type="Node3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.372929, -0.160291, -0.886592)
 script = ExtResource("4_rscvv")
-chargeTime = 2.0
+chargeTime = 0.5
 dechargeFactor = 10.0
-recoilTime = 1.0
-chargeEffectRotationSpeed = -6.0
+recoilTime = 0.2
+chargeEffectRotationSpeed = -10.0
 dechargeEffectRotationSpeed = 3.0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Camera3D/Gun"]
@@ -53,14 +50,18 @@ transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 
 sides = 12
 material = ExtResource("3_oxli7")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_q0qo7")
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.988235, 0.968627, 0.835294, 1)
 
 [node name="HurtBox" type="Area3D" parent="."]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_q0qo7")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29398, 0)
+shape = SubResource("BoxShape3D_bp2sd")

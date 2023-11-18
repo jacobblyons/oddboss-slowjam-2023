@@ -8,7 +8,7 @@
 albedo_texture = ExtResource("1_caiwb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yvflm"]
-size = Vector3(10.1789, 24, 24.85)
+size = Vector3(10.1789, 24, 23.2055)
 
 [node name="building1" type="Node3D"]
 
@@ -21,14 +21,14 @@ mesh = ExtResource("2_xak27")
 skeleton = NodePath("../..")
 
 [node name="door" parent="Pivot" instance=ExtResource("3_t3fjj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53757, 0, 24.3825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53757, 0.708252, 25.0845)
 
 [node name="StaticBody" type="StaticBody3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82712, 0, 8.0022)
 collision_layer = 17
 
 [node name="CollisionBox" type="CollisionShape3D" parent="Pivot/StaticBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896095, 12.0215, 4.54941)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896095, 12.0215, 3.36008)
 shape = SubResource("BoxShape3D_yvflm")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Pivot"]

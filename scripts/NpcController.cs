@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using Godot;
 
@@ -7,7 +8,7 @@ public partial class NpcController : RigidBody3D
 {
     [Export]
     public float walkSpeed = 2.0f;
-    
+
     [Export]
     public float brainwashedSpeed = 2.0f;
     [Export]
@@ -34,6 +35,7 @@ public partial class NpcController : RigidBody3D
     private Area3D playerDetectionBoundary;
     private Area3D escapeDetectionBoundary;
     private Area3D escapeReachedBoundary;
+    private Area3D partyReachedBoundary;
     private Area3D carHitBoundary;
     private Area3D bulletHitBoundary;
     private TargetNode currentTarget;
@@ -52,6 +54,8 @@ public partial class NpcController : RigidBody3D
 
         escapeDetectionBoundary = GetNode<Area3D>("EscapeDetectionBoundary");
         escapeReachedBoundary = GetNode<Area3D>("EscapeInReachBoundary");
+        partyReachedBoundary = GetNode<Area3D>("PartyBoundary");
+        partyReachedBoundary.AreaEntered += OnEnterPartyZone;
         playerDetectionBoundary = GetNode<Area3D>("PlayerDetectionBoundary");
         carHitBoundary = GetNode<Area3D>("CarBoundary");
         carHitBoundary.BodyEntered += OnCarHit;
@@ -61,7 +65,7 @@ public partial class NpcController : RigidBody3D
         playerDetectionBoundary.BodyExited += OnPlayerLeftBounds;
         worldServer = GetNode<WorldServer>("/root/WorldServer");
         worldServer.BrainWashReleased += OnBrainwashReleased;
-        
+
         // Make sure to not await during _Ready.
         Callable.From(ActorSetup).CallDeferred();
     }
@@ -138,7 +142,7 @@ public partial class NpcController : RigidBody3D
         Quaternion newRotation = currentRotation.Slerp(targetRotation, (float)(rotateSpeed * delta));
 
         // Apply rotation
-        GlobalRotation  = newRotation.GetEuler();
+        GlobalRotation = newRotation.GetEuler();
 
         MoveAndCollide(velocity * (float)delta);
     }
@@ -191,7 +195,7 @@ public partial class NpcController : RigidBody3D
     #region Events
     private void OnPlayerDetectedInBounds(Node3D body)
     {
-        if(state == NpcState.Splattered || state == NpcState.Brainwashed)
+        if (state == NpcState.Splattered || state == NpcState.Brainwashed)
             return;
 
         if (body is not PlayerFPSController)
@@ -206,9 +210,9 @@ public partial class NpcController : RigidBody3D
 
     private void OnPlayerLeftBounds(Node3D body)
     {
-        if(state == NpcState.Splattered || state == NpcState.Brainwashed)
+        if (state == NpcState.Splattered || state == NpcState.Brainwashed)
             return;
-            
+
         if (body is not PlayerFPSController)
         {
             GD.PrintErr("NpcController.OnPlayerDetected: body is not PlayerFPSController. Only players should be detected on layer 2.");
@@ -222,9 +226,9 @@ public partial class NpcController : RigidBody3D
 
     private void OnEscapeReached(Node body)
     {
-        if(state == NpcState.Splattered || state == NpcState.Brainwashed)
+        if (state == NpcState.Splattered || state == NpcState.Brainwashed)
             return;
-            
+
         if (state != NpcState.Fearful && state != NpcState.FleeingFromAlien)
             return;
 
@@ -274,6 +278,16 @@ public partial class NpcController : RigidBody3D
     private void OnBrainwashReleased()
     {
         state = NpcState.FleeingFromAlien;
+    }
+
+
+    private void OnEnterPartyZone(Area3D area)
+    {
+        if(state == NpcState.Brainwashed)
+        {
+            Callable.From(QueueFree).CallDeferred();
+            QueueFree();
+        }
     }
     #endregion
 
