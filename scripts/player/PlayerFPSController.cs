@@ -12,6 +12,7 @@ public partial class PlayerFPSController : CharacterBody3D
     [Export] public float jumpForce;
     [Export] public float mouseSensitivity;
     [Export] public float hitstunTime;
+    [Export] public float hitstunKnockbackForce;
 
     public PlayerMoveState moveState;
     public PlayerHitState hitState;
@@ -129,24 +130,16 @@ public partial class PlayerFPSController : CharacterBody3D
         moveState = state;
     }
 
-    // Invoked when player hurt box collides w/ something that hurts the player.
-    public void HurtMe(Node3D body) {
-        if (hitState != PlayerHitState.HITSTUN) {
-
-        }
-    }
-
     public async void PlayHurtAnimation(Node3D body) {
         if (hitState == PlayerHitState.HITSTUN) {
             return;
         }
-        GD.Print("Hitstun Start.");
         moveState = PlayerMoveState.NONINFLUENCING;
         hitState = PlayerHitState.HITSTUN;
+        Velocity = (Position - body.Position).Normalized() * hitstunKnockbackForce;
         await ToSignal(GetTree().CreateTimer(hitstunTime), "timeout");
         moveState = PlayerMoveState.DEFAULT;
         hitState = PlayerHitState.DEFAULT;
-        GD.Print("Hitstun End.");
     }
 }
 

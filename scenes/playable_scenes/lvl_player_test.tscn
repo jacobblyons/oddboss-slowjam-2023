@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://87pw33vlytup"]
+[gd_scene load_steps=15 format=3 uid="uid://87pw33vlytup"]
 
 [ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/buildings/Test_Building.vox.png" id="1_ycg54"]
 [ext_resource type="ArrayMesh" uid="uid://dgnahp5vp5vex" path="res://assets/buildings/Test_Building.vox.obj" id="2_yrgg0"]
@@ -34,6 +34,8 @@ albedo_texture = ExtResource("1_ycg54")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ws4xl"]
 size = Vector3(13.6914, 44.4403, 21.9412)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jtnp0"]
 
 [node name="Game" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0444622, 0, 0.00205231)
@@ -76,6 +78,7 @@ vertices = PackedVector3Array(4.88048, 0, -14.2116, 5.34814, 0, 9.50713, -16.398
 
 [node name="Player" parent="NavigationRegion3D" instance=ExtResource("3_54yab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14105, 7.60632, 50.7701)
+hitstunTime = 0.5
 
 [node name="DebugMenu" type="VBoxContainer" parent="." node_paths=PackedStringArray("playerRef")]
 offset_right = 40.0
@@ -105,3 +108,13 @@ text = "NONINFLUENCING"
 
 [node name="NPC_limbs" parent="." instance=ExtResource("5_l1475")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51808, 1.08916, 31.6962)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_jtnp0")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Area3D"]
