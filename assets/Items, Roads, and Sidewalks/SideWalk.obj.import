@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bmjw7jlgunjk3"
+path="res://.godot/imported/SideWalk.obj-55bd8f7e9c581f499aa4ac5394f9cee6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SideWalk.obj-55bd8f7e9c581f499aa4ac5394f9cee6.mesh"]
+
+source_file="res://assets/Items, Roads, and Sidewalks/SideWalk.obj"
+dest_files=["res://.godot/imported/SideWalk.obj-55bd8f7e9c581f499aa4ac5394f9cee6.mesh", "res://.godot/imported/SideWalk.obj-55bd8f7e9c581f499aa4ac5394f9cee6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
