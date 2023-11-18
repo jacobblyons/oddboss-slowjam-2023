@@ -11,6 +11,7 @@ public partial class PlayerFPSController : CharacterBody3D
     [Export] public float decelFactor;
     [Export] public float jumpForce;
     [Export] public float mouseSensitivity;
+    [Export] public float controllerSensitivity;
     [Export] public float hitstunTime;
     [Export] public float hitstunKnockbackForce;
 
@@ -18,7 +19,8 @@ public partial class PlayerFPSController : CharacterBody3D
     public PlayerHitState hitState;
 
     private Vector2 moveInput;
-    private Vector2 mouseInput;
+    private Vector2 lookInput;  // Gamepad
+    private Vector2 mouseInput; // If using mouse
     private static float gravity = -9.8f;       //TODO: read from proj settings.
 
     // Node references.
@@ -31,6 +33,7 @@ public partial class PlayerFPSController : CharacterBody3D
         moveState = PlayerMoveState.DEFAULT;
         hitState = PlayerHitState.DEFAULT;
         moveInput = Vector2.Zero;
+        lookInput = Vector2.Zero;
 
         //Input.MouseMode = Input.MouseModeEnum.Captured;
         fpCamera = GetNode<Node3D>("Camera3D");
@@ -106,6 +109,16 @@ public partial class PlayerFPSController : CharacterBody3D
                 fpCamera.Rotation.Z
             );
         }
+        else if (lookInput != Vector2.Zero) {
+            RotateY((-lookInput.X * controllerSensitivity) / 180f);
+            float change = -lookInput.Y * controllerSensitivity;
+            fpCamera.RotateX(change / 180f);
+            fpCamera.Rotation = new Vector3(
+                Mathf.Clamp(fpCamera.Rotation.X, -0.99f, 0.99f),
+                fpCamera.Rotation.Y,
+                fpCamera.Rotation.Z
+            );
+        }
     }
 
     // Update any varaibles that are responsible for tracking player input.
@@ -118,6 +131,12 @@ public partial class PlayerFPSController : CharacterBody3D
         if (moveInput.Length() > 0f) {
             moveInput = moveInput.Normalized();
         }
+
+        l = Input.GetActionStrength("look_left");
+        r = Input.GetActionStrength("look_right");
+        u = Input.GetActionStrength("look_up");
+        d = Input.GetActionStrength("look_down");
+        lookInput = new Vector2(l * -1f + r, u * -1f + d);
     }
 
     public override void _Input(InputEvent @event) {
