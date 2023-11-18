@@ -47,7 +47,7 @@ public partial class PlayerFPSController : CharacterBody3D
         UpdateAim();
 
         // Update weapon interaction.
-        if (Input.IsActionPressed("shoot")) {
+        if (Input.IsActionPressed("shoot") && hitState != PlayerHitState.HITSTUN) {
             friendGun.PullTrigger();
         }
         else {
@@ -140,6 +140,7 @@ public partial class PlayerFPSController : CharacterBody3D
         moveState = PlayerMoveState.NONINFLUENCING;
         hitState = PlayerHitState.HITSTUN;
         Velocity = (Position - body.Position).Normalized() * hitstunKnockbackForce;
+        friendGun.ReleaseTrigger();
         worldServer.EmitSignal("BrainWashReleased");
         await ToSignal(GetTree().CreateTimer(hitstunTime), "timeout");
         moveState = PlayerMoveState.DEFAULT;

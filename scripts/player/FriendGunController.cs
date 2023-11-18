@@ -37,7 +37,7 @@ public partial class FriendGunController : Node
             DecrementCharge(fdelta);
         }
         else if (fireState == FireState.MAXCHARGE) {
-            timeHeldAtMaxCharge += (float)delta;
+            timeHeldAtMaxCharge += fdelta;
         }
 
         UpdateTempChargeEffect(fdelta);
@@ -67,18 +67,20 @@ public partial class FriendGunController : Node
     public void EndCharge() {
         if (fireState == FireState.CHARGING || fireState == FireState.MAXCHARGE) {
             fireState = FireState.DECHARGING;
+            timeHeldAtMaxCharge = 0f;
         }
     }
 
     public void ResetCharge() {
         charge = 0f;
         fireState = FireState.DEFAULT;
+        timeHeldAtMaxCharge = 0f;
     }
 
     private void IncrementCharge(float fdelta) {
         charge += fdelta;
         if (charge > chargeTime / ((float)upgradeData.chargeLvl + 1f)) {
-            //charge = chargeTime;
+            charge = chargeTime;
             fireState = FireState.MAXCHARGE;
         }
     }
@@ -121,6 +123,8 @@ public partial class FriendGunController : Node
             newProj.Transform = tempChargeEffect.GlobalTransform;
             newProj.RotateY(-0.14f);
         }
+
+        timeHeldAtMaxCharge = 0f;
         ResetCharge();
     }
 
@@ -129,7 +133,7 @@ public partial class FriendGunController : Node
         float minScale = 0.01f;
         float maxScale = 0.5f;
         float newScale = minScale + (maxScale - minScale) * (charge / (chargeTime / ((float)upgradeData.chargeLvl + 1f)));
-        tempChargeEffect.Scale = new Vector3(1f,1f,1f) * newScale;
+        tempChargeEffect.Scale = new Vector3(1f, 1f, 1f) * newScale;
 
         // Update rotation.
         if (fireState == FireState.CHARGING) {
@@ -137,6 +141,7 @@ public partial class FriendGunController : Node
         }
         else if (fireState == FireState.MAXCHARGE) {
             tempChargeEffect.RotateZ(dechargeEffectRotationSpeed * fdelta);
+            tempChargeEffect.Scale = new Vector3(1f + (0.1f * Mathf.Sin(timeHeldAtMaxCharge * 50)), 1f, 1f) * newScale;
         }
     }
 }
