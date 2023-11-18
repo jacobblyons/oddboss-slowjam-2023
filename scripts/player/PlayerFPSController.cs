@@ -140,7 +140,7 @@ public partial class PlayerFPSController : CharacterBody3D
         moveState = PlayerMoveState.NONINFLUENCING;
         hitState = PlayerHitState.HITSTUN;
         Velocity = (Position - body.Position).Normalized() * hitstunKnockbackForce;
-        worldServer.EmitSignal(worldServer.BrainWashReleasedEventHandler);
+        worldServer.EmitSignal("BrainWashReleased");
         await ToSignal(GetTree().CreateTimer(hitstunTime), "timeout");
         moveState = PlayerMoveState.DEFAULT;
         hitState = PlayerHitState.DEFAULT;
