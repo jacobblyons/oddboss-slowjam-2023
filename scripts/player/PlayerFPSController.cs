@@ -34,6 +34,8 @@ public partial class PlayerFPSController : CharacterBody3D
         Input.MouseMode = Input.MouseModeEnum.Captured;
         fpCamera = GetNode<Node3D>("Camera3D");
         friendGun = fpCamera.GetNode<FriendGunController>("Gun");
+        var worldServer = GetNode<WorldServer>("/root/WorldServer");
+        worldServer.RegisterPlayer(this);
         hurtBox = GetNode<Area3D>("HurtBox");
         hurtBox.AreaEntered += PlayHurtAnimation;
     }

@@ -7,6 +7,9 @@ public partial class NpcController : RigidBody3D
 {
     [Export]
     public float walkSpeed = 2.0f;
+    
+    [Export]
+    public float brainwashedSpeed = 2.0f;
     [Export]
     public float runSpeed = 5.0f;
     [Export]
@@ -14,7 +17,9 @@ public partial class NpcController : RigidBody3D
     [Export]
     public float gotHitImpulse = 50f;
     [Export]
-    public float lifePostSplatter = 1f;
+    public float lifePostSplatterInSec = 1f;
+    [Export]
+    public float stunTimeInSec = 3f;
 
     [Export]
     public float stamina = 2.0f;
@@ -36,6 +41,8 @@ public partial class NpcController : RigidBody3D
     private NpcState state = NpcState.Traveling;
     private float timeSinceBecameFearful = 0.0f;
     private float timeSinceSplatted = 0.0f;
+    private float timeSinceShot = 0.0f;
+    private WorldServer worldServer;
 
 
     public override void _Ready()
@@ -52,8 +59,9 @@ public partial class NpcController : RigidBody3D
         bulletHitBoundary.AreaEntered += OnBulletHit;
         playerDetectionBoundary.BodyEntered += OnPlayerDetectedInBounds;
         playerDetectionBoundary.BodyExited += OnPlayerLeftBounds;
-
-        //GlobalRotationDegrees = new Vector3(0, GlobalRotationDegrees.Y, 0);
+        worldServer = GetNode<WorldServer>("/root/WorldServer");
+        worldServer.BrainWashReleased += OnBrainwashReleased;
+        
         // Make sure to not await during _Ready.
         Callable.From(ActorSetup).CallDeferred();
     }
@@ -76,12 +84,23 @@ public partial class NpcController : RigidBody3D
 
         if (state == NpcState.Splattered)
         {
-            if (Time.GetTicksMsec() - timeSinceSplatted > lifePostSplatter * 1000)
+            if (Time.GetTicksMsec() - timeSinceSplatted > lifePostSplatterInSec * 1000)
             {
                 QueueFree();
             }
 
             return;
+        }
+
+        if (state == NpcState.Stunned)
+        {
+            if (Time.GetTicksMsec() - timeSinceShot > stunTimeInSec * 1000)
+            {
+                state = NpcState.Brainwashed;
+                // remove axis lock
+                this.AxisLockAngularX = true;
+                this.AxisLockAngularZ = true;
+            }
         }
 
         navigationAgent.TargetPosition = GetTargetPosition();
@@ -96,6 +115,12 @@ public partial class NpcController : RigidBody3D
             case NpcState.Fearful:
             case NpcState.FleeingFromAlien:
                 velocity = dir * runSpeed;
+                break;
+            case NpcState.Brainwashed:
+                velocity = dir * brainwashedSpeed;
+                break;
+            case NpcState.Stunned:
+                velocity = Vector3.Zero;
                 break;
             case NpcState.Traveling:
             case NpcState.Loitering:
@@ -128,10 +153,17 @@ public partial class NpcController : RigidBody3D
                 return GetDistanceFromAlien() > distanceBeforeAbandoningEscape // if alien is far enough away, go to escape
                             ? GetEscapeTarget() ?? GetTargetAwayFromAlien()
                             : GetTargetAwayFromAlien();
+            case NpcState.Brainwashed:
+                return GetBrainwashedTarget();
             case NpcState.Traveling:
             default:
                 return originalTarget.GlobalPosition;
         }
+    }
+
+    private Vector3 GetBrainwashedTarget()
+    {
+        return worldServer.PlayerRef.GlobalPosition;
     }
 
     private Vector3 GetTargetAwayFromAlien()
@@ -159,7 +191,7 @@ public partial class NpcController : RigidBody3D
     #region Events
     private void OnPlayerDetectedInBounds(Node3D body)
     {
-        if(state == NpcState.Splattered)
+        if(state == NpcState.Splattered || state == NpcState.Brainwashed)
             return;
 
         if (body is not PlayerFPSController)
@@ -174,7 +206,7 @@ public partial class NpcController : RigidBody3D
 
     private void OnPlayerLeftBounds(Node3D body)
     {
-        if(state == NpcState.Splattered)
+        if(state == NpcState.Splattered || state == NpcState.Brainwashed)
             return;
             
         if (body is not PlayerFPSController)
@@ -190,7 +222,7 @@ public partial class NpcController : RigidBody3D
 
     private void OnEscapeReached(Node body)
     {
-        if(state == NpcState.Splattered)
+        if(state == NpcState.Splattered || state == NpcState.Brainwashed)
             return;
             
         if (state != NpcState.Fearful && state != NpcState.FleeingFromAlien)
@@ -221,6 +253,9 @@ public partial class NpcController : RigidBody3D
 
     private void OnBulletHit(Node3D body)
     {
+        if (state == NpcState.Splattered)
+            return;
+
         GD.Print("Ouchie!");
         var direction = (GlobalPosition - body.GlobalPosition).Normalized();
 
@@ -232,11 +267,13 @@ public partial class NpcController : RigidBody3D
         // send the dude
         this.ApplyCentralImpulse(direction * gotHitImpulse);
 
-        if (state != NpcState.Splattered)
-        {
-            state = NpcState.Splattered;
-            timeSinceSplatted = Time.GetTicksMsec();
-        }
+        timeSinceShot = Time.GetTicksMsec();
+        state = NpcState.Stunned;
+    }
+
+    private void OnBrainwashReleased()
+    {
+        state = NpcState.FleeingFromAlien;
     }
     #endregion
 
