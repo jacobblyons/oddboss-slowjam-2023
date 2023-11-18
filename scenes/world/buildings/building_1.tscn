@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://wd6cabf4tt1d"]
+[gd_scene load_steps=6 format=3 uid="uid://wd6cabf4tt1d"]
 
 [ext_resource type="Texture2D" uid="uid://blgfi6dt2a1xp" path="res://assets/buildings/Building 1.png" id="1_caiwb"]
 [ext_resource type="ArrayMesh" uid="uid://ji61h37qmcw7" path="res://assets/buildings/Building 1.obj" id="2_xak27"]
+[ext_resource type="PackedScene" uid="uid://4lmpndbvo63j" path="res://scenes/world/door.tscn" id="3_t3fjj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgpwa"]
 albedo_texture = ExtResource("1_caiwb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvflm"]
+size = Vector3(10.1789, 24, 24.85)
 
 [node name="building1" type="Node3D"]
 
@@ -15,3 +19,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.03879, 0, -12.2495)
 material_override = SubResource("StandardMaterial3D_tgpwa")
 mesh = ExtResource("2_xak27")
 skeleton = NodePath("../..")
+
+[node name="door" parent="Pivot" instance=ExtResource("3_t3fjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53757, 0, 24.3825)
+
+[node name="StaticBody" type="StaticBody3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82712, 0, 8.0022)
+
+[node name="CollisionBox" type="CollisionShape3D" parent="Pivot/StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896095, 12.0215, 4.54941)
+shape = SubResource("BoxShape3D_yvflm")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -3.43214, 9.89375, 26.125)
+spot_range = 15.0
+spot_attenuation = 0.287175
+spot_angle_attenuation = 0.25
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -7.91606, 8.83429, 25.2811)
+spot_range = 15.0
+spot_attenuation = 0.287175
+spot_angle_attenuation = 0.25

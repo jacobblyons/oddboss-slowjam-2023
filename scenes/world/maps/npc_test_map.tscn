@@ -1,7 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dewt2msafwsgb"]
+[gd_scene load_steps=17 format=3 uid="uid://dewt2msafwsgb"]
 
-[ext_resource type="PackedScene" uid="uid://cboew4tnsvyhn" path="res://scenes/world/buildings/building_0.tscn" id="1_cbe7n"]
 [ext_resource type="PackedScene" uid="uid://fbkfocwr20vt" path="res://scenes/npc/types/taxi_npc.tscn" id="2_nevbj"]
+[ext_resource type="PackedScene" uid="uid://b23485yjb7y2k" path="res://scenes/npc/types/car_npc.tscn" id="3_i5f1d"]
+[ext_resource type="PackedScene" uid="uid://wd6cabf4tt1d" path="res://scenes/world/buildings/building_1.tscn" id="3_phqy0"]
+[ext_resource type="PackedScene" uid="uid://cgjxg6t87c735" path="res://scenes/world/buildings/building_2.tscn" id="4_31k6g"]
+[ext_resource type="PackedScene" uid="uid://67mx3ffq8687" path="res://scenes/world/buildings/building_9.tscn" id="5_jsoo2"]
+[ext_resource type="PackedScene" uid="uid://csabb50trhlb" path="res://scenes/world/buildings/building_4.tscn" id="6_riqco"]
+[ext_resource type="PackedScene" uid="uid://ecyffvft5pw" path="res://scenes/world/buildings/building_5.tscn" id="7_g57uw"]
+[ext_resource type="PackedScene" uid="uid://bae0jbdskhouq" path="res://scenes/world/buildings/building_7.tscn" id="8_skmhx"]
+[ext_resource type="PackedScene" uid="uid://2x744ylah8uq" path="res://scenes/world/roads/sidewalk_road.tscn" id="9_o65l8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gjxoe"]
 sky_top_color = Color(0, 0.262745, 0.321569, 1)
@@ -25,7 +32,7 @@ volumetric_fog_albedo = Color(0.823529, 0.333333, 0.266667, 1)
 albedo_color = Color(0.87451, 0.756863, 0.65098, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7ch7"]
-size = Vector3(100, 1, 100)
+size = Vector3(180, 1, 186)
 
 [sub_resource type="Curve3D" id="Curve3D_6efrx"]
 _data = {
@@ -46,34 +53,16 @@ point_count = 21
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j7vgp")
 
-[node name="Building" parent="." instance=ExtResource("1_cbe7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9098, 0, 16.9753)
-
-[node name="Building5" parent="." instance=ExtResource("1_cbe7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9098, 0, -26.8592)
-
-[node name="Building6" parent="." instance=ExtResource("1_cbe7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7604, 0, -26.8592)
-
-[node name="Building2" parent="." instance=ExtResource("1_cbe7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.1428, 0, -32.7283)
-
-[node name="Building3" parent="." instance=ExtResource("1_cbe7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2704, 0, 16.4155)
-
-[node name="Building4" parent="." instance=ExtResource("1_cbe7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9302, 0, 17.1859)
-
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00140381, 0.0441437, -0.00341797)
-collision_layer = 1048577
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(100, 1, 100)
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00140381, -0.455856, -0.00341797)
+size = Vector3(180, 1, 186)
 material = SubResource("StandardMaterial3D_8lbpx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+[node name="Ground" type="StaticBody3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 1048577
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_d7ch7")
 
@@ -89,8 +78,59 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 curve = SubResource("Curve3D_6efrx")
 
 [node name="PathFollow3D" parent="Routes/route-1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, -0.904663, 2)
+transform = Transform3D(-4.37113e-08, 0, -0.999998, 0, 0.999999, 0, 0.999999, 0, -4.37113e-08, -25, -0.904663, 2)
+progress = 198.936
+
+[node name="TaxiPathFollow" parent="Routes/route-1" instance=ExtResource("2_nevbj")]
+transform = Transform3D(0.025548, 0, 0.999637, 0, 0.999984, 0, -0.999639, 0, 0.0255479, -14.8033, -0.827744, -11.3763)
+progress = 135.416
 
 [node name="route-2" type="Path3D" parent="Routes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.614, 0)
 curve = SubResource("Curve3D_1htsb")
+
+[node name="CarPathFollow" parent="Routes/route-2" instance=ExtResource("3_i5f1d")]
+transform = Transform3D(-0.149993, 0, 0.988686, 0, 0.999999, 0, -0.988686, 0, -0.149993, 9.51215, -0.637449, -15.3236)
+progress = 35.9843
+
+[node name="block1" type="Node3D" parent="."]
+
+[node name="buildings" type="Node3D" parent="block1"]
+
+[node name="building1" parent="block1/buildings" instance=ExtResource("3_phqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -49)
+
+[node name="building2" parent="block1/buildings" instance=ExtResource("4_31k6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, -61)
+
+[node name="building_9" parent="block1/buildings" instance=ExtResource("5_jsoo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33252, 0, -48.7612)
+
+[node name="building4" parent="block1/buildings" instance=ExtResource("6_riqco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -46)
+
+[node name="building5" parent="block1/buildings" instance=ExtResource("7_g57uw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, -46)
+
+[node name="building7" parent="block1/buildings" instance=ExtResource("8_skmhx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47, 0, 8.74228e-08)
+
+[node name="building8" parent="block1/buildings" instance=ExtResource("8_skmhx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.15985, 0, -3.39551e-06)
+
+[node name="sidewalks" type="Node3D" parent="block1"]
+
+[node name="sidwalk_road" parent="block1/sidewalks" instance=ExtResource("9_o65l8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8212, 0, -24)
+
+[node name="sidwalk_road2" parent="block1/sidewalks" instance=ExtResource("9_o65l8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -24)
+
+[node name="sidwalk_road3" parent="block1/sidewalks" instance=ExtResource("9_o65l8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1224, 0, -24)
+
+[node name="sidwalk_road4" parent="block1/sidewalks" instance=ExtResource("9_o65l8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79465, 0, -24)
+
+[node name="sidwalk_road5" parent="block1/sidewalks" instance=ExtResource("9_o65l8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6158, 0, -24)

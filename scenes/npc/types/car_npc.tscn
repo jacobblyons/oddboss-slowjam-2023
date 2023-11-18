@@ -15,12 +15,14 @@ albedo_color = Color(0.439216, 0.439216, 0.439216, 1)
 size = Vector3(4.13207, 4.24312, 1)
 
 [node name="CarPathFollow" type="PathFollow3D"]
+rotation_mode = 1
 
-[node name="Car" type="AnimatableBody3D" parent="."]
+[node name="Car" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("Path")]
 collision_layer = 9
 physics_material_override = SubResource("PhysicsMaterial_iohd0")
 sync_to_physics = false
 script = ExtResource("1_ux8p4")
+Path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Car"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
