@@ -105,6 +105,28 @@ text = "INFLUENCING"
 layout_mode = 2
 text = "NONINFLUENCING"
 
+[node name="Weapon Upgrades" type="Label" parent="DebugMenu"]
+layout_mode = 2
+text = "Player Move State"
+
+[node name="Btn_IncWeaponCharge" type="Button" parent="DebugMenu"]
+layout_mode = 2
+text = "Charge +"
+
+[node name="Btn_DecWeaponCharge" type="Button" parent="DebugMenu"]
+layout_mode = 2
+text = "Charge -
+"
+
+[node name="Btn_IncWeaponPower" type="Button" parent="DebugMenu"]
+layout_mode = 2
+text = "Power +"
+
+[node name="Btn_DecWeaponPower" type="Button" parent="DebugMenu"]
+layout_mode = 2
+text = "Power -
+"
+
 [node name="NPC_limbs" parent="." instance=ExtResource("5_l1475")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
 
