@@ -4,5 +4,7 @@ public enum NpcState
     Traveling,
     FleeingFromAlien,
     Fearful,
-    Splattered
+    Splattered,
+    Stunned,
+    Brainwashed
 }

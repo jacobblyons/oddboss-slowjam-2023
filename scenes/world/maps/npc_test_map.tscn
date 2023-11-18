@@ -1,7 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://dewt2msafwsgb"]
+[gd_scene load_steps=13 format=3 uid="uid://dewt2msafwsgb"]
 
-[ext_resource type="PackedScene" uid="uid://fbkfocwr20vt" path="res://scenes/npc/types/taxi_npc.tscn" id="2_nevbj"]
-[ext_resource type="PackedScene" uid="uid://b23485yjb7y2k" path="res://scenes/npc/types/car_npc.tscn" id="3_i5f1d"]
 [ext_resource type="PackedScene" uid="uid://wd6cabf4tt1d" path="res://scenes/world/buildings/building_1.tscn" id="3_phqy0"]
 [ext_resource type="PackedScene" uid="uid://cgjxg6t87c735" path="res://scenes/world/buildings/building_2.tscn" id="4_31k6g"]
 [ext_resource type="PackedScene" uid="uid://67mx3ffq8687" path="res://scenes/world/buildings/building_9.tscn" id="5_jsoo2"]
@@ -34,20 +32,6 @@ albedo_color = Color(0.87451, 0.756863, 0.65098, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7ch7"]
 size = Vector3(180, 1, 186)
 
-[sub_resource type="Curve3D" id="Curve3D_6efrx"]
-_data = {
-"points": PackedVector3Array(-5, 0, 0, 5, 0, 0, -25, -0.904663, 2, 0, 0, 0, 0, 0, 0, -13, -0.904663, 2, 0, 0, 0, 0, 0, 0, 13.2375, -0.654663, 1.5974, -3.16524, 0, 4.39615, 3.16524, 0, -4.39615, 26, -0.904663, 2, 0, 0, 0, 0, 0, 0, 41, -0.904663, -18, 5.01162, 0, 3.86862, -5.01162, 0, -3.86862, 17, -0.904663, -19, 6, 0, -3, -6, 0, 3, -1, -0.75, -13, 0, 0, 0, 0, 0, 0, -24, -0.904663, -12, 5, 0, -1, -5, 0, 1, -41, -0.75, -12, -3, 0, -3, 3, 0, 3, -45, -0.75, 2, 0, 0, 0, 0, 0, 0, -34, -0.904663, 4, -3, 0, 0, 3, 0, 0, -25, -0.904663, 2),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 12
-
-[sub_resource type="Curve3D" id="Curve3D_1htsb"]
-_data = {
-"points": PackedVector3Array(3.22173, 0, 3.42416, -3.22173, 0, -3.42416, 45, -0.268663, -18, 0, 0, 0, 0, 0, 0, 14.7704, -0.605835, -15.8217, 1.41739, 0, -1.32708, -1.41739, 0, 1.32708, 5.70345, -0.654663, -14.1672, 0.425161, 0, -2.07561, -0.425161, 0, 2.07561, 3, -0.268663, -5, 0, 0, 0, 0, 0, 0, -1, -0.788296, 24, 1.55499, 0, -1.9504, -1.55499, 0, 1.9504, -2, -0.788296, 30, 0, 0, 0, 0, 0, 0, -8, -0.788296, 30, 0, 0, 0, 0, 0, 0, -31, -0.788296, 30, 2.31295, 0, 1.52671, -2.31295, 0, -1.52671, -37, -0.788296, 30, 0, 0, 0, 0, 0, 0, -38.6415, -0.654663, 24.4126, 0, 0, 0, 0, 0, 0, -36, -0.268663, -32, -1.22129, 0, 1.99571, 1.22129, 0, -1.99571, -35, -0.268663, -39, 0, 0, 0, 0, 0, 0, -29.8579, -0.654663, -41.1214, 0, 0, 0, 0, 0, 0, -7.80608, -0.654663, -41.2322, -1.47584, 0, -1.42758, 1.47584, 0, 1.42758, -0.215389, -0.654663, -40.124, 0, 0, 0, 0, 0, 0, 1.16977, -0.654663, -31.5914, 0, 0, 0, 0, 0, 0, 1.50868, -0.56665, -10.9422, -1.39953, 0, -2.08993, 1.39953, 0, 2.08993, -2, -0.268663, -3, -3.26192, -0.108398, -0.745438, 3.26192, 0.108398, 0.745438, 1, -0.268663, 6, -3.73364, 0, 1.44618, 3.73364, 0, -1.44618, 45, -0.268663, 3, 2.52603, 0, 6.21877, -2.52603, 0, -6.21877, 45, -0.268663, -18),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 21
-
 [node name="Map" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -69,29 +53,6 @@ shape = SubResource("BoxShape3D_d7ch7")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.839032, -0.431187, 0.331819, 0, 0.609869, 0.792502, -0.544083, -0.664935, 0.511699, 4.52397, 15.3271, 17.2132)
 light_color = Color(0.92549, 0.741176, 0.627451, 1)
-
-[node name="Routes" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="route-1" type="Path3D" parent="Routes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
-curve = SubResource("Curve3D_6efrx")
-
-[node name="PathFollow3D" parent="Routes/route-1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(-4.37113e-08, 0, -0.999998, 0, 0.999999, 0, 0.999999, 0, -4.37113e-08, -25, -0.904663, 2)
-progress = 198.936
-
-[node name="TaxiPathFollow" parent="Routes/route-1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(0.025548, 0, 0.999637, 0, 0.999984, 0, -0.999639, 0, 0.0255479, -14.8033, -0.827744, -11.3763)
-progress = 135.416
-
-[node name="route-2" type="Path3D" parent="Routes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.614, 0)
-curve = SubResource("Curve3D_1htsb")
-
-[node name="CarPathFollow" parent="Routes/route-2" instance=ExtResource("3_i5f1d")]
-transform = Transform3D(-0.149993, 0, 0.988686, 0, 0.999999, 0, -0.988686, 0, -0.149993, 9.51215, -0.637449, -15.3236)
-progress = 35.9843
 
 [node name="block1" type="Node3D" parent="."]
 

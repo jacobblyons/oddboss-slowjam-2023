@@ -5,11 +5,17 @@ using System.Linq;
 
 public partial class WorldServer : Node
 {
+    [Signal]
+    public delegate void BrainWashReleasedEventHandler();
+    
     [Export]
     public int doorCount {get => targets.Count; set { } }
 
     [Export]
     public int spawnerCount {get => spawners.Count; set { } }
+
+    [Export]
+    public Node3D PlayerRef {get; set;}
 
     [Export]
     public float npcSpawnPeriodInSeconds = .5f;
@@ -43,6 +49,11 @@ public partial class WorldServer : Node
                 spawners.Values.ToList()[spawnIndex].Spawn(door);
             lastSpawnTime = Time.GetTicksMsec();
         }
+    }
+
+    public void RegisterPlayer(Node3D player)
+    {
+        PlayerRef = player;
     }
 
     public void RegisterSpawner(SpawnerNode spawner)
