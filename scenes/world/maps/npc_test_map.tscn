@@ -39,30 +39,12 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(0.823529, 0.333333, 0.266667, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d7ch7"]
-size = Vector3(180, 1, 186)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lbpx"]
-albedo_color = Color(0.87451, 0.756863, 0.65098, 1)
 [sub_resource type="Curve3D" id="Curve3D_7v47x"]
 
 [node name="Map" type="Node3D"]
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3spis")
-
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00140381, 0.0441437, -0.00341797)
-collision_layer = 1114111
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_d7ch7")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(180, 1, 186)
-material = SubResource("StandardMaterial3D_8lbpx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.839032, -0.431187, 0.331819, 0, 0.609869, 0.792502, -0.544083, -0.664935, 0.511699, 4.52397, 15.3271, 17.2132)

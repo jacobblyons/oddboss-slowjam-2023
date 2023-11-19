@@ -57,6 +57,7 @@ public partial class NpcController : RigidBody3D
 
 		escapeDetectionBoundary = GetNode<Area3D>("EscapeDetectionBoundary");
 		escapeReachedBoundary = GetNode<Area3D>("EscapeInReachBoundary");
+		escapeReachedBoundary.AreaEntered += OnEscapeReached;
 		partyReachedBoundary = GetNode<Area3D>("PartyBoundary");
 		partyReachedBoundary.AreaEntered += OnEnterPartyZone;
 		playerDetectionBoundary = GetNode<Area3D>("PlayerDetectionBoundary");
@@ -257,12 +258,13 @@ public partial class NpcController : RigidBody3D
 
 	private void OnEscapeReached(Node body)
 	{
+		GD.Print("NPC: escape reached");
 		if (state == NpcState.Splattered || 
 			state == NpcState.Stunned || 
 			state == NpcState.Brainwashed ||
 			state == NpcState.Traveling)
 			return;
-
+		
 		GD.Print("NPC: Escaped");
 		DestroyMe();
 
