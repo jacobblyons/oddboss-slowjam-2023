@@ -19,8 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://bjrya11aqbh7o" path="res://scenes/world/roads/parkinglot_02.tscn" id="18_5sill"]
 [ext_resource type="PackedScene" uid="uid://dk71cx2p3qaj1" path="res://scenes/world/roads/sidewalk.tscn" id="20_3s1i1"]
 [ext_resource type="PackedScene" uid="uid://cb4nbdgk7giav" path="res://scenes/world/roads/Rd_dbl_str_02.tscn" id="20_j0qrn"]
+[ext_resource type="Script" path="res://scripts/world/DogSpawner.cs" id="21_guj4d"]
 [ext_resource type="PackedScene" uid="uid://cuyxtxoyhi1ap" path="res://scenes/npc/types/dog_npc.tscn" id="21_urndf"]
 [ext_resource type="PackedScene" uid="uid://ckxi48ksino4p" path="res://scenes/world/roads/Rd_dbl_str_03.tscn" id="21_xea0o"]
+[ext_resource type="PackedScene" uid="uid://cwsngktyyvi8k" path="res://scenes/npc/types/pathfollow.tscn" id="23_kpcud"]
 [ext_resource type="PackedScene" uid="uid://6pm17b8ccreu" path="res://scenes/world/objects/bench.tscn" id="22_vwe1r"]
 [ext_resource type="PackedScene" uid="uid://bg5g1uyg5w67l" path="res://scenes/world/objects/bus stop.tscn" id="23_0penf"]
 [ext_resource type="PackedScene" uid="uid://d0jqovhhq3f5h" path="res://scenes/world/objects/lamp.tscn" id="24_tn25v"]
@@ -475,10 +477,15 @@ progress = 173.899
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.390701, 0.716129, 15.6539)
 
 [node name="PawPatrol" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.438415, 0)
 
 [node name="Path3D" type="Path3D" parent="PawPatrol"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18675, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04535, 0)
 curve = SubResource("Curve3D_ap3wt")
+script = ExtResource("21_guj4d")
+DogScene = ExtResource("21_urndf")
+PathFollowScene = ExtResource("23_kpcud")
+spawnPeriodInSeconds = 0.5
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PawPatrol/Path3D"]
 transform = Transform3D(-0.999949, 4.77871e-07, 0.0100958, 4.79163e-07, 1, 1.25562e-07, -0.0100958, 1.30393e-07, -0.999949, -30.784, 3.55686e-06, 50.2747)
