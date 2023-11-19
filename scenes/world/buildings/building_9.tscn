@@ -37,10 +37,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 21, 12.5)
 shape = SubResource("BoxShape3D_5a4wk")
 
 [node name="door" parent="Pivot" instance=ExtResource("5_gnvbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33757, 0.208252, 26.1845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33757, 0.508252, 26.9845)
 
 [node name="door2" parent="Pivot" instance=ExtResource("5_gnvbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7376, 0.208252, 26.1845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7376, 0.508252, 26.9845)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.5, 11.7, 25.5)

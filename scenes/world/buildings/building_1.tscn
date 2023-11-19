@@ -21,7 +21,7 @@ mesh = ExtResource("2_xak27")
 skeleton = NodePath("../..")
 
 [node name="door" parent="Pivot" instance=ExtResource("3_t3fjj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53757, 0.208252, 25.6845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53757, 0.208252, 26.6845)
 
 [node name="StaticBody" type="StaticBody3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82712, 0, 8.0022)

@@ -28,25 +28,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 shape = SubResource("BoxShape3D_du2fh")
 
 [node name="door" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83757, 0.277838, 25.6845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83757, 0.277838, 26.6845)
 
 [node name="door2" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76243, 0.208252, 25.6845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76243, 0.208252, 26.6845)
 
 [node name="door5" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.76243, 0.277838, -25.7155)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.76243, 0.277838, -26.7155)
 
 [node name="door6" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.83757, 0.208252, -25.7155)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.83757, 0.208252, -26.7155)
 
 [node name="door3" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.9624, 0.277838, 2.7845)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9624, 0.277838, 2.7845)
 
 [node name="door4" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.9624, 0.208252, -2.8155)
-
-[node name="door7" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -25.7376, 0.277838, -2.8155)
-
-[node name="door8" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -25.7376, 0.208252, 2.7845)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9624, 0.208252, -2.8155)

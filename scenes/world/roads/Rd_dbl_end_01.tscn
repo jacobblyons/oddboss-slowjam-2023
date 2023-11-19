@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxtqj75u6m2w1"]
+[gd_scene load_steps=10 format=3 uid="uid://dxtqj75u6m2w1"]
 
 [ext_resource type="Texture2D" uid="uid://dmnfg0nk5tj1y" path="res://assets/Items, Roads, and Sidewalks/Roads1.png" id="1_uvaya"]
 [ext_resource type="ArrayMesh" uid="uid://bbjny8wr5h6g1" path="res://assets/Items, Roads, and Sidewalks/Road1.obj" id="2_gdp21"]
@@ -11,11 +11,20 @@ albedo_texture = ExtResource("1_uvaya")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdhw7"]
 albedo_texture = ExtResource("3_iky3x")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mfdw6"]
+size = Vector3(25.1, 0.45, 5.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ke3er"]
+size = Vector3(25, 0.1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wnt6d"]
+size = Vector3(30.1, 0.45, 5.1)
+
 [node name="sidwalk_road" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.495643, 0, 0)
 
 [node name="Pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.69643, 0, 7.38929)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
 
 [node name="Road1" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
@@ -195,3 +204,57 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 15)
 material_override = SubResource("StandardMaterial3D_tdhw7")
 mesh = ExtResource("4_ksfpr")
 skeleton = NodePath("../..")
+
+[node name="SideWalk11" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_ksfpr")
+skeleton = NodePath("../..")
+
+[node name="SideWalk12" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 10)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_ksfpr")
+skeleton = NodePath("../..")
+
+[node name="SideWalk13" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_ksfpr")
+skeleton = NodePath("../..")
+
+[node name="SideWalk14" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_ksfpr")
+skeleton = NodePath("../..")
+
+[node name="SideWalk15" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -5)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_ksfpr")
+skeleton = NodePath("../..")
+
+[node name="SideWalk16" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -10)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_ksfpr")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.2, -7.5)
+shape = SubResource("BoxShape3D_mfdw6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.05, 17.5)
+shape = SubResource("BoxShape3D_mfdw6")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.05, 5)
+shape = SubResource("BoxShape3D_ke3er")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.5, 0.05, 5)
+shape = SubResource("BoxShape3D_wnt6d")

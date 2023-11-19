@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk71cx2p3qaj1"]
+
+[ext_resource type="Texture2D" uid="uid://d2ou7erwjjvwp" path="res://assets/Items, Roads, and Sidewalks/SideWalk.png" id="3_w5ux8"]
+[ext_resource type="ArrayMesh" uid="uid://bmjw7jlgunjk3" path="res://assets/Items, Roads, and Sidewalks/SideWalk.obj" id="4_53fvb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdhw7"]
+albedo_texture = ExtResource("3_w5ux8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wk6x1"]
+size = Vector3(25.1, 0.45, 5.1)
+
+[node name="sidwalk_road" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.495643, 0, 0)
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0, 7.4)
+
+[node name="SideWalk" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_53fvb")
+skeleton = NodePath("../..")
+
+[node name="SideWalk3" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_53fvb")
+skeleton = NodePath("../..")
+
+[node name="SideWalk5" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_53fvb")
+skeleton = NodePath("../..")
+
+[node name="SideWalk7" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_53fvb")
+skeleton = NodePath("../..")
+
+[node name="SideWalk9" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+material_override = SubResource("StandardMaterial3D_tdhw7")
+mesh = ExtResource("4_53fvb")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.2, -7.5)
+shape = SubResource("BoxShape3D_wk6x1")
