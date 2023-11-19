@@ -34,6 +34,7 @@ public partial class NpcController : RigidBody3D
 	[Export]
 	public float distanceBeforeAbandoningEscape = 5.0f;
 
+	private GameManager gameManager;
 	private NavigationAgent3D navigationAgent;
 	private Area3D playerDetectionBoundary;
 	private Area3D escapeDetectionBoundary;
@@ -54,6 +55,7 @@ public partial class NpcController : RigidBody3D
 	public override void _Ready()
 	{
 		base._Ready();
+		gameManager = GetNode<GameManager>("/root/GameManager");
 		navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 		animationPlayer = GetNode<AnimationPlayer>("Pivot/CharacterMesh/AnimationPlayer");
 		escapeDetectionBoundary = GetNode<Area3D>("EscapeDetectionBoundary");
@@ -339,6 +341,7 @@ public partial class NpcController : RigidBody3D
 		if (state == NpcState.Brainwashed)
 		{
 			GD.Print("NPC: Party Zone Reached");
+			gameManager.AddPartyGoer();
 			DestroyMe();
 		}
 	}
