@@ -21,7 +21,7 @@ mesh = ExtResource("2_xak27")
 skeleton = NodePath("../..")
 
 [node name="door" parent="Pivot" instance=ExtResource("3_t3fjj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53757, 0.708252, 25.0845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53757, 0.208252, 25.6845)
 
 [node name="StaticBody" type="StaticBody3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82712, 0, 8.0022)
@@ -32,13 +32,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896095, 12.0215, 3.36008)
 shape = SubResource("BoxShape3D_yvflm")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -3.43214, 9.89375, 26.125)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.5, 9.7, 23.5)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+light_energy = 2.381
+light_size = 1.12
 spot_range = 15.0
 spot_attenuation = 0.287175
 spot_angle_attenuation = 0.25
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -7.91606, 8.83429, 25.2811)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.4, 9, 23.5)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+light_energy = 2.381
 spot_range = 15.0
 spot_attenuation = 0.287175
 spot_angle_attenuation = 0.25
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93743, 12.851, 24)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+omni_range = 2.09315
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93743, 17.851, 24)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+omni_range = 2.09315
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93743, 21.851, 24)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+omni_range = 2.09315

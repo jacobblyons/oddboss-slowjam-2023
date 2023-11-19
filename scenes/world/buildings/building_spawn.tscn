@@ -1,17 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://ky284upavot3"]
+[gd_scene load_steps=5 format=3 uid="uid://ky284upavot3"]
 
-[ext_resource type="Texture2D" uid="uid://cisisxylb585m" path="res://assets/buildings/SPAWN (Color Revisions Still Needed).png" id="1_l3ku7"]
-[ext_resource type="ArrayMesh" uid="uid://ctc2vyeenke8p" path="res://assets/buildings/SPAWN (Color Revisions Still Needed).obj" id="2_4c1wt"]
+[ext_resource type="Texture2D" uid="uid://bfgr5d3uwnoef" path="res://assets/buildings/⭐️Spawn (Updated).vox.png" id="1_txrun"]
+[ext_resource type="ArrayMesh" uid="uid://bbl25bm5j1kw1" path="res://assets/buildings/⭐️Spawn (Updated).vox.obj" id="2_s73oy"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhjp6"]
-albedo_texture = ExtResource("1_l3ku7")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvice"]
+albedo_texture = ExtResource("1_txrun")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bytcb"]
+size = Vector3(26, 26, 20)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.022, 0, -10.1238)
 
-[node name="Spawn(colorRevisionsStillNeeded)" type="MeshInstance3D" parent="Pivot"]
-material_override = SubResource("StandardMaterial3D_vhjp6")
-mesh = ExtResource("2_4c1wt")
+[node name="⭐️spawn(updated)_vox" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_bvice")
+mesh = ExtResource("2_s73oy")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 12.5, 10)
+shape = SubResource("BoxShape3D_bytcb")

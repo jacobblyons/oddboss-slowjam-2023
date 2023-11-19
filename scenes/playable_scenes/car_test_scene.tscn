@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cek8fjosimqbv"]
 
-[ext_resource type="PackedScene" uid="uid://dewt2msafwsgb" path="res://scenes/world/maps/npc_test_map.tscn" id="2_spxv3"]
+[ext_resource type="PackedScene" uid="uid://dewt2msafwsgb" path="res://scenes/world/maps/npc_test_map_3.tscn" id="2_spxv3"]
 
 [node name="car_test_scene" type="Node3D"]
 

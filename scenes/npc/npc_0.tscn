@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://brddclplrvx5t"]
+
+[ext_resource type="PackedScene" uid="uid://bpkqlr530rdc6" path="res://assets/NPC_0.glb" id="1_1ouxa"]
+
+[node name="NPC_0" instance=ExtResource("1_1ouxa")]
+
+[node name="Character 1_vox-0" parent="Armature/Skeleton3D" index="0"]
+visible = false
+
+[node name="Character 1_vox-1" parent="Armature/Skeleton3D" index="1"]
+visible = false
+
+[node name="Character 1_vox-2" parent="Armature/Skeleton3D" index="2"]
+visible = false
+
+[node name="Character 1_vox-3" parent="Armature/Skeleton3D" index="3"]
+visible = false
+
+[node name="Character 1_vox-4" parent="Armature/Skeleton3D" index="4"]
+visible = false
+
+[node name="Character 1_vox-5" parent="Armature/Skeleton3D" index="5"]
+visible = false
+
+[node name="Character 1_vox-6" parent="Armature/Skeleton3D" index="6"]
+visible = false

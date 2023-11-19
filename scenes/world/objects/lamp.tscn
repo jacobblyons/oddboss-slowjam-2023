@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0jqovhhq3f5h"]
+
+[ext_resource type="Texture2D" uid="uid://cmg5yd6v2vbx8" path="res://assets/Items, Roads, and Sidewalks/Street Lamp.png" id="1_amikn"]
+[ext_resource type="ArrayMesh" uid="uid://5d4d34bppql5" path="res://assets/Items, Roads, and Sidewalks/Street Lamp.obj" id="2_4wrd3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0761f"]
+albedo_texture = ExtResource("1_amikn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ctyww"]
+size = Vector3(1, 15, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2m8m"]
+size = Vector3(1, 1.25, 6.5)
+
+[node name="lamp" type="Node3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -3.5)
+
+[node name="StreetLamp" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_0761f")
+mesh = ExtResource("2_4wrd3")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7, 3.5)
+shape = SubResource("BoxShape3D_ctyww")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.964714, 0.263301, 0, -0.263301, 0.964714, -2.5, 14, 7)
+shape = SubResource("BoxShape3D_u2m8m")

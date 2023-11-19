@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dewt2msafwsgb"]
+[gd_scene load_steps=16 format=3 uid="uid://bs288x3mhpqn7"]
 
 [ext_resource type="PackedScene" uid="uid://fbkfocwr20vt" path="res://scenes/npc/types/taxi_npc.tscn" id="2_nevbj"]
 [ext_resource type="PackedScene" uid="uid://wd6cabf4tt1d" path="res://scenes/world/buildings/building_1.tscn" id="3_phqy0"]

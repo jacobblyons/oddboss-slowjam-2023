@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ced5uier2xdli"]
+[gd_scene load_steps=5 format=3 uid="uid://ced5uier2xdli"]
 
 [ext_resource type="Texture2D" uid="uid://c8u5bb3jgwauj" path="res://assets/buildings/Building 3.png" id="1_lajv8"]
 [ext_resource type="ArrayMesh" uid="uid://32hryuikrcte" path="res://assets/buildings/Building 3.obj" id="2_7c3xf"]
@@ -6,12 +6,21 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tebuj"]
 albedo_texture = ExtResource("1_lajv8")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wcu6"]
+size = Vector3(26, 26, 20)
+
 [node name="building3" type="Node3D"]
 
 [node name="Pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4438, 0, -10.1941)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, -10)
 
 [node name="Building3" type="MeshInstance3D" parent="Pivot"]
 material_override = SubResource("StandardMaterial3D_tebuj")
 mesh = ExtResource("2_7c3xf")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 12.5, 10)
+shape = SubResource("BoxShape3D_3wcu6")

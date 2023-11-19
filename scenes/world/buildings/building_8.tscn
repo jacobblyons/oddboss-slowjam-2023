@@ -1,0 +1,56 @@
+[gd_scene load_steps=14 format=3 uid="uid://bl78xharcpx2i"]
+
+[ext_resource type="Texture2D" uid="uid://dfbbjjpf6sqie" path="res://assets/buildings/⭐️ Building 8.1.png" id="1_7qe6o"]
+[ext_resource type="ArrayMesh" uid="uid://7qccyfuy3q1r" path="res://assets/buildings/⭐️ Building 8.1.obj" id="2_uklir"]
+[ext_resource type="Texture2D" uid="uid://c0f4wsapraoyj" path="res://assets/buildings/⭐️ Building 8.2.png" id="3_3rb62"]
+[ext_resource type="ArrayMesh" uid="uid://di7uyvtxy0eee" path="res://assets/buildings/⭐️ Building 8.2.obj" id="4_h63wk"]
+[ext_resource type="Texture2D" uid="uid://bj14nskg1j0gn" path="res://assets/buildings/⭐️ Building 8.3.png" id="5_ihjt2"]
+[ext_resource type="ArrayMesh" uid="uid://cd0c446rejm1p" path="res://assets/buildings/⭐️ Building 8.3.obj" id="6_fsybu"]
+[ext_resource type="Texture2D" uid="uid://c7hi6mbd68rff" path="res://assets/buildings/⭐️ Building 8.4.png" id="7_x70gs"]
+[ext_resource type="ArrayMesh" uid="uid://b5deux2qyho3q" path="res://assets/buildings/⭐️ Building 8.4.obj" id="8_pwfos"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a4wk"]
+size = Vector3(41.5, 51, 26)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2djk"]
+albedo_texture = ExtResource("1_7qe6o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eidm0"]
+albedo_texture = ExtResource("3_3rb62")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bubpv"]
+albedo_texture = ExtResource("5_ihjt2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3goi"]
+albedo_texture = ExtResource("7_x70gs")
+
+[node name="building_9" type="Node3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 25, 0)
+shape = SubResource("BoxShape3D_5a4wk")
+
+[node name="⭐️Building8_1" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_g2djk")
+mesh = ExtResource("2_uklir")
+skeleton = NodePath("../..")
+
+[node name="⭐️Building8_2" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_eidm0")
+mesh = ExtResource("4_h63wk")
+skeleton = NodePath("../..")
+
+[node name="⭐️Building8_3" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_bubpv")
+mesh = ExtResource("6_fsybu")
+skeleton = NodePath("../..")
+
+[node name="⭐️Building8_4" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_q3goi")
+mesh = ExtResource("8_pwfos")
+skeleton = NodePath("../..")

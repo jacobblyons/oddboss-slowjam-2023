@@ -1,0 +1,121 @@
+[gd_scene load_steps=16 format=3 uid="uid://dewt2msafwsgb"]
+
+[ext_resource type="PackedScene" uid="uid://fbkfocwr20vt" path="res://scenes/npc/types/taxi_npc.tscn" id="2_nevbj"]
+[ext_resource type="PackedScene" uid="uid://wd6cabf4tt1d" path="res://scenes/world/buildings/building_1.tscn" id="3_phqy0"]
+[ext_resource type="PackedScene" uid="uid://cgjxg6t87c735" path="res://scenes/world/buildings/building_2.tscn" id="4_31k6g"]
+[ext_resource type="PackedScene" uid="uid://67mx3ffq8687" path="res://scenes/world/buildings/building_9.tscn" id="5_jsoo2"]
+[ext_resource type="PackedScene" uid="uid://csabb50trhlb" path="res://scenes/world/buildings/building_4.tscn" id="6_riqco"]
+[ext_resource type="PackedScene" uid="uid://ecyffvft5pw" path="res://scenes/world/buildings/building_5.tscn" id="7_g57uw"]
+[ext_resource type="PackedScene" uid="uid://bae0jbdskhouq" path="res://scenes/world/buildings/building_7.tscn" id="8_skmhx"]
+[ext_resource type="PackedScene" uid="uid://bmpm5ry4lygsr" path="res://scenes/world/party_zone.tscn" id="9_c0sld"]
+[ext_resource type="PackedScene" uid="uid://2x744ylah8uq" path="res://scenes/world/roads/sidewalk_road.tscn" id="9_o65l8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_whydk"]
+sky_top_color = Color(0, 0.262745, 0.321569, 1)
+sky_horizon_color = Color(0.603922, 0.47451, 0.462745, 1)
+ground_bottom_color = Color(0.133333, 0.482353, 0.470588, 1)
+ground_horizon_color = Color(0.317647, 0.482353, 0.439216, 1)
+ground_curve = 0.016245
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="Sky_00qdk"]
+sky_material = SubResource("ProceduralSkyMaterial_whydk")
+
+[sub_resource type="Environment" id="Environment_3spis"]
+background_mode = 2
+sky = SubResource("Sky_00qdk")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.823529, 0.333333, 0.266667, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7ch7"]
+size = Vector3(180, 1, 186)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lbpx"]
+albedo_color = Color(0.87451, 0.756863, 0.65098, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_7v47x"]
+_data = {
+"points": PackedVector3Array(-13.7038, 4.88311e-05, 2.92133, 13.7038, -4.88311e-05, -2.92133, -87.1681, 0, -27.7436, -12.9861, 4.88311e-05, -0.308401, 12.9861, -4.88311e-05, 0.308401, -40.3967, 0, -28.8201, 0, 0, 0, 0, 0, 0, 11.7575, 0, -28.7005, -4.93986, 7.32392e-05, -0.784708, 4.93986, -7.32392e-05, 0.784708, 36.9973, 0, -29.4183, 0.443035, 7.32392e-05, -2.33977, -0.443035, -7.32392e-05, 2.33977, 43.696, 0, -24.0354, 4.46138, 4.88311e-05, -1.00959, -4.46138, -4.88311e-05, 1.00959, 37.9542, 0, -19.2506, 0, 0, 0, 0, 0, 0, 13.0733, 0, -19.729, 0, 0, 0, 0, 0, 0, -40.9948, 0, -20.3272, 0, 0, 0, 0, 0, 0, -81.0675, 0, -19.2506, -8.66512, 7.32392e-05, 7.60521, 8.66512, -7.32392e-05, -7.60521, -87.1681, 0, -27.7436),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[node name="Map" type="Node3D"]
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3spis")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00140381, 0.0441437, -0.00341797)
+collision_layer = 1048577
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_d7ch7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(180, 1, 186)
+material = SubResource("StandardMaterial3D_8lbpx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.839032, -0.431187, 0.331819, 0, 0.609869, 0.792502, -0.544083, -0.664935, 0.511699, 4.52397, 15.3271, 17.2132)
+light_color = Color(0.92549, 0.741176, 0.627451, 1)
+
+[node name="block1" type="Node3D" parent="."]
+
+[node name="buildings" type="Node3D" parent="block1"]
+
+[node name="building1" parent="block1/buildings" instance=ExtResource("3_phqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.467, 0, -48.8457)
+
+[node name="building2" parent="block1/buildings" instance=ExtResource("4_31k6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, -61)
+
+[node name="building_9" parent="block1/buildings" instance=ExtResource("5_jsoo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33252, 0, -48.7612)
+
+[node name="building4" parent="block1/buildings" instance=ExtResource("6_riqco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -46)
+
+[node name="building5" parent="block1/buildings" instance=ExtResource("7_g57uw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, -46)
+
+[node name="building7" parent="block1/buildings" instance=ExtResource("8_skmhx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -47, 0, 8.74228e-08)
+
+[node name="building8" parent="block1/buildings" instance=ExtResource("8_skmhx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.15985, 0, -3.39551e-06)
+
+[node name="sidewalks" type="Node3D" parent="block1"]
+
+[node name="sidwalk_road" parent="block1/sidewalks" instance=ExtResource("9_o65l8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8212, 0, -24)
+
+[node name="sidwalk_road2" parent="block1/sidewalks" instance=ExtResource("9_o65l8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -24)
+
+[node name="sidwalk_road3" parent="block1/sidewalks" instance=ExtResource("9_o65l8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1224, 0, -24)
+
+[node name="sidwalk_road4" parent="block1/sidewalks" instance=ExtResource("9_o65l8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79465, 0, -24)
+
+[node name="sidwalk_road5" parent="block1/sidewalks" instance=ExtResource("9_o65l8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6158, 0, -24)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+curve = SubResource("Curve3D_7v47x")
+
+[node name="TaxiPathFollow" parent="Path3D" instance=ExtResource("2_nevbj")]
+transform = Transform3D(0.208492, 0, -0.978024, 0, 1, 0, 0.978024, 0, 0.208492, -87.1681, 0, -27.7436)
+
+[node name="TaxiPathFollow2" parent="Path3D" instance=ExtResource("2_nevbj")]
+transform = Transform3D(0.066543, 0, -0.997782, 0, 1, 0, 0.997782, 0, 0.066543, 14.127, 7.6973e-06, -28.8651)
+progress = 101.421
+
+[node name="party_zone" parent="." instance=ExtResource("9_c0sld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6093, 0.716129, 11.6539)

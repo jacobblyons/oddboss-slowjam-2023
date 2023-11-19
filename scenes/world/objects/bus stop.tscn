@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg5g1uyg5w67l"]
+
+[ext_resource type="Texture2D" uid="uid://blk1h0e4nqshv" path="res://assets/Items, Roads, and Sidewalks/Street Bus Stop.png" id="1_pq7bg"]
+[ext_resource type="ArrayMesh" uid="uid://ctvi4i142y1h3" path="res://assets/Items, Roads, and Sidewalks/Street Bus Stop.obj" id="2_pc6k7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qw0ls"]
+albedo_texture = ExtResource("1_pq7bg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_swuxn"]
+size = Vector3(9, 7, 3.25)
+
+[node name="bus stop" type="Node3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
+
+[node name="StreetBusStop" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_qw0ls")
+mesh = ExtResource("2_pc6k7")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.6, 1.75)
+shape = SubResource("BoxShape3D_swuxn")

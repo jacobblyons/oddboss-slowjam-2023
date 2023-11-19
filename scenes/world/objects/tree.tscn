@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://6gksfywus7qd"]
+
+[ext_resource type="Texture2D" uid="uid://brltvkgg1bni7" path="res://assets/Items, Roads, and Sidewalks/Street Tree.png" id="1_qqhbw"]
+[ext_resource type="ArrayMesh" uid="uid://qfp6qobfo3sx" path="res://assets/Items, Roads, and Sidewalks/Street Tree.obj" id="2_eho0f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63e7q"]
+albedo_texture = ExtResource("1_qqhbw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwx8p"]
+size = Vector3(1, 6.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hg8og"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1ogf"]
+size = Vector3(3.25, 0.25, 3.25)
+
+[node name="tree" type="Node3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, -0.4, -2.4)
+
+[node name="StreetTree" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_63e7q")
+mesh = ExtResource("2_eho0f")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 3.7, 2.4)
+shape = SubResource("BoxShape3D_nwx8p")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 9.5, 2.4)
+shape = SubResource("BoxShape3D_hg8og")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 0.5, 2.45)
+shape = SubResource("BoxShape3D_v1ogf")

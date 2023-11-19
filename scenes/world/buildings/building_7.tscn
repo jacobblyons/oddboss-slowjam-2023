@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bae0jbdskhouq"]
+[gd_scene load_steps=14 format=3 uid="uid://bae0jbdskhouq"]
 
 [ext_resource type="Texture2D" uid="uid://bavnugdpaae3a" path="res://assets/buildings/Building 7.1.png" id="1_ijvts"]
 [ext_resource type="ArrayMesh" uid="uid://bpvpqtjv3gpwb" path="res://assets/buildings/Building 7.1.obj" id="2_85ca8"]
@@ -20,6 +20,9 @@ albedo_texture = ExtResource("5_837ht")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uini2"]
 albedo_texture = ExtResource("7_dbviv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wofis"]
+size = Vector3(41, 41, 25)
 
 [node name="building7" type="Node3D"]
 
@@ -45,3 +48,9 @@ skeleton = NodePath("../..")
 material_override = SubResource("StandardMaterial3D_uini2")
 mesh = ExtResource("8_keodj")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 20, 0)
+shape = SubResource("BoxShape3D_wofis")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://otqt47ncnx3r"]
+
+[ext_resource type="ArrayMesh" uid="uid://3sfwpduyx5l8" path="res://assets/Items, Roads, and Sidewalks/Street Trash.obj" id="1_q0d00"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jbkft"]
+size = Vector3(1.5, 2.25, 1.5)
+
+[node name="trash" type="Node3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, -0.4, -3.3)
+
+[node name="StreetTrash" type="MeshInstance3D" parent="Pivot"]
+mesh = ExtResource("1_q0d00")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 1.5, 3.35)
+shape = SubResource("BoxShape3D_jbkft")

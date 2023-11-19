@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://6pm17b8ccreu"]
+
+[ext_resource type="Texture2D" uid="uid://cibei1xxfrk66" path="res://assets/Items, Roads, and Sidewalks/Street Bench.png" id="1_y7vnu"]
+[ext_resource type="ArrayMesh" uid="uid://de0swy5gfkrg4" path="res://assets/Items, Roads, and Sidewalks/Street Bench.obj" id="2_3syn6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4ekk"]
+albedo_texture = ExtResource("1_y7vnu")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_evdir"]
+size = Vector3(5, 2.5, 1.5)
+
+[node name="bench" type="Node3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1)
+
+[node name="StreetBench" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_g4ekk")
+mesh = ExtResource("2_3syn6")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 1)
+shape = SubResource("BoxShape3D_evdir")
