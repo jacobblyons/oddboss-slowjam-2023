@@ -48,13 +48,14 @@ public partial class NpcController : RigidBody3D
 	private float timeSinceSplatted = 0.0f;
 	private float timeSinceShot = 0.0f;
 	private WorldServer worldServer;
+	private AnimationPlayer animationPlayer;
 
 
 	public override void _Ready()
 	{
 		base._Ready();
 		navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
-
+		animationPlayer = GetNode<AnimationPlayer>("Pivot/CharacterMesh/AnimationPlayer");
 		escapeDetectionBoundary = GetNode<Area3D>("EscapeDetectionBoundary");
 		escapeReachedBoundary = GetNode<Area3D>("EscapeInReachBoundary");
 		escapeReachedBoundary.AreaEntered += OnEscapeReached;
@@ -113,6 +114,8 @@ public partial class NpcController : RigidBody3D
 			}
 		}
 
+		setAnimationState();
+
 		navigationAgent.TargetPosition = GetTargetPosition();
 
 		Vector3 currentAgentPosition = GlobalTransform.Origin;
@@ -154,6 +157,25 @@ public partial class NpcController : RigidBody3D
 		}
 
 		MoveAndCollide(velocity * (float)delta, safeMargin: 0.01f);
+	}
+
+
+	private void setAnimationState(){
+		switch (state)
+		{
+			case NpcState.Traveling:
+				animationPlayer.Play("Walk");
+				break;
+			case NpcState.Fearful:
+			case NpcState.FleeingFromAlien:
+				animationPlayer.Play("Run");
+				break;
+			case NpcState.Brainwashed:
+				animationPlayer.Play("Walk_mindcontrol");
+				break;
+			default:
+				break;
+		}
 	}
 
 	private void RotateTowardsNextPoint(Vector3 dir, double delta)
@@ -316,7 +338,7 @@ public partial class NpcController : RigidBody3D
 		if (state == NpcState.Brainwashed)
 		{
 			GD.Print("NPC: Party Zone Reached");
-			//DestroyMe();
+			DestroyMe();
 		}
 	}
 	#endregion
@@ -324,11 +346,13 @@ public partial class NpcController : RigidBody3D
 	private void goLimp()
 	{
 		this.Freeze = false;
+		animationPlayer.Play("Death");
 	}
 
 	private void returnToNormal()
 	{
 		this.Freeze = true;
 		GlobalRotation = new Vector3(0, GlobalRotation.Y, 0);
+		animationPlayer.Play("Idle");
 	}
 }

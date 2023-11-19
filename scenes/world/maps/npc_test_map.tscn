@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bjrya11aqbh7o" path="res://scenes/world/roads/parkinglot_02.tscn" id="18_5sill"]
 [ext_resource type="PackedScene" uid="uid://dk71cx2p3qaj1" path="res://scenes/world/roads/sidewalk.tscn" id="20_3s1i1"]
 [ext_resource type="PackedScene" uid="uid://cb4nbdgk7giav" path="res://scenes/world/roads/Rd_dbl_str_02.tscn" id="20_j0qrn"]
-[ext_resource type="PackedScene" uid="uid://bk6rrn4oy7ijj" path="res://scenes/npc/types/dog_npc.tscn" id="21_urndf"]
+[ext_resource type="PackedScene" uid="uid://cuyxtxoyhi1ap" path="res://scenes/npc/types/dog_npc.tscn" id="21_urndf"]
 [ext_resource type="PackedScene" uid="uid://ckxi48ksino4p" path="res://scenes/world/roads/Rd_dbl_str_03.tscn" id="21_xea0o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_whydk"]
@@ -437,11 +437,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18675, 0)
 curve = SubResource("Curve3D_ap3wt")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PawPatrol/Path3D"]
-transform = Transform3D(-0.999949, 3.82905e-06, 0.0100958, 3.83052e-06, 1, 1.25562e-07, -0.0100958, 1.64228e-07, -0.999949, -30.784, 3.55687e-06, 50.2746)
+transform = Transform3D(-0.999949, 3.82905e-06, 0.0100958, 3.83052e-06, 1, 1.25562e-07, -0.0100958, 1.64228e-07, -0.999949, -30.784, 3.55686e-06, 50.2747)
 progress = 25.0635
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="PawPatrol/Path3D"]
-transform = Transform3D(-0.991602, 3.78453e-06, -0.129323, 3.8093e-06, 1, 5.58541e-08, 0.129323, -4.37245e-07, -0.991602, -27.7418, -4.3137e-06, 100.275)
+transform = Transform3D(-0.991602, 3.78453e-06, -0.129323, 3.8093e-06, 1, 5.58536e-08, 0.129323, -4.37246e-07, -0.991602, -27.7418, -4.3137e-06, 100.275)
 progress = 75.1905
 
 [node name="dog" parent="PawPatrol" node_paths=PackedStringArray("Path") instance=ExtResource("21_urndf")]

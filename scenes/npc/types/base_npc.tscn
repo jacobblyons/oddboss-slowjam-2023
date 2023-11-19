@@ -41,11 +41,12 @@ brainwashedSpeed = 8.0
 runSpeed = 10.0
 rotateSpeed = 4.0
 lifePostSplatterInSec = 2.0
-stunTimeInSec = 1.0
+stunTimeInSec = 5.0
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="CharacterMesh" parent="Pivot" instance=ExtResource("2_j8mng")]
+[node name="CharacterMesh" parent="Pivot" node_paths=PackedStringArray("skins") instance=ExtResource("2_j8mng")]
+skins = []
 
 [node name="Character1_vox" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0)
@@ -118,8 +119,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39931, 0)
 shape = SubResource("CylinderShape3D_qpw68")
 
 [node name="PartyBoundary" type="Area3D" parent="."]
-collision_layer = 128
+collision_layer = 8
 collision_mask = 128
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PartyBoundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03152, 0)

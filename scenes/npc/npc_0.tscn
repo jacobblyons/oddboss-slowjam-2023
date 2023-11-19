@@ -7,6 +7,17 @@
 script = ExtResource("2_ua1yr")
 skins = [NodePath("Armature/Skeleton3D/Character 1_vox-0"), NodePath("Armature/Skeleton3D/Character 1_vox-1"), NodePath("Armature/Skeleton3D/Character 1_vox-2"), NodePath("Armature/Skeleton3D/Character 1_vox-3"), NodePath("Armature/Skeleton3D/Character 1_vox-4"), NodePath("Armature/Skeleton3D/Character 1_vox-5"), NodePath("Armature/Skeleton3D/Character 1_vox-6"), NodePath("Armature/Skeleton3D/Character 1_vox-7")]
 
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/position = Vector3(0.449438, 1.28828, -0.0421707)
+bones/2/rotation = Quaternion(-0.678011, -0.192367, -0.680851, 0.199343)
+bones/3/rotation = Quaternion(0.33301, 0.384971, -0.662691, 0.54931)
+bones/5/rotation = Quaternion(6.7053e-08, -1.56019e-08, -0.00721879, 0.999974)
+bones/7/position = Vector3(-0.454815, 1.28928, -0.0523706)
+bones/7/rotation = Quaternion(-0.675681, 0.198595, 0.680916, 0.200918)
+bones/8/rotation = Quaternion(0.347105, -0.368165, 0.615499, 0.604262)
+bones/10/rotation = Quaternion(6.7053e-08, 1.56019e-08, 0.00721879, 0.999974)
+bones/11/rotation = Quaternion(0.424418, 1.17709e-14, 1.65274e-07, 0.905466)
+
 [node name="Character 1_vox-0" parent="Armature/Skeleton3D" index="0"]
 visible = false
 
