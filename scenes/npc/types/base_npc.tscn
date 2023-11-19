@@ -41,12 +41,11 @@ brainwashedSpeed = 8.0
 runSpeed = 10.0
 rotateSpeed = 4.0
 lifePostSplatterInSec = 2.0
-stunTimeInSec = 5.0
+stunTimeInSec = 1.0
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="CharacterMesh" parent="Pivot" node_paths=PackedStringArray("skins") instance=ExtResource("2_j8mng")]
-skins = []
+[node name="CharacterMesh" parent="Pivot" instance=ExtResource("2_j8mng")]
 
 [node name="Character1_vox" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0)
@@ -63,7 +62,7 @@ shape = SubResource("BoxShape3D_ykx4d")
 aabb = AABB(-1, 0.00588608, -1, 2, 4.66206, 2)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.5
+path_desired_distance = 10.0
 path_max_distance = 20.41
 avoidance_enabled = true
 debug_use_custom = true

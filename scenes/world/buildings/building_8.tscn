@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bl78xharcpx2i"]
+[gd_scene load_steps=16 format=3 uid="uid://bl78xharcpx2i"]
 
 [ext_resource type="Texture2D" uid="uid://cw2pcsflf61ye" path="res://assets/buildings/⭐️ Building 8.1.png" id="1_7qe6o"]
 [ext_resource type="ArrayMesh" uid="uid://7akkv6c2d7l0" path="res://assets/buildings/⭐️ Building 8.1.obj" id="2_uklir"]
@@ -8,6 +8,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bp050e6ga537h" path="res://assets/buildings/⭐️ Building 8.3.obj" id="6_fsybu"]
 [ext_resource type="Texture2D" uid="uid://cugafle7ps7qq" path="res://assets/buildings/⭐️ Building 8.4.png" id="7_x70gs"]
 [ext_resource type="ArrayMesh" uid="uid://5qf82qjqcjh" path="res://assets/buildings/⭐️ Building 8.4.obj" id="8_pwfos"]
+[ext_resource type="PackedScene" uid="uid://bfaopt0hbmwla" path="res://scenes/world/door_exit.tscn" id="9_i87o2"]
 [ext_resource type="PackedScene" uid="uid://4lmpndbvo63j" path="res://scenes/world/door.tscn" id="9_y6cw6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a4wk"]
@@ -56,14 +57,14 @@ material_override = SubResource("StandardMaterial3D_dbc4i")
 mesh = ExtResource("8_pwfos")
 skeleton = NodePath("../..")
 
-[node name="door" parent="Pivot" instance=ExtResource("9_y6cw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9624, 0.808252, 14.9845)
+[node name="door_exit" parent="Pivot" instance=ExtResource("9_i87o2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462429, 0.808252, 15.9845)
 
-[node name="door2" parent="Pivot" instance=ExtResource("9_y6cw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462429, 0.808252, 14.9845)
+[node name="door_exit2" parent="Pivot" instance=ExtResource("9_i87o2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9624, 0.808252, 15.9845)
 
 [node name="door3" parent="Pivot" instance=ExtResource("9_y6cw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26243, 0.808252, 14.9845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26243, 0.808252, 15.9845)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19.6, 9.3545, 10.9656)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgjxg6t87c735"]
+[gd_scene load_steps=5 format=3 uid="uid://cgjxg6t87c735"]
 
 [ext_resource type="PackedScene" uid="uid://bdrhf3wfls4w7" path="res://scenes/world/buildings/building_2_corner.tscn" id="1_sgu4s"]
 [ext_resource type="PackedScene" uid="uid://4lmpndbvo63j" path="res://scenes/world/door.tscn" id="2_jij1j"]
+[ext_resource type="PackedScene" uid="uid://bfaopt0hbmwla" path="res://scenes/world/door_exit.tscn" id="3_ltrnw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_du2fh"]
 size = Vector3(50, 75, 50)
@@ -28,19 +29,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 shape = SubResource("BoxShape3D_du2fh")
 
 [node name="door" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83757, 0.277838, 26.6845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83757, 0.277838, 27.9845)
+
+[node name="door_exit" parent="Pivot" instance=ExtResource("3_ltrnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76243, 0.208252, 27.9845)
 
 [node name="door2" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76243, 0.208252, 26.6845)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.76243, 0.277838, -28.0155)
 
-[node name="door5" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.76243, 0.277838, -26.7155)
-
-[node name="door6" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.83757, 0.208252, -26.7155)
+[node name="door_exit2" parent="Pivot" instance=ExtResource("3_ltrnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83757, 0.208252, -28.0155)
 
 [node name="door3" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9624, 0.277838, 2.7845)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.3624, 0.277838, 2.7845)
 
-[node name="door4" parent="Pivot" instance=ExtResource("2_jij1j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9624, 0.208252, -2.8155)
+[node name="door_exit3" parent="Pivot" instance=ExtResource("3_ltrnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3624, 0.208252, -2.8155)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.7, 23.5)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+light_energy = 2.381
+light_size = 1.12
+spot_range = 15.0
+spot_attenuation = 0.287175
+spot_angle_attenuation = 0.25
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.7, -23.5)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+light_energy = 2.381
+light_size = 1.12
+spot_range = 15.0
+spot_attenuation = 0.287175
+spot_angle_attenuation = 0.25
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24, 11.7, -0.1)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+light_energy = 2.381
+light_size = 1.12
+spot_range = 15.0
+spot_attenuation = 0.287175
+spot_angle_attenuation = 0.25

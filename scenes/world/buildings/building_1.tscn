@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://wd6cabf4tt1d"]
+[gd_scene load_steps=7 format=3 uid="uid://wd6cabf4tt1d"]
 
 [ext_resource type="Texture2D" uid="uid://blgfi6dt2a1xp" path="res://assets/buildings/Building 1.png" id="1_caiwb"]
 [ext_resource type="ArrayMesh" uid="uid://ji61h37qmcw7" path="res://assets/buildings/Building 1.obj" id="2_xak27"]
 [ext_resource type="PackedScene" uid="uid://4lmpndbvo63j" path="res://scenes/world/door.tscn" id="3_t3fjj"]
+[ext_resource type="PackedScene" uid="uid://bfaopt0hbmwla" path="res://scenes/world/door_exit.tscn" id="4_f58x0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgpwa"]
 albedo_texture = ExtResource("1_caiwb")
@@ -21,7 +22,10 @@ mesh = ExtResource("2_xak27")
 skeleton = NodePath("../..")
 
 [node name="door" parent="Pivot" instance=ExtResource("3_t3fjj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53757, 0.208252, 26.6845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53757, 0.208252, 27.7845)
+
+[node name="door_exit" parent="Pivot" instance=ExtResource("4_f58x0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53757, 0.208252, 27.7845)
 
 [node name="StaticBody" type="StaticBody3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82712, 0, 8.0022)
