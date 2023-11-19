@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://67mx3ffq8687"]
+[gd_scene load_steps=9 format=3 uid="uid://67mx3ffq8687"]
 
 [ext_resource type="Texture2D" uid="uid://cxbbfsrpg6waj" path="res://assets/buildings/Building 9.1.png" id="1_6wf2i"]
 [ext_resource type="ArrayMesh" uid="uid://dhqbah4xbggre" path="res://assets/buildings/Building 9.1.obj" id="2_vpoq5"]
 [ext_resource type="Texture2D" uid="uid://bfb0m32xuh4mg" path="res://assets/buildings/Building 9.2.png" id="3_y1uvx"]
 [ext_resource type="ArrayMesh" uid="uid://bfn1h03q3kbu5" path="res://assets/buildings/Building 9.2.obj" id="4_tkt20"]
+[ext_resource type="PackedScene" uid="uid://4lmpndbvo63j" path="res://scenes/world/door.tscn" id="5_gnvbs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0pbl"]
 albedo_texture = ExtResource("1_6wf2i")
@@ -34,3 +35,47 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 21, 12.5)
 shape = SubResource("BoxShape3D_5a4wk")
+
+[node name="door" parent="Pivot" instance=ExtResource("5_gnvbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33757, 0.208252, 26.1845)
+
+[node name="door2" parent="Pivot" instance=ExtResource("5_gnvbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7376, 0.208252, 26.1845)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.5, 11.7, 25.5)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+light_energy = 2.381
+light_size = 1.12
+spot_range = 15.0
+spot_attenuation = 0.287175
+spot_angle_attenuation = 0.25
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -20.5, 11.7, 25.5)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+light_energy = 2.381
+light_size = 1.12
+spot_range = 15.0
+spot_attenuation = 0.287175
+spot_angle_attenuation = 0.25
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86202, 34.1721, 24.3118)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+omni_range = 2.638
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.262, 24.1721, 24.3118)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+omni_range = 2.638
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.662, 34.0721, 24.3118)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+omni_range = 2.638
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.362, 15.0721, 24.3118)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+omni_range = 2.638
