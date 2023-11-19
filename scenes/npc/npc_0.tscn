@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://crh6sq4gi617l"]
+[gd_scene load_steps=3 format=3 uid="uid://crh6sq4gi617l"]
 
 [ext_resource type="PackedScene" uid="uid://bpkqlr530rdc6" path="res://assets/NPC_0.glb" id="1_1ouxa"]
+[ext_resource type="Script" path="res://scripts/NpcSkinSelector.cs" id="2_ua1yr"]
 
-[node name="NPC_0" instance=ExtResource("1_1ouxa")]
+[node name="NPC_0" node_paths=PackedStringArray("skins") instance=ExtResource("1_1ouxa")]
+script = ExtResource("2_ua1yr")
+skins = [NodePath("Armature/Skeleton3D/Character 1_vox-0"), NodePath("Armature/Skeleton3D/Character 1_vox-1"), NodePath("Armature/Skeleton3D/Character 1_vox-2"), NodePath("Armature/Skeleton3D/Character 1_vox-3"), NodePath("Armature/Skeleton3D/Character 1_vox-4"), NodePath("Armature/Skeleton3D/Character 1_vox-5"), NodePath("Armature/Skeleton3D/Character 1_vox-6"), NodePath("Armature/Skeleton3D/Character 1_vox-7")]
 
 [node name="Character 1_vox-0" parent="Armature/Skeleton3D" index="0"]
 visible = false
