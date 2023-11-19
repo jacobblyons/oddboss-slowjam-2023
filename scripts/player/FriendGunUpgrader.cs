@@ -15,18 +15,18 @@ public partial class FriendGunUpgrader : Node3D
     }
 
     public void TryUpgradeGunCharge() {
-        if (gameManager.partySize >= 0) {
+        if (gameManager.partySize >= 3) {
             GD.Print("LVl up charge?");
-            gameManager.RemovePartyGoers(0);
+            gameManager.RemovePartyGoers(3);
             friendGun.upgradeData.IncrementChargeLvl();
             guiController.UpdateUpgradeIconState(friendGun.upgradeData);
         }
     }
 
     public void TryUpgradeGunPower() {        
-        if (gameManager.partySize >= 0) {
+        if (gameManager.partySize >= 5) {
             GD.Print("LVl up power?");
-            gameManager.RemovePartyGoers(0);
+            gameManager.RemovePartyGoers(5);
             friendGun.upgradeData.IncrementPowerLvl();
             guiController.UpdateUpgradeIconState(friendGun.upgradeData);
         }

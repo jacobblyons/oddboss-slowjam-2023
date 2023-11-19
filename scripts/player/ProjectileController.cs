@@ -29,7 +29,7 @@ public partial class ProjectileController : Node3D
 		// destroyed...
 		timeAlive += (float)delta;
 		if (timeAlive > maxLifeTime) {
-			Free();
+			QueueFree();
 		}
 	}
 

@@ -15,7 +15,6 @@ public partial class PartyZoneNode : Node3D
     }
 
     public void OnNpcArrived(Area3D npc){
-        npc.GetParent().QueueFree();
         gameManager.AddPartyGoer();
     }
 }
