@@ -9,12 +9,8 @@ public partial class PartyZoneNode : Node3D
     {
         base._Ready();
         partyArea = GetNode<Area3D>("PartyArea");
-        partyArea.AreaEntered += OnNpcArrived;
+        //partyArea.AreaEntered += OnNpcArrived;
 
         gameManager = GetNode<GameManager>("/root/GameManager");
-    }
-
-    public void OnNpcArrived(Area3D npc){
-        gameManager.AddPartyGoer();
     }
 }
