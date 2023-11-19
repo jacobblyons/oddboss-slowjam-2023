@@ -12,6 +12,7 @@ public partial class DogController : RigidBody3D
     [Export]
     public float rotateSpeed = 2.0f;
 
+    private Area3D bulletHitBoundary;
     private Area3D playerDetectionBoundary;
     private Node3D playerRef;
     private NavigationAgent3D navigationAgent;
@@ -19,6 +20,8 @@ public partial class DogController : RigidBody3D
     public override void _Ready()
     {
         base._Ready();
+        bulletHitBoundary = GetNode<Area3D>("BulletBoundary");
+        bulletHitBoundary.AreaEntered += OnBulletHit;
         playerDetectionBoundary = GetNode<Area3D>("PlayerDetectionBoundary");
         navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 
@@ -104,5 +107,9 @@ public partial class DogController : RigidBody3D
 
         // Apply rotation
         GlobalRotation = newRotation.GetEuler();
+    }
+
+    private void OnBulletHit(Node3D body) {
+        QueueFree();
     }
 }

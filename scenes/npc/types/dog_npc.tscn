@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk6rrn4oy7ijj"]
+[gd_scene load_steps=8 format=3 uid="uid://cuyxtxoyhi1ap"]
 
 [ext_resource type="Texture2D" uid="uid://74mgoswdxlvm" path="res://assets/Doggg.vox.png" id="1_1gobl"]
 [ext_resource type="ArrayMesh" uid="uid://ce781qpveeos0" path="res://assets/Doggg.vox.obj" id="1_fhvxf"]
@@ -14,7 +14,10 @@ albedo_texture = ExtResource("1_1gobl")
 height = 10.0
 radius = 15.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_8dic6"]
+
 [node name="Dog" type="RigidBody3D"]
+collision_mask = 33
 continuous_cd = true
 freeze = true
 freeze_mode = 1
@@ -48,3 +51,12 @@ debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.788235, 1)
 debug_path_custom_point_size = 5.0
+
+[node name="BulletBoundary" type="Area3D" parent="."]
+transform = Transform3D(0.77, 0, 0, 0, 0.77, 0, 0, 0, 0.77, 0, 0, 0)
+collision_layer = 3
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BulletBoundary"]
+transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 0.745058, 0)
+shape = SubResource("SphereShape3D_8dic6")
