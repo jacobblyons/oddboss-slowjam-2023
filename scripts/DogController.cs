@@ -17,6 +17,7 @@ public partial class DogController : RigidBody3D
     private Node3D playerRef;
     private NavigationAgent3D navigationAgent;
     private bool initialized = false;
+    
     public override void _Ready()
     {
         base._Ready();
