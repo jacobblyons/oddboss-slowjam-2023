@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bs288x3mhpqn7"]
+[gd_scene load_steps=35 format=3 uid="uid://bs288x3mhpqn7"]
 
 [ext_resource type="PackedScene" uid="uid://ky284upavot3" path="res://scenes/world/buildings/building_spawn.tscn" id="1_4pq63"]
 [ext_resource type="PackedScene" uid="uid://dtwxxrh5b6v74" path="res://scenes/world/roads/Rd_dbl_str_01.tscn" id="1_g70l6"]
@@ -22,9 +22,9 @@
 [ext_resource type="Script" path="res://scripts/world/DogSpawner.cs" id="21_guj4d"]
 [ext_resource type="PackedScene" uid="uid://cuyxtxoyhi1ap" path="res://scenes/npc/types/dog_npc.tscn" id="21_urndf"]
 [ext_resource type="PackedScene" uid="uid://ckxi48ksino4p" path="res://scenes/world/roads/Rd_dbl_str_03.tscn" id="21_xea0o"]
-[ext_resource type="PackedScene" uid="uid://cwsngktyyvi8k" path="res://scenes/npc/types/pathfollow.tscn" id="23_kpcud"]
 [ext_resource type="PackedScene" uid="uid://6pm17b8ccreu" path="res://scenes/world/objects/bench.tscn" id="22_vwe1r"]
 [ext_resource type="PackedScene" uid="uid://bg5g1uyg5w67l" path="res://scenes/world/objects/bus stop.tscn" id="23_0penf"]
+[ext_resource type="PackedScene" path="res://scenes/npc/types/pathfollow.tscn" id="23_kpcud"]
 [ext_resource type="PackedScene" uid="uid://d0jqovhhq3f5h" path="res://scenes/world/objects/lamp.tscn" id="24_tn25v"]
 [ext_resource type="PackedScene" uid="uid://otqt47ncnx3r" path="res://scenes/world/objects/trash.tscn" id="25_va6ut"]
 [ext_resource type="PackedScene" uid="uid://6gksfywus7qd" path="res://scenes/world/objects/tree.tscn" id="26_oxlff"]
@@ -444,22 +444,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 curve = SubResource("Curve3D_7v47x")
 
 [node name="TaxiPathFollow2" parent="TaxiPath_1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(0.000131563, 0, -1, 0, 1, 0, 1, 0, 0.000131563, 58.9044, -4.88311e-05, -52.0472)
+transform = Transform3D(-0.0397301, 0, -0.99921, 0, 1, 0, 0.99921, 0, -0.0397301, 58.9044, -4.88311e-05, -52.0472)
 
 [node name="TaxiPathFollow3" parent="TaxiPath_1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(-0.999962, 0, -0.0087326, 0, 1, 0, 0.0087326, 0, -0.999962, -102.721, -4.88311e-05, 60.2289)
+transform = Transform3D(-0.999999, 0, -0.00141516, 0, 1, 0, 0.00141516, 0, -0.999999, -105.051, -4.88311e-05, 65.8607)
 progress = 361.736
 
 [node name="TaxiPathFollow4" parent="TaxiPath_1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(-0.00307468, 0, 0.999995, 0, 1, 0, -0.999995, 0, -0.00307468, 38.5488, -4.88311e-05, 20.541)
+transform = Transform3D(0.0133381, 0, 0.999911, 0, 1, 0, -0.999911, 0, 0.0133381, 32.6127, -4.88311e-05, 20.3473)
 progress = 180.868
 
 [node name="TaxiPathFollow5" parent="TaxiPath_1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(0.00408835, 0, -0.999992, 0, 1, 0, 0.999992, 0, 0.00408835, -61.5772, -4.88311e-05, 109.784)
+transform = Transform3D(-0.0034068, 0, -0.999995, 0, 1, 0, 0.999995, 0, -0.0034068, -55.845, -4.88311e-05, 111.982)
 progress = 452.17
 
 [node name="TaxiPathFollow6" parent="TaxiPath_1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(1, 0, -0.000141729, 0, 1, 0, 0.000141729, 0, 1, 112.029, -4.88311e-05, 12.0884)
+transform = Transform3D(0.999134, 0, -0.0416199, 0, 1, 0, 0.0416199, 0, 0.999134, 113.026, -4.88311e-05, 4.16193)
 progress = 723.471
 
 [node name="TaxiPath_2" type="Path3D" parent="."]
@@ -467,10 +467,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 curve = SubResource("Curve3D_a710s")
 
 [node name="TaxiPathFollow5" parent="TaxiPath_2" instance=ExtResource("2_nevbj")]
-transform = Transform3D(0.999998, 0, -0.00209904, 0, 1, 0, 0.00209904, 0, 0.999998, 53.1347, -4.88311e-05, 118.007)
+transform = Transform3D(0.997794, 0, -0.0663862, 0, 1, 0, 0.0663862, 0, 0.997794, 46.8579, -4.88311e-05, 118.735)
 
 [node name="TaxiPathFollow6" parent="TaxiPath_2" instance=ExtResource("2_nevbj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.8966, -4.88311e-05, 21.3442)
+transform = Transform3D(-0.217452, 0, 0.976071, 0, 1, 0, -0.976071, 0, -0.217452, -22.7413, -4.88311e-05, 20.7239)
 progress = 173.899
 
 [node name="party_zone" parent="." instance=ExtResource("9_c0sld")]
@@ -643,8 +643,62 @@ transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 49.813
 [node name="bus stop5" parent="SceneObjects" instance=ExtResource("23_0penf")]
 transform = Transform3D(1.19209e-07, 0, -1, 0, 1, 0, 1, 0, 1.19209e-07, 118.814, 0, -83.1799)
 
-[node name="trash" parent="SceneObjects" instance=ExtResource("25_va6ut")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.097, 0, 76.0022)
+[node name="trash2" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0265, 0, 81.1284)
+
+[node name="trash3" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98785, 0, 76.6672)
+
+[node name="trash4" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.3109, 0, 46.7704)
+
+[node name="trash5" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.151, 0, 21.8487)
+
+[node name="trash6" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.171, 0, 123.491)
+
+[node name="trash7" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.0086, 0, 126.639)
+
+[node name="trash9" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.2945, 0, 126.728)
+
+[node name="trash10" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2107, 0, 128.349)
+
+[node name="trash11" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.6471, 0, 136.1)
+
+[node name="trash12" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.1047, 0, 56.6606)
+
+[node name="trash13" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.6914, 0, 37.2976)
+
+[node name="trash14" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.432, 0, 36.1549)
+
+[node name="trash15" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.3398, 0, 13.0463)
+
+[node name="trash16" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.4988, 0, -39.4022)
+
+[node name="trash17" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.6682, 0, -46.2527)
+
+[node name="trash18" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.4815, 0, -91.036)
+
+[node name="trash19" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.142, 0, -90.909)
+
+[node name="trash20" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.348, 0, -64.2467)
+
+[node name="trash21" parent="SceneObjects" instance=ExtResource("25_va6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.348, 0, -22.0925)
 
 [node name="tree2" parent="SceneObjects" instance=ExtResource("26_oxlff")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -48.2352, 0.249731, 52.82)
@@ -737,7 +791,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73, 0.35, 127.469)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, 0.35, 127.469)
 
 [node name="tree33" parent="SceneObjects" instance=ExtResource("26_oxlff")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.9, 0.35, 118.469)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.9, 0.35, 110.494)
 
 [node name="tree34" parent="SceneObjects" instance=ExtResource("26_oxlff")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.2471, 0.35, 101.76)
