@@ -53,6 +53,7 @@ public partial class GUIController : Control
     private void ToggleMouseCapture() {
         if (Input.MouseMode == Input.MouseModeEnum.Captured) {
             Input.MouseMode = Input.MouseModeEnum.Visible;
+            chargeLvlUpBtn.GrabFocus();
         }
         else if (Input.MouseMode == Input.MouseModeEnum.Visible) {
             Input.MouseMode = Input.MouseModeEnum.Captured;

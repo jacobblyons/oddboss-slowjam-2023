@@ -74,6 +74,7 @@ color = Color(0.258824, 0, 0.0431373, 1)
 
 [node name="Button" type="Button" parent="gui/charge_lvl_icons"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../power_lvl_icons/Button")
 icon = ExtResource("2_88jjr")
 
 [node name="lbl_power" type="Label" parent="gui"]
@@ -96,4 +97,5 @@ color = Color(0.258824, 0, 0.0431373, 1)
 
 [node name="Button" type="Button" parent="gui/power_lvl_icons"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../charge_lvl_icons/Button")
 icon = ExtResource("2_88jjr")
