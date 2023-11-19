@@ -72,3 +72,7 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBoundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.985788, 0)
 shape = SubResource("SphereShape3D_5gda0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.768627, 0.576471, 0.341176, 1)
+omni_attenuation = 0.554785
