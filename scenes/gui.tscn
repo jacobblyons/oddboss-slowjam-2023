@@ -10,7 +10,7 @@ font_color = Color(0.2, 1, 0.211765, 1)
 font_size = 13
 font_color = Color(1, 1, 0.00392157, 1)
 
-[node name="GUI" type="Control" node_paths=PackedStringArray("chargeLvlIcons", "chargeLvlUpBtn", "powerLvlIcons", "powerLvlUpBtn")]
+[node name="GUI" type="Control" node_paths=PackedStringArray("partySizeLabel", "chargeLvlIcons", "chargeLvlUpBtn", "powerLvlIcons", "powerLvlUpBtn")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -18,6 +18,7 @@ offset_bottom = 40.0
 script = ExtResource("1_v57oa")
 offColor = Color(0.258824, 0, 0.0431373, 1)
 onColor = Color(0, 0.564706, 0, 1)
+partySizeLabel = NodePath("gui/lbl_party_size")
 chargeLvlIcons = [NodePath("gui/charge_lvl_icons/ColorRect"), NodePath("gui/charge_lvl_icons/ColorRect2")]
 chargeLvlUpBtn = NodePath("gui/charge_lvl_icons/Button")
 powerLvlIcons = [NodePath("gui/power_lvl_icons/ColorRect"), NodePath("gui/power_lvl_icons/ColorRect2")]
@@ -44,7 +45,7 @@ offset_bottom = 132.0
 layout_mode = 2
 text = "Party Size"
 
-[node name="lbl_charge2" type="Label" parent="gui"]
+[node name="lbl_party_size" type="Label" parent="gui"]
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_dyhd7")
