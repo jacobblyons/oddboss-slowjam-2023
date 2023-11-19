@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cwsngktyyvi8k"]
+
+[node name="PathFollow3D" type="PathFollow3D"]
+rotation_mode = 1
+tilt_enabled = false

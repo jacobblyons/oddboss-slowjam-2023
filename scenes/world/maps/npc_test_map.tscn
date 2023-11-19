@@ -19,8 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://bjrya11aqbh7o" path="res://scenes/world/roads/parkinglot_02.tscn" id="18_5sill"]
 [ext_resource type="PackedScene" uid="uid://dk71cx2p3qaj1" path="res://scenes/world/roads/sidewalk.tscn" id="20_3s1i1"]
 [ext_resource type="PackedScene" uid="uid://cb4nbdgk7giav" path="res://scenes/world/roads/Rd_dbl_str_02.tscn" id="20_j0qrn"]
+[ext_resource type="Script" path="res://scripts/world/DogSpawner.cs" id="21_guj4d"]
 [ext_resource type="PackedScene" uid="uid://cuyxtxoyhi1ap" path="res://scenes/npc/types/dog_npc.tscn" id="21_urndf"]
 [ext_resource type="PackedScene" uid="uid://ckxi48ksino4p" path="res://scenes/world/roads/Rd_dbl_str_03.tscn" id="21_xea0o"]
+[ext_resource type="PackedScene" uid="uid://cwsngktyyvi8k" path="res://scenes/npc/types/pathfollow.tscn" id="23_kpcud"]
 [ext_resource type="PackedScene" uid="uid://6pm17b8ccreu" path="res://scenes/world/objects/bench.tscn" id="22_vwe1r"]
 [ext_resource type="PackedScene" uid="uid://bg5g1uyg5w67l" path="res://scenes/world/objects/bus stop.tscn" id="23_0penf"]
 [ext_resource type="PackedScene" uid="uid://d0jqovhhq3f5h" path="res://scenes/world/objects/lamp.tscn" id="24_tn25v"]
@@ -442,22 +444,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 curve = SubResource("Curve3D_7v47x")
 
 [node name="TaxiPathFollow2" parent="TaxiPath_1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(0.000132398, 0, -1, 0, 1, 0, 1, 0, 0.000132398, 58.9044, -4.88311e-05, -52.0472)
+transform = Transform3D(0.000131563, 0, -1, 0, 1, 0, 1, 0, 0.000131563, 58.9044, -4.88311e-05, -52.0472)
 
 [node name="TaxiPathFollow3" parent="TaxiPath_1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(-0.999962, 0, -0.00872974, 0, 1, 0, 0.00872974, 0, -0.999962, -102.721, -4.88311e-05, 60.2275)
+transform = Transform3D(-0.999962, 0, -0.0087326, 0, 1, 0, 0.0087326, 0, -0.999962, -102.721, -4.88311e-05, 60.2289)
 progress = 361.736
 
 [node name="TaxiPathFollow4" parent="TaxiPath_1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(-0.0030748, 0, 0.999995, 0, 1, 0, -0.999995, 0, -0.0030748, 38.5494, -4.88311e-05, 20.541)
+transform = Transform3D(-0.00307468, 0, 0.999995, 0, 1, 0, -0.999995, 0, -0.00307468, 38.5488, -4.88311e-05, 20.541)
 progress = 180.868
 
 [node name="TaxiPathFollow5" parent="TaxiPath_1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(0.00408632, 0, -0.999992, 0, 1, 0, 0.999992, 0, 0.00408632, -61.5782, -4.88311e-05, 109.783)
+transform = Transform3D(0.00408835, 0, -0.999992, 0, 1, 0, 0.999992, 0, 0.00408835, -61.5772, -4.88311e-05, 109.784)
 progress = 452.17
 
 [node name="TaxiPathFollow6" parent="TaxiPath_1" instance=ExtResource("2_nevbj")]
-transform = Transform3D(1, 0, -0.000145446, 0, 1, 0, 0.000145446, 0, 1, 112.029, -4.88311e-05, 12.0886)
+transform = Transform3D(1, 0, -0.000141729, 0, 1, 0, 0.000141729, 0, 1, 112.029, -4.88311e-05, 12.0884)
 progress = 723.471
 
 [node name="TaxiPath_2" type="Path3D" parent="."]
@@ -465,20 +467,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 curve = SubResource("Curve3D_a710s")
 
 [node name="TaxiPathFollow5" parent="TaxiPath_2" instance=ExtResource("2_nevbj")]
-transform = Transform3D(0.999998, 0, -0.00209908, 0, 1, 0, 0.00209908, 0, 0.999998, 53.1347, -4.88311e-05, 118.007)
+transform = Transform3D(0.999998, 0, -0.00209904, 0, 1, 0, 0.00209904, 0, 0.999998, 53.1347, -4.88311e-05, 118.007)
 
 [node name="TaxiPathFollow6" parent="TaxiPath_2" instance=ExtResource("2_nevbj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.8965, -4.88311e-05, 21.3442)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.8966, -4.88311e-05, 21.3442)
 progress = 173.899
 
 [node name="party_zone" parent="." instance=ExtResource("9_c0sld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.390701, 0.716129, 15.6539)
 
 [node name="PawPatrol" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.438415, 0)
 
 [node name="Path3D" type="Path3D" parent="PawPatrol"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18675, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04535, 0)
 curve = SubResource("Curve3D_ap3wt")
+script = ExtResource("21_guj4d")
+DogScene = ExtResource("21_urndf")
+PathFollowScene = ExtResource("23_kpcud")
+spawnPeriodInSeconds = 0.5
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PawPatrol/Path3D"]
 transform = Transform3D(-0.999949, 4.77871e-07, 0.0100958, 4.79163e-07, 1, 1.25562e-07, -0.0100958, 1.30393e-07, -0.999949, -30.784, 3.55686e-06, 50.2747)
