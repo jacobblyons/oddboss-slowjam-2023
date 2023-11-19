@@ -13,9 +13,9 @@ size = Vector3(1.63081, 1.46376, 1.52256)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 3
-floor_max_angle = 1.5708
+floor_max_angle = 1.48353
 script = ExtResource("1_ff2sa")
-moveSpeed = 10.0
+moveSpeed = 12.0
 accelFactor = 60.0
 decelFactor = 120.0
 jumpForce = 12.0
@@ -27,7 +27,7 @@ hitstunKnockbackForce = 20.0
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00584269, 1.58031, 0.00131035)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00584269, 2.38031, 0.00131035)
 
 [node name="Node3D" type="Node3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0190614, -0.0332226, 0.00484419)

@@ -41,12 +41,11 @@ brainwashedSpeed = 8.0
 runSpeed = 10.0
 rotateSpeed = 4.0
 lifePostSplatterInSec = 2.0
-stunTimeInSec = 5.0
+stunTimeInSec = 1.0
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="CharacterMesh" parent="Pivot" node_paths=PackedStringArray("skins") instance=ExtResource("2_j8mng")]
-skins = []
+[node name="CharacterMesh" parent="Pivot" instance=ExtResource("2_j8mng")]
 
 [node name="Character1_vox" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0)

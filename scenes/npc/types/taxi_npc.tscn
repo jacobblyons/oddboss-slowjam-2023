@@ -27,6 +27,7 @@ axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_ddvyn")
 sync_to_physics = false
 script = ExtResource("1_ochqb")
+Speed = 15.0
 Path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TaxiBody"]

@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://4lmpndbvo63j"]
+[gd_scene load_steps=4 format=3 uid="uid://bfaopt0hbmwla"]
 
-[ext_resource type="PackedScene" uid="uid://l5puv0nmlsvh" path="res://scenes/npc/spawners/npc_spawner.tscn" id="1_cfvce"]
+[ext_resource type="PackedScene" uid="uid://uih5ywguve22" path="res://scenes/npc/npc_target.tscn" id="2_iosi1"]
+[ext_resource type="Script" path="res://scripts/world/TargetNode.cs" id="3_3hhq2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c6u50"]
 size = Vector3(1, 2.13163, 1)
 
-[node name="door" type="Node3D"]
+[node name="door_exit" type="Node3D"]
 
-[node name="npc_spawner" parent="." instance=ExtResource("1_cfvce")]
+[node name="npc_target" parent="." instance=ExtResource("2_iosi1")]
 visible = false
+script = ExtResource("3_3hhq2")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33514e-05, 0, -0.00789738)
