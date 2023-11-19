@@ -1,37 +1,29 @@
 [gd_scene load_steps=15 format=3 uid="uid://bl78xharcpx2i"]
 
+[ext_resource type="Texture2D" uid="uid://cw2pcsflf61ye" path="res://assets/buildings/⭐️ Building 8.1.png" id="1_7qe6o"]
 [ext_resource type="ArrayMesh" uid="uid://7akkv6c2d7l0" path="res://assets/buildings/⭐️ Building 8.1.obj" id="2_uklir"]
+[ext_resource type="Texture2D" uid="uid://bjlc6ddbsqoxv" path="res://assets/buildings/⭐️ Building 8.2.png" id="3_3rb62"]
 [ext_resource type="ArrayMesh" uid="uid://bpbritx4sr08h" path="res://assets/buildings/⭐️ Building 8.2.obj" id="4_h63wk"]
+[ext_resource type="Texture2D" uid="uid://c4afeyntlj8e5" path="res://assets/buildings/⭐️ Building 8.3.png" id="5_ihjt2"]
 [ext_resource type="ArrayMesh" uid="uid://bp050e6ga537h" path="res://assets/buildings/⭐️ Building 8.3.obj" id="6_fsybu"]
+[ext_resource type="Texture2D" uid="uid://cugafle7ps7qq" path="res://assets/buildings/⭐️ Building 8.4.png" id="7_x70gs"]
 [ext_resource type="ArrayMesh" uid="uid://5qf82qjqcjh" path="res://assets/buildings/⭐️ Building 8.4.obj" id="8_pwfos"]
 [ext_resource type="PackedScene" uid="uid://4lmpndbvo63j" path="res://scenes/world/door.tscn" id="9_y6cw6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a4wk"]
 size = Vector3(41.5, 51, 26)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wh32r"]
-load_path = "res://.godot/imported/⭐️ Building 8.1.png-640e968e96f097920b4d95cec572b8eb.s3tc.ctex"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpy0j"]
+albedo_texture = ExtResource("1_7qe6o")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2djk"]
-albedo_texture = SubResource("CompressedTexture2D_wh32r")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8ktf"]
+albedo_texture = ExtResource("3_3rb62")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u53ge"]
-load_path = "res://.godot/imported/⭐️ Building 8.2.png-a8712081047743ca97d877bc1bb63190.s3tc.ctex"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kbwi"]
+albedo_texture = ExtResource("7_x70gs")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eidm0"]
-albedo_texture = SubResource("CompressedTexture2D_u53ge")
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ovhrp"]
-load_path = "res://.godot/imported/⭐️ Building 8.3.png-a154b44401e8dd9e616afa5a51fedaad.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bubpv"]
-albedo_texture = SubResource("CompressedTexture2D_ovhrp")
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nxu3g"]
-load_path = "res://.godot/imported/⭐️ Building 8.4.png-ec33300ccabcefcf5ad07937b3eac7e3.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3goi"]
-albedo_texture = SubResource("CompressedTexture2D_nxu3g")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbc4i"]
+albedo_texture = ExtResource("5_ihjt2")
 
 [node name="building_9" type="Node3D"]
 
@@ -45,33 +37,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 25, 0)
 shape = SubResource("BoxShape3D_5a4wk")
 
 [node name="⭐️Building8_1" type="MeshInstance3D" parent="Pivot"]
-material_override = SubResource("StandardMaterial3D_g2djk")
+material_override = SubResource("StandardMaterial3D_lpy0j")
 mesh = ExtResource("2_uklir")
 skeleton = NodePath("../..")
 
 [node name="⭐️Building8_2" type="MeshInstance3D" parent="Pivot"]
-material_override = SubResource("StandardMaterial3D_eidm0")
+material_override = SubResource("StandardMaterial3D_l8ktf")
 mesh = ExtResource("4_h63wk")
 skeleton = NodePath("../..")
 
 [node name="⭐️Building8_3" type="MeshInstance3D" parent="Pivot"]
-material_override = SubResource("StandardMaterial3D_bubpv")
+material_override = SubResource("StandardMaterial3D_0kbwi")
 mesh = ExtResource("6_fsybu")
 skeleton = NodePath("../..")
 
 [node name="⭐️Building8_4" type="MeshInstance3D" parent="Pivot"]
-material_override = SubResource("StandardMaterial3D_q3goi")
+material_override = SubResource("StandardMaterial3D_dbc4i")
 mesh = ExtResource("8_pwfos")
 skeleton = NodePath("../..")
 
 [node name="door" parent="Pivot" instance=ExtResource("9_y6cw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9624, 0.208252, 20.6845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9624, 0.808252, 14.9845)
 
 [node name="door2" parent="Pivot" instance=ExtResource("9_y6cw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462429, 0.208252, 20.6845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462429, 0.808252, 14.9845)
 
 [node name="door3" parent="Pivot" instance=ExtResource("9_y6cw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26243, 0.208252, 20.6845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26243, 0.808252, 14.9845)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19.6, 9.3545, 10.9656)
