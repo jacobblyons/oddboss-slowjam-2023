@@ -11,6 +11,7 @@ public partial class GameManager : Node
     public override void _Ready()
     {
         base._Ready();
+        partySize = 0;
     }
 
     public void AddPartyGoer()

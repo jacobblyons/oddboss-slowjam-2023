@@ -118,9 +118,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39931, 0)
 shape = SubResource("CylinderShape3D_qpw68")
 
 [node name="PartyBoundary" type="Area3D" parent="."]
-collision_layer = 8
+collision_layer = 128
 collision_mask = 128
-monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PartyBoundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03152, 0)
