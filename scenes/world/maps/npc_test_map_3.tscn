@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ecyffvft5pw" path="res://scenes/world/buildings/building_5.tscn" id="7_g57uw"]
 [ext_resource type="PackedScene" uid="uid://bae0jbdskhouq" path="res://scenes/world/buildings/building_7.tscn" id="8_skmhx"]
 [ext_resource type="PackedScene" uid="uid://bmpm5ry4lygsr" path="res://scenes/world/party_zone.tscn" id="9_c0sld"]
-[ext_resource type="PackedScene" uid="uid://2x744ylah8uq" path="res://scenes/world/roads/sidewalk_road.tscn" id="9_o65l8"]
+[ext_resource type="PackedScene" uid="uid://2x744ylah8uq" path="res://scenes/world/roads/sidewalk_road(old).tscn" id="9_o65l8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_whydk"]
 sky_top_color = Color(0, 0.262745, 0.321569, 1)

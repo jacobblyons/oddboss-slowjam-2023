@@ -13,6 +13,7 @@ size = Vector3(1.63081, 1.46376, 1.52256)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 3
+floor_max_angle = 1.5708
 script = ExtResource("1_ff2sa")
 moveSpeed = 10.0
 accelFactor = 60.0

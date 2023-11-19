@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtwxxrh5b6v74"]
+[gd_scene load_steps=9 format=3 uid="uid://dtwxxrh5b6v74"]
 
 [ext_resource type="Texture2D" uid="uid://dmnfg0nk5tj1y" path="res://assets/Items, Roads, and Sidewalks/Roads1.png" id="1_o5uli"]
 [ext_resource type="ArrayMesh" uid="uid://bbjny8wr5h6g1" path="res://assets/Items, Roads, and Sidewalks/Road1.obj" id="2_piwuy"]
@@ -11,10 +11,17 @@ albedo_texture = ExtResource("1_o5uli")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdhw7"]
 albedo_texture = ExtResource("3_2if76")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wk6x1"]
+size = Vector3(25.1, 0.45, 5.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ai1l4"]
+size = Vector3(25, 0.1, 20)
+
 [node name="sidwalk_road" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.495643, 0, 0)
 
 [node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
 
 [node name="Road1" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
@@ -194,3 +201,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 15)
 material_override = SubResource("StandardMaterial3D_tdhw7")
 mesh = ExtResource("4_1w1g2")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.2, -7.5)
+shape = SubResource("BoxShape3D_wk6x1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.05, 17.5)
+shape = SubResource("BoxShape3D_wk6x1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Pivot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.05, 5)
+shape = SubResource("BoxShape3D_ai1l4")

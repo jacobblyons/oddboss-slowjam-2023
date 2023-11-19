@@ -1,29 +1,37 @@
 [gd_scene load_steps=15 format=3 uid="uid://bl78xharcpx2i"]
 
-[ext_resource type="Texture2D" uid="uid://dfbbjjpf6sqie" path="res://assets/buildings/⭐️ Building 8.1.png" id="1_7qe6o"]
-[ext_resource type="ArrayMesh" uid="uid://7qccyfuy3q1r" path="res://assets/buildings/⭐️ Building 8.1.obj" id="2_uklir"]
-[ext_resource type="Texture2D" uid="uid://c0f4wsapraoyj" path="res://assets/buildings/⭐️ Building 8.2.png" id="3_3rb62"]
-[ext_resource type="ArrayMesh" uid="uid://di7uyvtxy0eee" path="res://assets/buildings/⭐️ Building 8.2.obj" id="4_h63wk"]
-[ext_resource type="Texture2D" uid="uid://bj14nskg1j0gn" path="res://assets/buildings/⭐️ Building 8.3.png" id="5_ihjt2"]
-[ext_resource type="ArrayMesh" uid="uid://cd0c446rejm1p" path="res://assets/buildings/⭐️ Building 8.3.obj" id="6_fsybu"]
-[ext_resource type="Texture2D" uid="uid://c7hi6mbd68rff" path="res://assets/buildings/⭐️ Building 8.4.png" id="7_x70gs"]
-[ext_resource type="ArrayMesh" uid="uid://b5deux2qyho3q" path="res://assets/buildings/⭐️ Building 8.4.obj" id="8_pwfos"]
+[ext_resource type="ArrayMesh" uid="uid://7akkv6c2d7l0" path="res://assets/buildings/⭐️ Building 8.1.obj" id="2_uklir"]
+[ext_resource type="ArrayMesh" uid="uid://bpbritx4sr08h" path="res://assets/buildings/⭐️ Building 8.2.obj" id="4_h63wk"]
+[ext_resource type="ArrayMesh" uid="uid://bp050e6ga537h" path="res://assets/buildings/⭐️ Building 8.3.obj" id="6_fsybu"]
+[ext_resource type="ArrayMesh" uid="uid://5qf82qjqcjh" path="res://assets/buildings/⭐️ Building 8.4.obj" id="8_pwfos"]
 [ext_resource type="PackedScene" uid="uid://4lmpndbvo63j" path="res://scenes/world/door.tscn" id="9_y6cw6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a4wk"]
 size = Vector3(41.5, 51, 26)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wh32r"]
+load_path = "res://.godot/imported/⭐️ Building 8.1.png-640e968e96f097920b4d95cec572b8eb.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2djk"]
-albedo_texture = ExtResource("1_7qe6o")
+albedo_texture = SubResource("CompressedTexture2D_wh32r")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u53ge"]
+load_path = "res://.godot/imported/⭐️ Building 8.2.png-a8712081047743ca97d877bc1bb63190.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eidm0"]
-albedo_texture = ExtResource("3_3rb62")
+albedo_texture = SubResource("CompressedTexture2D_u53ge")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ovhrp"]
+load_path = "res://.godot/imported/⭐️ Building 8.3.png-a154b44401e8dd9e616afa5a51fedaad.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bubpv"]
-albedo_texture = ExtResource("5_ihjt2")
+albedo_texture = SubResource("CompressedTexture2D_ovhrp")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nxu3g"]
+load_path = "res://.godot/imported/⭐️ Building 8.4.png-ec33300ccabcefcf5ad07937b3eac7e3.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3goi"]
-albedo_texture = ExtResource("7_x70gs")
+albedo_texture = SubResource("CompressedTexture2D_nxu3g")
 
 [node name="building_9" type="Node3D"]
 
@@ -80,6 +88,15 @@ light_color = Color(0.964706, 0.862745, 0.72549, 1)
 light_energy = 2.381
 light_size = 1.12
 spot_range = 15.0
+spot_attenuation = 0.287175
+spot_angle_attenuation = 0.25
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.1, 17.7545, 10.9656)
+light_color = Color(0.964706, 0.862745, 0.72549, 1)
+light_energy = 2.381
+light_size = 1.12
+spot_range = 20.0
 spot_attenuation = 0.287175
 spot_angle_attenuation = 0.25
 
