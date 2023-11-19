@@ -28,6 +28,7 @@ public partial class DogController : RigidBody3D
     private DogState state = DogState.GetEmBoy;
     private float timeSinceShot = 0.0f;
     private float timeSinceStunned = 0.0f;
+    private DogSpawner spawner;
 
     public override void _Ready()
     {
@@ -37,6 +38,7 @@ public partial class DogController : RigidBody3D
         playerDetectionBoundary = GetNode<Area3D>("PlayerDetectionBoundary");
         playerHitBoundary = GetNode<Area3D>("PlayerBoundary");
         navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
+        spawner = GetParent() as DogSpawner;
         playerHitBoundary.BodyEntered += OnPlayerHit;
 
         // Make sure to not await during _Ready.
@@ -63,6 +65,7 @@ public partial class DogController : RigidBody3D
         {
             if (Time.GetTicksMsec() - timeSinceShot > timeUntilDespawn * 1000)
             {
+                spawner.RemoveDog(this);
                 QueueFree();
             }
         }
