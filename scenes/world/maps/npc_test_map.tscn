@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bs288x3mhpqn7"]
+[gd_scene load_steps=27 format=3 uid="uid://bs288x3mhpqn7"]
 
 [ext_resource type="PackedScene" uid="uid://ky284upavot3" path="res://scenes/world/buildings/building_spawn.tscn" id="1_4pq63"]
 [ext_resource type="PackedScene" uid="uid://dtwxxrh5b6v74" path="res://scenes/world/roads/Rd_dbl_str_01.tscn" id="1_g70l6"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bjrya11aqbh7o" path="res://scenes/world/roads/parkinglot_02.tscn" id="18_5sill"]
 [ext_resource type="PackedScene" uid="uid://dk71cx2p3qaj1" path="res://scenes/world/roads/sidewalk.tscn" id="20_3s1i1"]
 [ext_resource type="PackedScene" uid="uid://cb4nbdgk7giav" path="res://scenes/world/roads/Rd_dbl_str_02.tscn" id="20_j0qrn"]
+[ext_resource type="PackedScene" uid="uid://bk6rrn4oy7ijj" path="res://scenes/npc/types/dog_npc.tscn" id="21_urndf"]
 [ext_resource type="PackedScene" uid="uid://ckxi48ksino4p" path="res://scenes/world/roads/Rd_dbl_str_03.tscn" id="21_xea0o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_whydk"]
@@ -40,6 +41,13 @@ volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(0.823529, 0.333333, 0.266667, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_7v47x"]
+
+[sub_resource type="Curve3D" id="Curve3D_ap3wt"]
+_data = {
+"points": PackedVector3Array(7.90305, -1.52588e-05, -8.01872, -7.90305, 1.52588e-05, 8.01872, -27.0761, 0, 25.7944, -3.53118, -1.52588e-05, -2.43521, 3.53118, 1.52588e-05, 2.43521, -24.8399, 0, 113.505, -3.59176, -1.52588e-05, 2.47618, 3.59176, 1.52588e-05, -2.47618, 49.2046, 0, 117.232, -3.47236, -1.52588e-05, 5.18295, 3.47236, 1.52588e-05, -5.18295, 49.95, 0, 29.5215, -5.9394, -1.52588e-05, 4.72636, 5.9394, 1.52588e-05, -4.72636, 106.85, 0, 24.8005, 2.34142, -1.52588e-05, 13.1919, -2.34142, 1.52588e-05, -13.1919, 108.589, 0, -53.9648, 4.21835, -1.52588e-05, 5.35085, -4.21835, 1.52588e-05, -5.35085, 107.336, 0, -79.4016, 4.27113, -1.52588e-05, -3.1078, -4.27113, 1.52588e-05, 3.1078, 57.3934, 0, -87.3527, -3.95786, -1.52588e-05, -3.92804, 3.95786, 1.52588e-05, 3.92804, 55.9025, 0, -47.5973, -3.13241, -1.52588e-05, -3.22513, 3.13241, 1.52588e-05, 3.22513, 100.379, 0, -44.8641, 3.83674, -1.52588e-05, -4.03667, -3.83674, 1.52588e-05, 4.03667, 104.106, 0, 18.7445, 6.86956, -1.52588e-05, -5.7211, -6.86956, 1.52588e-05, 5.7211, -105.852, 0, 20.7323, -5.70206, 0, -6.76559, 5.70206, 0, 6.76559, -106.013, 1.52588e-05, 115.389, 0, 0, 0, 0, 0, 0, 54.0025, 1.52588e-05, 113.153, 3.32926, 0, 4.89472, -3.32926, 0, -4.89472, 55.9902, 1.52588e-05, 26.1879, 7.23941, 1.52588e-05, -4.83967, -7.23941, -1.52588e-05, 4.83967, -27.0761, 0, 25.7944),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 16
 
 [node name="Map" type="Node3D"]
 
@@ -421,3 +429,25 @@ transform = Transform3D(0.208492, 0, -0.978024, 0, 1, 0, 0.978024, 0, 0.208492, 
 
 [node name="party_zone" parent="." instance=ExtResource("9_c0sld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.390701, 0.716129, 15.6539)
+
+[node name="PawPatrol" type="Node3D" parent="."]
+
+[node name="Path3D" type="Path3D" parent="PawPatrol"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18675, 0)
+curve = SubResource("Curve3D_ap3wt")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PawPatrol/Path3D"]
+transform = Transform3D(-0.999949, 3.82905e-06, 0.0100958, 3.83052e-06, 1, 1.25562e-07, -0.0100958, 1.64228e-07, -0.999949, -30.784, 3.55687e-06, 50.2746)
+progress = 25.0635
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="PawPatrol/Path3D"]
+transform = Transform3D(-0.991602, 3.78453e-06, -0.129323, 3.8093e-06, 1, 5.58541e-08, 0.129323, -4.37245e-07, -0.991602, -27.7418, -4.3137e-06, 100.275)
+progress = 75.1905
+
+[node name="dog" parent="PawPatrol" node_paths=PackedStringArray("Path") instance=ExtResource("21_urndf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 101)
+Path = NodePath("../Path3D/PathFollow3D")
+
+[node name="dog2" parent="PawPatrol" node_paths=PackedStringArray("Path") instance=ExtResource("21_urndf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 49)
+Path = NodePath("../Path3D/PathFollow3D2")

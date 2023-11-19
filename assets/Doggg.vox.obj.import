@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ce781qpveeos0"
+path="res://.godot/imported/Doggg.vox.obj-7ef60bd8d17de93b60c949d9ac8adddc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Doggg.vox.obj-7ef60bd8d17de93b60c949d9ac8adddc.mesh"]
+
+source_file="res://assets/Doggg.vox.obj"
+dest_files=["res://.godot/imported/Doggg.vox.obj-7ef60bd8d17de93b60c949d9ac8adddc.mesh", "res://.godot/imported/Doggg.vox.obj-7ef60bd8d17de93b60c949d9ac8adddc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

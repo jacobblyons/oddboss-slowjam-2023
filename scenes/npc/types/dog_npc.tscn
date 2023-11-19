@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk6rrn4oy7ijj"]
+
+[ext_resource type="Texture2D" uid="uid://74mgoswdxlvm" path="res://assets/Doggg.vox.png" id="1_1gobl"]
+[ext_resource type="ArrayMesh" uid="uid://ce781qpveeos0" path="res://assets/Doggg.vox.obj" id="1_fhvxf"]
+[ext_resource type="Script" path="res://scripts/DogController.cs" id="1_t6ten"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xv2kj"]
+size = Vector3(0.613895, 1.29523, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8cd7y"]
+albedo_texture = ExtResource("1_1gobl")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2gaor"]
+height = 10.0
+radius = 15.0
+
+[node name="Dog" type="RigidBody3D"]
+continuous_cd = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_t6ten")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0514412, 0.548922, 0)
+shape = SubResource("BoxShape3D_xv2kj")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Doggg_vox" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_8cd7y")
+mesh = ExtResource("1_fhvxf")
+skeleton = NodePath("")
+
+[node name="PlayerDetectionBoundary" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionBoundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+shape = SubResource("CylinderShape3D_2gaor")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.5
+path_max_distance = 20.41
+avoidance_enabled = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.788235, 0, 0.788235, 1)
+debug_path_custom_point_size = 5.0
