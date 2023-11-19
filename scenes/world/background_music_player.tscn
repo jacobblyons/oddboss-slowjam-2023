@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dptrnx138547x"]
+
+[ext_resource type="AudioStream" uid="uid://07fp3bt3oshx" path="res://assets/Gameplay - Alien Game loop.wav" id="1_1bjno"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_1bjno")
+volume_db = -17.61
+autoplay = true
