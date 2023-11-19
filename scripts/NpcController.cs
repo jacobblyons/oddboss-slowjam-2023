@@ -82,7 +82,7 @@ public partial class NpcController : RigidBody3D
 		returnToNormal();
 	}
 
-	private void DestroyMe()
+	public void DestroyMe()
 	{
 		GD.Print($"NPC: Destroyed : {state.ToString()}");
 		QueueFree();
@@ -316,7 +316,7 @@ public partial class NpcController : RigidBody3D
 		if (state == NpcState.Brainwashed)
 		{
 			GD.Print("NPC: Party Zone Reached");
-			DestroyMe();
+			//DestroyMe();
 		}
 	}
 	#endregion
