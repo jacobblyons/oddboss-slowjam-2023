@@ -18,7 +18,7 @@ public partial class WorldServer : Node
     public Node3D PlayerRef {get; set;}
 
     [Export]
-    public float npcSpawnPeriodInSeconds = .5f;
+    public float npcSpawnPeriodInSeconds = 1;
 
     private Dictionary<Vector3, TargetNode> targets = new Dictionary<Vector3, TargetNode>();
     private Dictionary<Vector3, SpawnerNode> spawners = new Dictionary<Vector3, SpawnerNode>();

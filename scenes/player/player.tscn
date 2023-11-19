@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player/PlayerFPSController.cs" id="1_ff2sa"]
 [ext_resource type="Material" uid="uid://hscltjq8stg6" path="res://scripts/player/shaders/projectile_mat.tres" id="3_oxli7"]
-[ext_resource type="PackedScene" uid="uid://bxn40uoc60dg4" path="res://scenes/player/gun.tscn" id="4_be5ve"]
+[ext_resource type="PackedScene" uid="uid://u4ludp202lno" path="res://scenes/player/gun.tscn" id="4_be5ve"]
 [ext_resource type="Script" path="res://scripts/player/FriendGunController.cs" id="4_rscvv"]
 [ext_resource type="Script" path="res://scripts/player/FriendGunUpgrader.cs" id="5_oikon"]
 
@@ -11,7 +11,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_bp2sd"]
 size = Vector3(1.63081, 1.46376, 1.52256)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_ff2sa")
 moveSpeed = 10.0

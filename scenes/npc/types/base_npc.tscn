@@ -1,12 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://8y7w2mq2su3p"]
+[gd_scene load_steps=12 format=3 uid="uid://8y7w2mq2su3p"]
 
 [ext_resource type="Script" path="res://scripts/NpcController.cs" id="1_x1n2k"]
 [ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/buildings/Test_Building.vox.png" id="2_cgp7c"]
-[ext_resource type="PackedScene" uid="uid://brddclplrvx5t" path="res://scenes/npc/npc_0.tscn" id="2_j8mng"]
+[ext_resource type="PackedScene" uid="uid://crh6sq4gi617l" path="res://scenes/npc/npc_0.tscn" id="2_j8mng"]
 [ext_resource type="ArrayMesh" uid="uid://byw1hwwm842qe" path="res://assets/Character_1.vox.obj" id="3_2gd0c"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ogney"]
-friction = 0.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s45o"]
 albedo_texture = ExtResource("2_cgp7c")
@@ -34,16 +31,18 @@ height = 4.22252
 radius = 0.975903
 
 [node name="base_npc" type="RigidBody3D"]
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-physics_material_override = SubResource("PhysicsMaterial_ogney")
+continuous_cd = true
+can_sleep = false
+freeze = true
+freeze_mode = 1
 script = ExtResource("1_x1n2k")
-walkSpeed = 5.0
+walkSpeed = 7.0
 brainwashedSpeed = 8.0
 runSpeed = 10.0
 rotateSpeed = 4.0
 lifePostSplatterInSec = 2.0
 stunTimeInSec = 1.0
+distanceInFrontOfPlayerToLookAt = 1.0
 
 [node name="Pivot" type="Node3D" parent="."]
 
@@ -65,7 +64,7 @@ aabb = AABB(-1, 0.00588608, -1, 2, 4.66206, 2)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.5
-avoidance_enabled = true
+debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.788235, 1)
 debug_path_custom_point_size = 5.0
@@ -75,7 +74,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CapsuleShape3D_cyhvl")
 
 [node name="PlayerDetectionBoundary" type="Area3D" parent="."]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 monitorable = false
 
@@ -84,7 +83,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
 shape = SubResource("CylinderShape3D_8hirw")
 
 [node name="EscapeDetectionBoundary" type="Area3D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 monitorable = false
 
@@ -93,7 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13942, 9.91912)
 shape = SubResource("BoxShape3D_relja")
 
 [node name="EscapeInReachBoundary" type="Area3D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 monitorable = false
 
@@ -102,7 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03152, 0)
 shape = SubResource("CylinderShape3D_q8u5e")
 
 [node name="CarBoundary" type="Area3D" parent="."]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 8
 monitorable = false
 
@@ -111,7 +110,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39931, 0)
 shape = SubResource("CylinderShape3D_qpw68")
 
 [node name="BulletBoundary" type="Area3D" parent="."]
-collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BulletBoundary"]
@@ -119,8 +117,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39931, 0)
 shape = SubResource("CylinderShape3D_qpw68")
 
 [node name="PartyBoundary" type="Area3D" parent="."]
-collision_layer = 64
-collision_mask = 64
+collision_layer = 0
+collision_mask = 128
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PartyBoundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03152, 0)
