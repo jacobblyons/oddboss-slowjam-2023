@@ -70,7 +70,7 @@ public partial class NpcController : RigidBody3D
 		playerDetectionBoundary.BodyExited += OnPlayerLeftBounds;
 		worldServer = GetNode<WorldServer>("/root/WorldServer");
 		worldServer.BrainWashReleased += OnBrainwashReleased;
-
+		worldServer.RegisterNpc(this);
 		// Make sure to not await during _Ready.
 		Callable.From(ActorSetup).CallDeferred();
 	}
@@ -86,6 +86,7 @@ public partial class NpcController : RigidBody3D
 	public void DestroyMe()
 	{
 		GD.Print($"NPC: Destroyed : {state.ToString()}");
+		worldServer.DeregisterNpc(this);
 		QueueFree();
 	}
 
