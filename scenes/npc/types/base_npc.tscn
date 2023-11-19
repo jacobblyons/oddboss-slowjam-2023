@@ -62,7 +62,7 @@ shape = SubResource("BoxShape3D_ykx4d")
 aabb = AABB(-1, 0.00588608, -1, 2, 4.66206, 2)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 10.0
+path_desired_distance = 0.5
 path_max_distance = 20.41
 avoidance_enabled = true
 debug_use_custom = true
