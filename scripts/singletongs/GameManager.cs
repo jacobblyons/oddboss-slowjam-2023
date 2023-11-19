@@ -17,4 +17,10 @@ public partial class GameManager : Node
     {
         partySize++;
     }
+
+    public void RemovePartyGoers(int num) {
+        if (partySize >= num) {
+            partySize -= num;
+        }
+    }
 }

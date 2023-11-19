@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://gyspku1sfuxp"]
+[gd_scene load_steps=8 format=3 uid="uid://gyspku1sfuxp"]
 
 [ext_resource type="Script" path="res://scripts/player/PlayerFPSController.cs" id="1_ff2sa"]
 [ext_resource type="Material" uid="uid://hscltjq8stg6" path="res://scripts/player/shaders/projectile_mat.tres" id="3_oxli7"]
+[ext_resource type="PackedScene" uid="uid://bxn40uoc60dg4" path="res://scenes/player/gun.tscn" id="4_be5ve"]
 [ext_resource type="Script" path="res://scripts/player/FriendGunController.cs" id="4_rscvv"]
+[ext_resource type="Script" path="res://scripts/player/FriendGunUpgrader.cs" id="5_oikon"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0qo7"]
 
@@ -38,20 +40,18 @@ recoilTime = 0.2
 chargeEffectRotationSpeed = -10.0
 dechargeEffectRotationSpeed = 3.0
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Camera3D/Gun"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-radius = 0.045
-height = 0.693363
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Camera3D/Gun"]
-transform = Transform3D(1, 0, 0, 0, -0.922888, -0.385068, 0, 0.385068, -0.922888, 0, -0.0813198, 0.235881)
-radius = 0.03
-height = 0.203123
-
 [node name="ChargeEffect" type="CSGTorus3D" parent="Camera3D/Gun"]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, -0.314168)
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0.152436, -0.358805, -0.950615)
 sides = 12
 material = ExtResource("3_oxli7")
+
+[node name="GunMesh" parent="Camera3D/Gun" instance=ExtResource("4_be5ve")]
+transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 0.197593, -0.752514, -0.287418)
+
+[node name="UpgradeModule" type="Node3D" parent="Camera3D/Gun" node_paths=PackedStringArray("friendGun")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.397907, 0)
+script = ExtResource("5_oikon")
+friendGun = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

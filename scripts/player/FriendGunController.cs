@@ -16,6 +16,8 @@ public partial class FriendGunController : Node
     private float charge;
     private float timeHeldAtMaxCharge;
 
+    private GameManager gameManager;        // Ref to GameManager Singleton.
+    private GUIController guiController;    // Ref to game GUI to listen for upgrade attempts.
     private Node3D tempChargeEffect;
     private PackedScene projectilePrefab;
 
@@ -80,7 +82,7 @@ public partial class FriendGunController : Node
     private void IncrementCharge(float fdelta) {
         charge += fdelta;
         if (charge > chargeTime / ((float)upgradeData.chargeLvl + 1f)) {
-            charge = chargeTime;
+            charge = chargeTime / ((float)upgradeData.chargeLvl + 1f);
             fireState = FireState.MAXCHARGE;
         }
     }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7gshyo20sbbi"]
+[gd_scene load_steps=4 format=3 uid="uid://bxn40uoc60dg4"]
 
 [ext_resource type="Texture2D" uid="uid://6146b5uhbft3" path="res://assets/Items, Roads, and Sidewalks/Gun.vox.png" id="1_27787"]
 [ext_resource type="ArrayMesh" uid="uid://sa2qgoodij0d" path="res://assets/Items, Roads, and Sidewalks/Gun.vox.obj" id="2_xq132"]
