@@ -1,6 +1,7 @@
 using Godot;
 using System;
-
+using System.Data;
+public enum DogState { GetEmBoy, Stunned, Down }
 public partial class DogController : RigidBody3D
 {
     [Export]
@@ -11,20 +12,32 @@ public partial class DogController : RigidBody3D
     public PathFollow3D Path;
     [Export]
     public float rotateSpeed = 2.0f;
+    [Export]
+    public float timeUntilDespawn = 4.0f;
+    [Export]
+    public float timeStunned = 1.0f;
+    [Export]
+	public float gotHitImpulse = 50f;
 
     private Area3D bulletHitBoundary;
     private Area3D playerDetectionBoundary;
+    private Area3D playerHitBoundary;
     private Node3D playerRef;
     private NavigationAgent3D navigationAgent;
     private bool initialized = false;
-    
+    private DogState state = DogState.GetEmBoy;
+    private float timeSinceShot = 0.0f;
+    private float timeSinceStunned = 0.0f;
+
     public override void _Ready()
     {
         base._Ready();
         bulletHitBoundary = GetNode<Area3D>("BulletBoundary");
         bulletHitBoundary.AreaEntered += OnBulletHit;
         playerDetectionBoundary = GetNode<Area3D>("PlayerDetectionBoundary");
+        playerHitBoundary = GetNode<Area3D>("PlayerBoundary");
         navigationAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
+        playerHitBoundary.BodyEntered += OnPlayerHit;
 
         // Make sure to not await during _Ready.
         Callable.From(ActorSetup).CallDeferred();
@@ -45,6 +58,25 @@ public partial class DogController : RigidBody3D
         {
             return;
         }
+
+        if (state == DogState.Down)
+        {
+            if (Time.GetTicksMsec() - timeSinceShot > timeUntilDespawn * 1000)
+            {
+                QueueFree();
+            }
+        }
+
+        if (state == DogState.Stunned)
+        {
+            if (Time.GetTicksMsec() - timeSinceStunned > timeStunned * 1000)
+            {
+                state = DogState.GetEmBoy;
+                Freeze = true;
+            }
+        }
+        
+
         // get target
         Vector3 target;
         float speed;
@@ -110,7 +142,24 @@ public partial class DogController : RigidBody3D
         GlobalRotation = newRotation.GetEuler();
     }
 
-    private void OnBulletHit(Node3D body) {
-        QueueFree();
+    private void OnPlayerHit(Node3D body)
+    {
+        timeSinceStunned = Time.GetTicksMsec();
+        state = DogState.Stunned;
+        // send the dude
+        var direction = (GlobalPosition - body.GlobalPosition).Normalized();
+        this.Freeze = false;
+        this.ApplyCentralImpulse(direction * gotHitImpulse);
+    }
+
+    private void OnBulletHit(Node3D body)
+    {
+        timeSinceShot = Time.GetTicksMsec();
+        state = DogState.Down;
+        
+        // send the dude
+        this.Freeze = false;
+        var direction = (GlobalPosition - body.GlobalPosition).Normalized();
+        this.ApplyCentralImpulse(direction * gotHitImpulse);
     }
 }

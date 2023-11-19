@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuyxtxoyhi1ap"]
+[gd_scene load_steps=9 format=3 uid="uid://cuyxtxoyhi1ap"]
 
 [ext_resource type="Texture2D" uid="uid://74mgoswdxlvm" path="res://assets/Doggg.vox.png" id="1_1gobl"]
 [ext_resource type="ArrayMesh" uid="uid://ce781qpveeos0" path="res://assets/Doggg.vox.obj" id="1_fhvxf"]
@@ -16,7 +16,11 @@ radius = 15.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8dic6"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_5gda0"]
+radius = 1.6972
+
 [node name="Dog" type="RigidBody3D"]
+collision_layer = 9
 collision_mask = 33
 continuous_cd = true
 freeze = true
@@ -47,7 +51,6 @@ shape = SubResource("CylinderShape3D_2gaor")
 path_desired_distance = 0.5
 path_max_distance = 20.41
 avoidance_enabled = true
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.788235, 1)
 debug_path_custom_point_size = 5.0
@@ -60,3 +63,12 @@ collision_mask = 32
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BulletBoundary"]
 transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 0.745058, 0)
 shape = SubResource("SphereShape3D_8dic6")
+
+[node name="PlayerBoundary" type="Area3D" parent="."]
+transform = Transform3D(0.5929, 0, 0, 0, 0.5929, 0, 0, 0, 0.5929, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBoundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.985788, 0)
+shape = SubResource("SphereShape3D_5gda0")
