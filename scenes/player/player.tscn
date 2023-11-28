@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://gyspku1sfuxp"]
+[gd_scene load_steps=9 format=3 uid="uid://gyspku1sfuxp"]
 
 [ext_resource type="Script" path="res://scripts/player/PlayerFPSController.cs" id="1_ff2sa"]
 [ext_resource type="Material" uid="uid://hscltjq8stg6" path="res://scripts/player/shaders/projectile_mat.tres" id="3_oxli7"]
 [ext_resource type="PackedScene" uid="uid://u4ludp202lno" path="res://scenes/player/gun.tscn" id="4_be5ve"]
 [ext_resource type="Script" path="res://scripts/player/FriendGunController.cs" id="4_rscvv"]
 [ext_resource type="Script" path="res://scripts/player/FriendGunUpgrader.cs" id="5_oikon"]
+[ext_resource type="PackedScene" uid="uid://yfm677605bgp" path="res://knife.tscn" id="6_fme0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0qo7"]
 
@@ -43,16 +44,21 @@ dechargeEffectRotationSpeed = 3.0
 
 [node name="ChargeEffect" type="CSGTorus3D" parent="Camera3D/Gun"]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0.152436, -0.358805, -0.950615)
+visible = false
 sides = 12
 material = ExtResource("3_oxli7")
 
 [node name="GunMesh" parent="Camera3D/Gun" instance=ExtResource("4_be5ve")]
 transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 0.197593, -0.752514, -0.287418)
+visible = false
 
 [node name="UpgradeModule" type="Node3D" parent="Camera3D/Gun" node_paths=PackedStringArray("friendGun")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.397907, 0)
 script = ExtResource("5_oikon")
 friendGun = NodePath("..")
+
+[node name="knife" parent="Camera3D/Gun" instance=ExtResource("6_fme0r")]
+transform = Transform3D(0.0429485, -0.0253036, 0.00389251, 0.0037189, 0.0136878, 0.0479459, -0.0253297, -0.0408946, 0.0136395, 0, 0, -0.129756)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

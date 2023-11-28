@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://87pw33vlytup"]
+[gd_scene load_steps=19 format=3 uid="uid://87pw33vlytup"]
 
 [ext_resource type="Texture2D" uid="uid://y4eehmnvwt0b" path="res://assets/buildings/Test_Building.vox.png" id="1_ycg54"]
 [ext_resource type="ArrayMesh" uid="uid://dgnahp5vp5vex" path="res://assets/buildings/Test_Building.vox.obj" id="2_yrgg0"]
 [ext_resource type="PackedScene" uid="uid://gyspku1sfuxp" path="res://scenes/player/player.tscn" id="3_54yab"]
+[ext_resource type="PackedScene" uid="uid://yfm677605bgp" path="res://knife.tscn" id="4_6ggat"]
 [ext_resource type="Script" path="res://scripts/player/PlayerDebugMenu.cs" id="4_s6dpv"]
 [ext_resource type="PackedScene" uid="uid://rbopl0dvpeo6" path="res://assets/npc_limbs.tscn" id="5_l1475"]
+[ext_resource type="PackedScene" uid="uid://dptrnx138547x" path="res://scenes/world/background_music_player.tscn" id="6_fl3ck"]
 
 [sub_resource type="Gradient" id="Gradient_nc63m"]
 offsets = PackedFloat32Array(0, 0.217033, 0.626374, 0.997253, 1)
@@ -36,6 +38,15 @@ albedo_texture = ExtResource("1_ycg54")
 size = Vector3(13.6914, 44.4403, 21.9412)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jtnp0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlnxd"]
+transparency = 1
+shading_mode = 2
+albedo_color = Color(0.443137, 0.443137, 0.443137, 0.329412)
+
+[sub_resource type="SphereMesh" id="SphereMesh_smo3k"]
+material = SubResource("StandardMaterial3D_nlnxd")
+rings = 1
 
 [node name="Game" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0444622, 0, 0.00205231)
@@ -80,12 +91,13 @@ vertices = PackedVector3Array(4.88048, 0, -14.2116, 5.34814, 0, 9.50713, -16.398
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14105, 7.60632, 50.7701)
 hitstunTime = 1.0
 
+[node name="knife" parent="NavigationRegion3D/Player" instance=ExtResource("4_6ggat")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.416972, 0.736433, -1.07608)
+
 [node name="DebugMenu" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_s6dpv")
-playerRef = Object(CharacterBody3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14105, 7.60632, 50.7701),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":3,"collision_mask":1,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"axis_lock_linear_x":false,"axis_lock_linear_y":false,"axis_lock_linear_z":false,"axis_lock_angular_x":false,"axis_lock_angular_y":false,"axis_lock_angular_z":false,"motion_mode":0,"up_direction":Vector3(0, 1, 0),"slide_on_ceiling":true,"velocity":Vector3(0, 0, 0),"max_slides":6,"wall_min_slide_angle":0.261799,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.785398,"floor_snap_length":0.1,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.001,"script":Resource("res://scripts/player/PlayerFPSController.cs"),"moveSpeed":10.0,"accelFactor":60.0,"decelFactor":120.0,"jumpForce":12.0,"mouseSensitivity":0.7,"hitstunTime":1.0,"hitstunKnockbackForce":20.0)
-
 
 [node name="Label" type="Label" parent="DebugMenu"]
 layout_mode = 2
@@ -141,3 +153,14 @@ collision_mask = 8
 shape = SubResource("BoxShape3D_jtnp0")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Area3D"]
+
+[node name="DogDeathEffect" type="Node3D" parent="."]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="DogDeathEffect"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8944, 40.1529)
+mesh = SubResource("SphereMesh_smo3k")
+emission_shape = 1
+emission_sphere_radius = 1.58
+gravity = Vector3(0, 2, 0)
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("6_fl3ck")]

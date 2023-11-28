@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://t8q30bm0gagp"]
+
+[ext_resource type="SystemFont" uid="uid://chfv0gqug38w2" path="res://assets/fonts/military_font.tres" id="1_rcbij"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+color = Color(0.0392157, 0, 0.0431373, 0.745098)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 77.0
+offset_top = 88.0
+offset_right = 1.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0.356863, 0.537255, 1)
+theme_override_fonts/normal_font = ExtResource("1_rcbij")
+theme_override_font_sizes/normal_font_size = 72
+text = "Mission:"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0.356863, 0.537255, 1)
+theme_override_fonts/normal_font = ExtResource("1_rcbij")
+theme_override_font_sizes/normal_font_size = 72
+text = " "
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0.356863, 0.537255, 1)
+theme_override_fonts/normal_font = ExtResource("1_rcbij")
+theme_override_font_sizes/normal_font_size = 72
+text = "Objective:"
+fit_content = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.637142, 0, 0.0465395, 1)
+theme_override_fonts/normal_font = ExtResource("1_rcbij")
+theme_override_font_sizes/normal_font_size = 72
+text = "Befriend All Humans"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.637142, 0, 0.0465395, 1)
+theme_override_fonts/normal_font = ExtResource("1_rcbij")
+theme_override_font_sizes/normal_font_size = 72
+text = "Civilization Reset..."
+fit_content = true
